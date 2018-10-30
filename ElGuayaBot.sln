@@ -10,9 +10,48 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{24EF5727-B068-4C2A-9B01-A175670FFD38}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Api.WebApi", "ElGuayaBot.Api.WebApi\ElGuayaBot.Api.WebApi.csproj", "{CDE1590B-9145-4E57-BED6-56E08E7E48E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Application.Contracts", "ElGuayaBot.Application.Contracts\ElGuayaBot.Application.Contracts.csproj", "{08F7AF67-F26A-4859-B77F-FDF940657A28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Application.Implementation", "ElGuayaBot.Application.Implementation\ElGuayaBot.Application.Implementation.csproj", "{D476A154-05B1-4FD5-8B76-E6259F421E9F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Application.DTO", "ElGuayaBot.Application.DTO\ElGuayaBot.Application.DTO.csproj", "{529802E3-B077-4A63-A881-4F3A5C23EBAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Common", "ElGuayaBot.Common\ElGuayaBot.Common.csproj", "{6AE86943-8759-4303-8BE4-F9902A3DB907}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDE1590B-9145-4E57-BED6-56E08E7E48E5} = {24EF5727-B068-4C2A-9B01-A175670FFD38}
+		{08F7AF67-F26A-4859-B77F-FDF940657A28} = {8787BE9D-2F78-4104-A344-92DB24E3053A}
+		{D476A154-05B1-4FD5-8B76-E6259F421E9F} = {8787BE9D-2F78-4104-A344-92DB24E3053A}
+		{529802E3-B077-4A63-A881-4F3A5C23EBAD} = {8787BE9D-2F78-4104-A344-92DB24E3053A}
+		{6AE86943-8759-4303-8BE4-F9902A3DB907} = {BE10101D-502B-4538-A400-69A501D55C39}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDE1590B-9145-4E57-BED6-56E08E7E48E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDE1590B-9145-4E57-BED6-56E08E7E48E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDE1590B-9145-4E57-BED6-56E08E7E48E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDE1590B-9145-4E57-BED6-56E08E7E48E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08F7AF67-F26A-4859-B77F-FDF940657A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08F7AF67-F26A-4859-B77F-FDF940657A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08F7AF67-F26A-4859-B77F-FDF940657A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08F7AF67-F26A-4859-B77F-FDF940657A28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D476A154-05B1-4FD5-8B76-E6259F421E9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D476A154-05B1-4FD5-8B76-E6259F421E9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D476A154-05B1-4FD5-8B76-E6259F421E9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D476A154-05B1-4FD5-8B76-E6259F421E9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{529802E3-B077-4A63-A881-4F3A5C23EBAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529802E3-B077-4A63-A881-4F3A5C23EBAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529802E3-B077-4A63-A881-4F3A5C23EBAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529802E3-B077-4A63-A881-4F3A5C23EBAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AE86943-8759-4303-8BE4-F9902A3DB907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AE86943-8759-4303-8BE4-F9902A3DB907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AE86943-8759-4303-8BE4-F9902A3DB907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AE86943-8759-4303-8BE4-F9902A3DB907}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
