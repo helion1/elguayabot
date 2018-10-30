@@ -10,7 +10,7 @@ namespace ElGuayaBot.Application.Implementation
  
          public BotClient()
          {
-             Client = new TelegramBotClient("723700092:AAGSRwCNGMVLDH_8oMee4blz_DD9MfeYN_4");
+             Client = new TelegramBotClient("INSERT YOUR CODE HERE");
          }
      }
  }
