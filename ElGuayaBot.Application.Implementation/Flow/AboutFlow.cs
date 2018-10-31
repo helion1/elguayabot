@@ -1,6 +1,7 @@
 using ElGuayaBot.Application.Contracts;
 using ElGuayaBot.Application.Contracts.Flow;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 
 namespace ElGuayaBot.Application.Implementation.Flow
 {
@@ -10,9 +11,16 @@ namespace ElGuayaBot.Application.Implementation.Flow
         {
         }
         
-        public override void Initiate(Message message)
+        public override async void Initiate(Message message)
         {
-            throw new System.NotImplementedException();
+            var aboutText = "[ElGuayaBot](https://github.com/elementh/elguayabot), made with humor and code by [Lucas](https://github.com/elementh) and [Daniel](https://github.com/Zabrios) for our friend [Jose](https://github.com/ElGuayaba)";
+            
+            await _bot.SendTextMessageAsync(
+                chatId: message.Chat.Id, 
+                text: aboutText,
+                parseMode: ParseMode.Markdown
+            );
+            
         }
     }
 }
