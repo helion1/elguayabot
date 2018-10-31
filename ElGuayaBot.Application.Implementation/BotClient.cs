@@ -1,5 +1,6 @@
 using System;
 using ElGuayaBot.Application.Contracts;
+using Microsoft.Extensions.Configuration;
 using Telegram.Bot;
 
 namespace ElGuayaBot.Application.Implementation
@@ -8,9 +9,17 @@ namespace ElGuayaBot.Application.Implementation
     {
         public TelegramBotClient Client { get; }
  
-         public BotClient()
+         public BotClient(IConfiguration configuration)
          {
-             Client = new TelegramBotClient("INSERT YOUR CODE HERE");
+             try
+             {
+                 Client = new TelegramBotClient(configuration["TelegramBotToken"]);
+             }
+             catch (Exception e)
+             {
+                 Console.WriteLine(e);
+                 throw;
+             }
          }
      }
  }

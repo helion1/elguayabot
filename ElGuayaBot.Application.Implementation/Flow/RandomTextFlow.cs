@@ -7,27 +7,42 @@ using Telegram.Bot.Types;
 
 namespace ElGuayaBot.Application.Implementation.Flow
 {
-    public class RandomTextFlowService: BaseFlowService, IRandomTextFlowService
+    public class RandomTextFlow: BaseFlow, IRandomTextFlow
     {
 
-        public RandomTextFlowService(IBotClient bot) : base(bot)
+        public RandomTextFlow(IBotClient bot) : base(bot)
         {
         }
 
-        public void PatternRecognizer(Message message)
+        public override void Initiate(Message message)
         {
             var text = message.Text;
 
             if (text.ToLower().Contains("al final me mosqueo"))
             {
                 AlFinalMeMosqueo(message);
-            } else if (text.ToLower().Contains("nacionalidad"))
+            } 
+            else if (text.ToLower().Contains("nacionalidad"))
             {
                 Nacionalidad(message);
-            } else if (text.ToLower().Contains(":("))
+            } 
+            else if (text.ToLower().Contains(":("))
             {
                 NoEstesTriste(message);
+            } 
+            else if (text.ToLower().Equals("old"))
+            {
+                ButGold(message);
             }
+        }
+
+        private async void ButGold(Message message)
+        {
+            await _bot.SendTextMessageAsync(
+                chatId: message.Chat.Id,
+                text: "but (g)old"
+                //replyToMessageId: message.MessageId
+            );
         }
 
         private async void NoEstesTriste(Message message)

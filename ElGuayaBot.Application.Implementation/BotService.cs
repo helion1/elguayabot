@@ -5,6 +5,7 @@ using ElGuayaBot.Application.Contracts;
 using ElGuayaBot.Application.Contracts.Flow;
 using Telegram.Bot;
 using Telegram.Bot.Args;
+using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
 namespace ElGuayaBot.Application.Implementation
@@ -12,19 +13,29 @@ namespace ElGuayaBot.Application.Implementation
     public class BotService: IBotService
     {
         private readonly ITelegramBotClient _bot;
-        private readonly IUnknownFlowService _unknownFlowService;
-        private readonly IRandomTextFlowService _randomTextFlowService;
-        private readonly IMiscellaneousFlowService _miscellaneousFlowService;
+        private readonly IUnknownFlow _unknownFlow;
+        private readonly IRandomTextFlow _randomTextFlow;
+        private readonly IFlipCoinFlow _flipCoinFlow;
+        private readonly IPingPongFlow _pingPongFlow;
+        private readonly IAboutFlow _aboutFlow;
+        private readonly IHelpFlow _helpFlow;
 
         public BotService(IBotClient bot, 
-            IUnknownFlowService unknownFlowService, 
-            IRandomTextFlowService randomTextFlowService,
-            IMiscellaneousFlowService miscellaneousFlowService)
+            IUnknownFlow unknownFlow, 
+            IRandomTextFlow randomTextFlow,
+            IFlipCoinFlow flipCoinFlow,
+            IPingPongFlow pingPongFlow,
+            IAboutFlow aboutFlow,
+            IHelpFlow helpFlow
+            )
         {
             _bot = bot.Client ?? throw new ArgumentNullException(nameof(bot));
-            _unknownFlowService = unknownFlowService ?? throw new ArgumentNullException(nameof(bot));
-            _randomTextFlowService = randomTextFlowService ?? throw new ArgumentNullException(nameof(bot));
-            _miscellaneousFlowService = miscellaneousFlowService ?? throw new ArgumentNullException(nameof(bot));
+            _unknownFlow = unknownFlow ?? throw new ArgumentNullException(nameof(bot));
+            _randomTextFlow = randomTextFlow ?? throw new ArgumentNullException(nameof(bot));
+            _flipCoinFlow = flipCoinFlow ?? throw new ArgumentNullException(nameof(bot));
+            _pingPongFlow = pingPongFlow ?? throw new ArgumentNullException(nameof(bot));
+            _aboutFlow = aboutFlow ?? throw new ArgumentNullException(nameof(bot));
+            _helpFlow = helpFlow ?? throw new ArgumentNullException(nameof(bot));
         }
         
         public void Start()
@@ -51,29 +62,38 @@ namespace ElGuayaBot.Application.Implementation
             
             await _bot.SendChatActionAsync(message.Chat.Id, ChatAction.Typing);
 
-            switch (message.Text.Split(' ').First())
+            var firstWord = message.Text.Split(' ').First();
+
+            if (firstWord.StartsWith("/"))
             {
-                case "/about":
-                    break;
-                case "/ping":
-                    _miscellaneousFlowService.PingPong(message) ;
-                    break;
-                case "/flip":
-                    _miscellaneousFlowService.FlipCoin(message) ;
-                    break;
-                default:
-                    if (message.Text.Split(' ').First().StartsWith("/"))
-                    {
-                        _unknownFlowService.UnknownCommand(message);
-                    }
-                    else
-                    {
-                        _randomTextFlowService.PatternRecognizer(message);
-                    }
-                    
-                    break;
-                    
+                switch (firstWord)
+                {
+                    case "/about":
+                        _aboutFlow.Initiate(message);
+                        break;
+                    case "/help":
+                        _aboutFlow.Initiate(message);
+                        break;
+                    case "/ping":
+                        _pingPongFlow.Initiate(message) ;
+                        break;
+                    case "/flip":
+                        _flipCoinFlow.Initiate(message) ;
+                        break;
+                    default:
+                        if (message.Text.Split(' ').First().StartsWith("/"))
+                        {
+                            _unknownFlow.Initiate(message);
+                        }
+                        break;    
+                }
             }
+            else
+            {
+                _randomTextFlow.Initiate(message);
+            }
+
+
         }
 
     }

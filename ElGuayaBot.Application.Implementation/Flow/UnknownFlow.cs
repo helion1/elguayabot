@@ -9,14 +9,14 @@ using Telegram.Bot.Types;
 
 namespace ElGuayaBot.Application.Implementation.Flow
 {
-    public class UnknownFlowService: BaseFlowService, IUnknownFlowService
+    public class UnknownFlow: BaseFlow, IUnknownFlow
     {
 
-        public UnknownFlowService(IBotClient bot) : base(bot)
+        public UnknownFlow(IBotClient bot) : base(bot)
         {
         }
         
-        public async void UnknownCommand(Message message)
+        public override async void Initiate(Message message)
         {
             var text = message.Text;
             

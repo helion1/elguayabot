@@ -2,8 +2,8 @@ using Telegram.Bot.Types;
 
 namespace ElGuayaBot.Application.Contracts.Flow
 {
-    public interface IRandomTextFlowService
+    public interface IRandomTextFlow: IBaseFlow
     {
-        void PatternRecognizer(Message message);
+        
     }
 }

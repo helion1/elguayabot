@@ -2,8 +2,8 @@ using Telegram.Bot.Types;
 
 namespace ElGuayaBot.Application.Contracts.Flow
 {
-    public interface IUnknownFlowService
+    public interface IUnknownFlow: IBaseFlow
     {
-        void UnknownCommand(Message message);
+        
     }
 }
