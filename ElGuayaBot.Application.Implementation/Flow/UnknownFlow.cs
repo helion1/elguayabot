@@ -18,12 +18,18 @@ namespace ElGuayaBot.Application.Implementation.Flow
         
         public override async void Initiate(Message message)
         {
-            var text = message.Text;
+            var responses = new List<string>()
+            {
+                "No te entiendo maldito lázaro",
+                "Sacate el huevo de la boca"
+            };
+            
+            var r = Rnd.Next(responses.Count);
             
             await _bot.SendTextMessageAsync(
                 chatId: message.Chat.Id, 
-                text: "No te entiendo maldito lázaro"
-                );
+                text: responses[r]
+            );
         }
 
     }
