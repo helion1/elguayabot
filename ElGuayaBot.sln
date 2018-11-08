@@ -24,6 +24,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Domain.Entity", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Domain.Implementation", "ElGuayaBot.Domain.Implementation\ElGuayaBot.Domain.Implementation.csproj", "{36EA8166-091B-4F0C-8CA2-FCFDEDA13011}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectFiles", "ProjectFiles", "{BE990242-43BF-4AB5-89AD-AFE71A51E2F9}"
+ProjectSection(SolutionItems) = preProject
+	docker\docker-compose.yml = docker\docker-compose.yml
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

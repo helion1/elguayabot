@@ -7,18 +7,53 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Exceptions;
+using Serilog.Sinks.Elasticsearch;
 
 namespace ElGuayaBot.Api.WebApi
 {
     public class Program
     {
-        public static void Main(string[] args)
-        {
-            CreateWebHostBuilder(args).Build().Run();
-        }
-
+        public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
+            .AddEnvironmentVariables()
+            .Build();
+        
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                .UseStartup<Startup>()
+                .UseSerilog();
+        
+        public static void Main(string[] args)
+        {
+            var elasticUri = Configuration["ElasticConfiguration:Uri"];
+            
+            Log.Logger = new LoggerConfiguration()
+                .Enrich.FromLogContext()
+                .Enrich.WithExceptionDetails()
+                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
+                {
+                    AutoRegisterTemplate = true,
+                })
+                .CreateLogger();
+            
+            try
+            {
+                Log.Information("Starting Argo.Athena");
+
+                CreateWebHostBuilder(args).Build().Run();
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
+        }
     }
 }
