@@ -27,6 +27,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ProjectFiles", "ProjectFiles", "{BE990242-43BF-4AB5-89AD-AFE71A51E2F9}"
 ProjectSection(SolutionItems) = preProject
 	docker\docker-compose.yml = docker\docker-compose.yml
+	LICENSE = LICENSE
+	README.md = README.md
 EndProjectSection
 EndProject
 Global
