@@ -33,6 +33,10 @@ EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Api.Identity", "ElGuayaBot.Api.Identity\ElGuayaBot.Api.Identity.csproj", "{010B0CF8-CC27-49F8-B397-6C686F7BBCDE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Infrastructure.Contracts", "ElGuayaBot.Infrastructure.Contracts\ElGuayaBot.Infrastructure.Contracts.csproj", "{62F2D420-048E-4036-BD60-D5A63ED9321D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Infrastructure.Implementation", "ElGuayaBot.Infrastructure.Implementation\ElGuayaBot.Infrastructure.Implementation.csproj", "{87B3DEC7-44DB-4E6F-9053-30E177053FD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +51,8 @@ Global
 		{DA37257A-73F6-4786-96FA-94E72F3A6B48} = {BECD2EA9-4850-4B57-91A3-8F14890A31F0}
 		{36EA8166-091B-4F0C-8CA2-FCFDEDA13011} = {BECD2EA9-4850-4B57-91A3-8F14890A31F0}
 		{010B0CF8-CC27-49F8-B397-6C686F7BBCDE} = {24EF5727-B068-4C2A-9B01-A175670FFD38}
+		{62F2D420-048E-4036-BD60-D5A63ED9321D} = {EF86DC94-AA9C-42D9-A8E4-9EA3753A4EF3}
+		{87B3DEC7-44DB-4E6F-9053-30E177053FD0} = {EF86DC94-AA9C-42D9-A8E4-9EA3753A4EF3}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CDE1590B-9145-4E57-BED6-56E08E7E48E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -81,5 +87,13 @@ Global
 		{010B0CF8-CC27-49F8-B397-6C686F7BBCDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{010B0CF8-CC27-49F8-B397-6C686F7BBCDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{010B0CF8-CC27-49F8-B397-6C686F7BBCDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62F2D420-048E-4036-BD60-D5A63ED9321D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62F2D420-048E-4036-BD60-D5A63ED9321D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62F2D420-048E-4036-BD60-D5A63ED9321D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62F2D420-048E-4036-BD60-D5A63ED9321D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87B3DEC7-44DB-4E6F-9053-30E177053FD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87B3DEC7-44DB-4E6F-9053-30E177053FD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87B3DEC7-44DB-4E6F-9053-30E177053FD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87B3DEC7-44DB-4E6F-9053-30E177053FD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
