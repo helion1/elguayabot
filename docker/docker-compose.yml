@@ -1,12 +1,14 @@
 version: '3.1'
 
 services:
-  postgre-users: # Port: 5432
+  postgre-users:
     image: postgres:11.0-alpine
     restart: always
     environment:
-      POSTGRES_USER: elguayabot
-      POSTGRES_PASSWORD: hunter2
+      POSTGRES_USER: "elguayabot"
+      POSTGRES_PASSWORD: "hunter2"
+    ports:
+      - "5432:5432"
       
   adminer:
     image: adminer
