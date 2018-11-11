@@ -2,25 +2,25 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Threading.Tasks;
-using ElGuayaBot.Api.Identity.Models;
-using IdentityModel;
-using IdentityServer4.Events;
-using IdentityServer4.Extensions;
-using IdentityServer4.Models;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using IdentityServer4.Events;
+using IdentityServer4.Models;
+using Microsoft.AspNetCore.Identity;
+using ElGuayaBot.Api.Identity.Models;
+using IdentityServer4.Extensions;
+using System.Security.Principal;
+using System.Security.Claims;
+using IdentityModel;
+using System.Linq;
+using System;
+using System.Collections.Generic;
 
-namespace ElGuayaBot.Api.Identity.Quickstart.Account
+namespace IdentityServer4.Quickstart.UI
 {
     [SecurityHeaders]
     public class AccountController : Controller

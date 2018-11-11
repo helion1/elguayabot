@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace ElGuayaBot.Api.Identity.Quickstart.Consent
+namespace IdentityServer4.Quickstart.UI
 {
     public class ConsentInputModel
     {
