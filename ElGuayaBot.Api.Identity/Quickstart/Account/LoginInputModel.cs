@@ -4,7 +4,7 @@
 
 using System.ComponentModel.DataAnnotations;
 
-namespace IdentityServer4.Quickstart.UI
+namespace ElGuayaBot.Api.Identity.Quickstart.Account
 {
     public class LoginInputModel
     {

@@ -1,8 +1,4 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
-
-
-using ElGuayaBot.Api.Identity.Data;
+﻿using ElGuayaBot.Api.Identity.Data;
 using ElGuayaBot.Api.Identity.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Reflection;
 
 namespace ElGuayaBot.Api.Identity
 {
@@ -27,8 +24,10 @@ namespace ElGuayaBot.Api.Identity
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            var migrationAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+            
+            services.AddDbContext<ApplicationDbContext>(options => options.UseNpgsql(connectionString));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -36,11 +35,11 @@ namespace ElGuayaBot.Api.Identity
 
             services.AddMvc();
 
-            services.Configure<IISOptions>(iis =>
-            {
-                iis.AuthenticationDisplayName = "Windows";
-                iis.AutomaticAuthentication = false;
-            });
+//            services.Configure<IISOptions>(iis =>
+//            {
+//                iis.AuthenticationDisplayName = "Windows";
+//                iis.AutomaticAuthentication = false;
+//            });
 
             var builder = services.AddIdentityServer(options =>
                 {
@@ -49,9 +48,23 @@ namespace ElGuayaBot.Api.Identity
                     options.Events.RaiseFailureEvents = true;
                     options.Events.RaiseSuccessEvents = true;
                 })
-                .AddInMemoryIdentityResources(Config.GetIdentityResources())
-                .AddInMemoryApiResources(Config.GetApis())
-                .AddInMemoryClients(Config.GetClients())
+                
+                // Database for storing configuration data
+                .AddOperationalStore(configDb => {
+                    configDb.ConfigureDbContext = db => 
+                        db.UseNpgsql(connectionString,
+                            sql => sql.MigrationsAssembly(migrationAssembly)
+                        );
+                })
+                
+                // Database for storing operational data
+                .AddConfigurationStore(operationalDb => {
+                    operationalDb.ConfigureDbContext = db => 
+                        db.UseNpgsql(connectionString,
+                            sql => sql.MigrationsAssembly(migrationAssembly)
+                        );
+                })
+                
                 .AddAspNetIdentity<ApplicationUser>();
 
             if (Environment.IsDevelopment())
@@ -60,6 +73,7 @@ namespace ElGuayaBot.Api.Identity
             }
             else
             {
+                //TODO
                 throw new Exception("need to configure key material");
             }
 

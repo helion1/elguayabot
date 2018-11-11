@@ -4,7 +4,7 @@
 
 using IdentityServer4.Models;
 
-namespace IdentityServer4.Quickstart.UI
+namespace ElGuayaBot.Api.Identity.Quickstart.Home
 {
     public class ErrorViewModel
     {

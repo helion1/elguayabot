@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using ElGuayaBot.Api.Identity.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ElGuayaBot.Api.Identity.Models;
 
 namespace ElGuayaBot.Api.Identity.Data
 {

@@ -3,10 +3,10 @@ using ElGuayaBot.Application.Contracts.Flow;
 using ElGuayaBot.Application.Implementation;
 using ElGuayaBot.Application.Implementation.Background;
 using ElGuayaBot.Application.Implementation.Flow;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Microsoft.Extensions.DependencyInjection
+namespace ElGuayaBot.Api.WebApi.Configuration
 {
     public static class DependencyInjectionConfiguration
     {
