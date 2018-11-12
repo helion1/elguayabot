@@ -32,6 +32,14 @@ namespace ElGuayaBot.Api.WebApi
             services.AddBackgroundServices();
             services.AddBotDI();
             services.AddFlows();
+
+            services.AddCustomAuthorization();
+            
+            services.AddCustomAuthentication(
+                Configuration["Issuer"], 
+                Configuration["Audience"], 
+                Configuration["SecurityKey"]
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +54,8 @@ namespace ElGuayaBot.Api.WebApi
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
+            
             app.UseHttpsRedirection();
             app.UseMvc();
         }

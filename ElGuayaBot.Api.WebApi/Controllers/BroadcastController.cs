@@ -1,12 +1,16 @@
 using System;
 using ElGuayaBot.Application.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
 namespace ElGuayaBot.Api.WebApi.Controllers
 {
+    [Authorize]
     [ApiController]
-    public class BroadcastController: Controller
+    [Route("api/[controller]")]
+    [Produces("application/json")]
+    public class BroadcastController: ControllerBase
     {
         private readonly IBroadcastService _broadcastService;
 
@@ -18,6 +22,9 @@ namespace ElGuayaBot.Api.WebApi.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
+        [HttpPost]
+        [Authorize(Policy = "Administrator")]
+        [Route("login")]
         public ActionResult Communicate([FromBody] string message)
         {
             _logger.LogInformation($"Trying to broadcast the message: {message}");

@@ -33,6 +33,8 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             services.AddScoped<IPingPongFlow, PingPongFlow>();
             services.AddScoped<IAboutFlow, AboutFlow>();
             services.AddScoped<IHelpFlow, HelpFlow>();
+            services.AddScoped<IComandanteFlow, ComandanteFlow>();
+            services.AddScoped<IFrutaFlow, FrutaFlow>();
             
             return services;
         }
