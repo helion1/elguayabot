@@ -38,8 +38,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Infrastructure.I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Infrastructure.Context", "ElGuayaBot.Infrastructure.Context\ElGuayaBot.Infrastructure.Context.csproj", "{108670DB-E185-4D0F-B012-F844C95DF966}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Api.Identity", "ElGuayaBot.Api.Identity\ElGuayaBot.Api.Identity.csproj", "{19BC32F3-273B-4115-8E57-A4BB278BD0DA}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,7 +54,6 @@ Global
 		{62F2D420-048E-4036-BD60-D5A63ED9321D} = {EF86DC94-AA9C-42D9-A8E4-9EA3753A4EF3}
 		{87B3DEC7-44DB-4E6F-9053-30E177053FD0} = {EF86DC94-AA9C-42D9-A8E4-9EA3753A4EF3}
 		{108670DB-E185-4D0F-B012-F844C95DF966} = {EF86DC94-AA9C-42D9-A8E4-9EA3753A4EF3}
-		{19BC32F3-273B-4115-8E57-A4BB278BD0DA} = {24EF5727-B068-4C2A-9B01-A175670FFD38}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{CDE1590B-9145-4E57-BED6-56E08E7E48E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -99,9 +96,5 @@ Global
 		{108670DB-E185-4D0F-B012-F844C95DF966}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{108670DB-E185-4D0F-B012-F844C95DF966}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{108670DB-E185-4D0F-B012-F844C95DF966}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19BC32F3-273B-4115-8E57-A4BB278BD0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19BC32F3-273B-4115-8E57-A4BB278BD0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19BC32F3-273B-4115-8E57-A4BB278BD0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19BC32F3-273B-4115-8E57-A4BB278BD0DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
