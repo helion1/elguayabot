@@ -18,7 +18,11 @@ namespace ElGuayaBot.Application.Implementation.Flow
         {
             var text = message.Text;
 
-            if (text.ToLower().Contains("al final me mosqueo"))
+            if (IsAllUpper(text) && text != "OMG" && text != "LMAO" && text != "F" && text != "LMAO")
+            {
+                CallateLaJeta(message);
+            }
+            else if (text.ToLower().Contains("al final me mosqueo"))
             {
                 AlFinalMeMosqueo(message);
             } 
@@ -26,13 +30,34 @@ namespace ElGuayaBot.Application.Implementation.Flow
             {
                 Nacionalidad(message);
             } 
-            else if (text.ToLower().Contains(":("))
+            else if (text.ToLower().Contains(":(") || text.ToLower().Contains("😭") || text.ToLower().Contains("☹️"))
             {
                 NoEstesTriste(message);
             } 
             else if (text.ToLower().Equals("old"))
             {
                 ButGold(message);
+            }
+        }
+
+        private async void CallateLaJeta(Message message)
+        {
+            var responses = new List<string>()
+            {
+                "CÁLLATE LA JETA MALDITO SAPO",
+                "NO GRITES JODER",
+                "VERGA CALLATE YA"
+            };
+
+            var r = Rnd.Next(responses.Count);
+            
+            if (r % 2 == 0)
+            {
+                await _bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: responses[r],
+                    replyToMessageId: message.MessageId
+                );
             }
         }
 
@@ -56,12 +81,15 @@ namespace ElGuayaBot.Application.Implementation.Flow
             };
             
             var r = Rnd.Next(responses.Count);
-                
-            await _bot.SendTextMessageAsync(
-                chatId: message.Chat.Id,
-                text: responses[r],
-                replyToMessageId: message.MessageId
-            );
+
+            if (r % 2 == 0)
+            {
+                await _bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: responses[r],
+                    replyToMessageId: message.MessageId
+                );
+            }
         }
 
         private async void Nacionalidad(Message message)
@@ -79,11 +107,14 @@ namespace ElGuayaBot.Application.Implementation.Flow
             
             var r = Rnd.Next(responses.Count);
                 
-            await _bot.SendTextMessageAsync(
-                chatId: message.Chat.Id,
-                text: responses[r],
-                replyToMessageId: message.MessageId
-            );
+            if (r % 2 == 0)
+            {
+                await _bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: responses[r],
+                    replyToMessageId: message.MessageId
+                );
+            }
         }
 
         private async void AlFinalMeMosqueo(Message message)
@@ -121,12 +152,14 @@ namespace ElGuayaBot.Application.Implementation.Flow
                 
             var r = Rnd.Next(responses.Count);
                 
-            await _bot.SendTextMessageAsync(
-                chatId: message.Chat.Id,
-                text: responses[r],
-                replyToMessageId: message.MessageId
-            );
-
+            if (r % 2 == 0)
+            {
+                await _bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: responses[r],
+                    replyToMessageId: message.MessageId
+                );
+            }
         }
     }
 }

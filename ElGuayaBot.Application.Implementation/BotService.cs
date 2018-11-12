@@ -20,6 +20,7 @@ namespace ElGuayaBot.Application.Implementation
         private readonly IAboutFlow _aboutFlow;
         private readonly IHelpFlow _helpFlow;
         private readonly IComandanteFlow _comandanteFlow;
+        private readonly IFrutaFlow _frutaFlow;
 
         public BotService(IBotClient bot, 
             IUnknownFlow unknownFlow, 
@@ -28,7 +29,8 @@ namespace ElGuayaBot.Application.Implementation
             IPingPongFlow pingPongFlow,
             IAboutFlow aboutFlow,
             IHelpFlow helpFlow,
-            IComandanteFlow comandanteFlow
+            IComandanteFlow comandanteFlow,
+            IFrutaFlow frutaFlow
             )
         {
             _bot = bot.Client ?? throw new ArgumentNullException(nameof(bot));
@@ -39,6 +41,7 @@ namespace ElGuayaBot.Application.Implementation
             _aboutFlow = aboutFlow ?? throw new ArgumentNullException(nameof(bot));
             _helpFlow = helpFlow ?? throw new ArgumentNullException(nameof(bot));
             _comandanteFlow = comandanteFlow ?? throw new ArgumentNullException(nameof(bot));
+            _frutaFlow = frutaFlow ?? throw new ArgumentNullException(nameof(bot));
         }
         
         public void Start()
@@ -63,12 +66,12 @@ namespace ElGuayaBot.Application.Implementation
                 return;
             }
             
-            await _bot.SendChatActionAsync(message.Chat.Id, ChatAction.Typing);
-
             var firstWord = message.Text.Split(' ').First();
 
             if (firstWord.StartsWith("/"))
             {
+                await _bot.SendChatActionAsync(message.Chat.Id, ChatAction.Typing);
+
                 switch (firstWord)
                 {
                     case "/about":
@@ -86,6 +89,9 @@ namespace ElGuayaBot.Application.Implementation
                     case "/comandante":
                         _comandanteFlow.Initiate(message);
                         break;
+                    case "/fruta":
+                        _frutaFlow.Initiate(message);
+                        break;
                     default:
                         if (message.Text.Split(' ').First().StartsWith("/"))
                         {
@@ -98,8 +104,6 @@ namespace ElGuayaBot.Application.Implementation
             {
                 _randomTextFlow.Initiate(message);
             }
-
-
         }
 
     }
