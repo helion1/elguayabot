@@ -19,6 +19,7 @@ namespace ElGuayaBot.Application.Implementation
         private readonly IPingPongFlow _pingPongFlow;
         private readonly IAboutFlow _aboutFlow;
         private readonly IHelpFlow _helpFlow;
+        private readonly IComandanteFlow _comandanteFlow;
 
         public BotService(IBotClient bot, 
             IUnknownFlow unknownFlow, 
@@ -26,7 +27,8 @@ namespace ElGuayaBot.Application.Implementation
             IFlipCoinFlow flipCoinFlow,
             IPingPongFlow pingPongFlow,
             IAboutFlow aboutFlow,
-            IHelpFlow helpFlow
+            IHelpFlow helpFlow,
+            IComandanteFlow comandanteFlow
             )
         {
             _bot = bot.Client ?? throw new ArgumentNullException(nameof(bot));
@@ -36,6 +38,7 @@ namespace ElGuayaBot.Application.Implementation
             _pingPongFlow = pingPongFlow ?? throw new ArgumentNullException(nameof(bot));
             _aboutFlow = aboutFlow ?? throw new ArgumentNullException(nameof(bot));
             _helpFlow = helpFlow ?? throw new ArgumentNullException(nameof(bot));
+            _comandanteFlow = comandanteFlow ?? throw new ArgumentNullException(nameof(bot));
         }
         
         public void Start()
@@ -79,6 +82,9 @@ namespace ElGuayaBot.Application.Implementation
                         break;
                     case "/flip":
                         _flipCoinFlow.Initiate(message) ;
+                        break;
+                    case "/comandante":
+                        _comandanteFlow.Initiate(message);
                         break;
                     default:
                         if (message.Text.Split(' ').First().StartsWith("/"))
