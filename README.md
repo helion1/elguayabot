@@ -10,4 +10,7 @@ dotnet restore
 # Start docker containers
 cd docker
 docker-compose up -d
+
+# Dev-only: setup https
+dotnet dev-certs https
 ```

@@ -1,9 +1,9 @@
-using Telegram.Bot;
+using MihaZupan.TelegramBotClients;
 
 namespace ElGuayaBot.Application.Contracts
 {
     public interface IBotClient
     {
-        TelegramBotClient Client { get; }
+        BlockingTelegramBotClient Client { get; }
     }
 }

@@ -42,7 +42,7 @@ namespace ElGuayaBot.Api.WebApi
             
             try
             {
-                Log.Information("Starting Argo.Athena");
+                Log.Information("Starting ElGUayaBot");
 
                 CreateWebHostBuilder(args).Build().Run();
             }

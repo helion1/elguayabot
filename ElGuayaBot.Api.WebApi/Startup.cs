@@ -29,8 +29,8 @@ namespace ElGuayaBot.Api.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            services.AddBackgroundServices();
             services.AddBotDI();
+            services.AddBackgroundServices();
             services.AddFlows();
 
             services.AddCustomAuthorization();

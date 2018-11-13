@@ -25,11 +25,17 @@ namespace ElGuayaBot.Application.Implementation.Flow
             };
             
             var r = Rnd.Next(responses.Count);
+
+            var r2 = Rnd.Next(10);
             
-            await _bot.SendTextMessageAsync(
-                chatId: message.Chat.Id, 
-                text: responses[r]
-            );
+            if (r2 == 1)
+            {
+                await _bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: responses[r],
+                    replyToMessageId: message.MessageId
+                );
+            }
         }
 
     }

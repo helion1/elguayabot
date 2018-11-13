@@ -1,6 +1,7 @@
 using System;
 using ElGuayaBot.Application.Contracts;
 using ElGuayaBot.Application.Contracts.Flow;
+using MihaZupan.TelegramBotClients;
 using NeoSmart.Unicode;
 using Telegram.Bot;
 using Telegram.Bot.Types;
@@ -11,7 +12,7 @@ namespace ElGuayaBot.Application.Implementation.Flow
     {
         protected static Random Rnd { get; set; }
 
-        protected readonly ITelegramBotClient _bot;
+        protected readonly BlockingTelegramBotClient _bot;
 
         public BaseFlow(IBotClient bot)
         {

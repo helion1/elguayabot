@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading;
 using ElGuayaBot.Application.Contracts;
 using ElGuayaBot.Application.Contracts.Flow;
+using MihaZupan.TelegramBotClients;
 using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
@@ -12,7 +13,7 @@ namespace ElGuayaBot.Application.Implementation
 {
     public class BotService: IBotService
     {
-        private readonly ITelegramBotClient _bot;
+        private readonly BlockingTelegramBotClient _bot;
         private readonly IUnknownFlow _unknownFlow;
         private readonly IRandomTextFlow _randomTextFlow;
         private readonly IFlipCoinFlow _flipCoinFlow;

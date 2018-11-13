@@ -1,19 +1,21 @@
 using System;
+using System.Net.Http;
 using ElGuayaBot.Application.Contracts;
 using Microsoft.Extensions.Configuration;
-using Telegram.Bot;
+using MihaZupan.TelegramBotClients;
+using MihaZupan.TelegramBotClients.BlockingClient;
 
 namespace ElGuayaBot.Application.Implementation
 {
     public class BotClient: IBotClient
     {
-        public TelegramBotClient Client { get; }
+        public BlockingTelegramBotClient Client { get; }
  
          public BotClient(IConfiguration configuration)
          {
              try
              {
-                 Client = new TelegramBotClient(configuration["TelegramBotToken"]);
+                 Client = new BlockingTelegramBotClient(configuration["TelegramBotToken"], (HttpClient) null, new SchedulerSettings(60, 10, 500, 6, 1500, 6));
              }
              catch (Exception e)
              {
