@@ -11,7 +11,7 @@ using Telegram.Bot.Types.Enums;
 
 namespace ElGuayaBot.Application.Implementation
 {
-    public class BotService: IBotService
+    public class BotService : IBotService
     {
         private readonly BlockingTelegramBotClient _bot;
         private readonly IUnknownFlow _unknownFlow;
@@ -22,16 +22,20 @@ namespace ElGuayaBot.Application.Implementation
         private readonly IHelpFlow _helpFlow;
         private readonly IComandanteFlow _comandanteFlow;
         private readonly IFrutaFlow _frutaFlow;
+        private readonly IWelcomeMessageFlow _welcomeMessageFlow;
+        private readonly IDabFlow _dabFlow;
 
-        public BotService(IBotClient bot, 
-            IUnknownFlow unknownFlow, 
+        public BotService(IBotClient bot,
+            IUnknownFlow unknownFlow,
             IRandomTextFlow randomTextFlow,
             IFlipCoinFlow flipCoinFlow,
             IPingPongFlow pingPongFlow,
             IAboutFlow aboutFlow,
             IHelpFlow helpFlow,
             IComandanteFlow comandanteFlow,
-            IFrutaFlow frutaFlow
+            IFrutaFlow frutaFlow,
+            IWelcomeMessageFlow welcomeMessageFlow,
+            IDabFlow dabFlow
             )
         {
             _bot = bot.Client ?? throw new ArgumentNullException(nameof(bot));
@@ -43,18 +47,21 @@ namespace ElGuayaBot.Application.Implementation
             _helpFlow = helpFlow ?? throw new ArgumentNullException(nameof(bot));
             _comandanteFlow = comandanteFlow ?? throw new ArgumentNullException(nameof(bot));
             _frutaFlow = frutaFlow ?? throw new ArgumentNullException(nameof(bot));
+            _welcomeMessageFlow = welcomeMessageFlow ?? throw new ArgumentNullException(nameof(bot));
+            _dabFlow = dabFlow ?? throw new ArgumentNullException(nameof(bot));
         }
-        
+
         public void Start()
         {
             var me = _bot.GetMeAsync().Result;
-            
+
             _bot.OnMessage += BotOnMessageReceived;
             _bot.OnMessageEdited += BotOnMessageReceived;
-            
+            _bot.OnUpdate += BotOnUpdateReceived;
+
             _bot.StartReceiving(Array.Empty<UpdateType>());
             Console.WriteLine($"Start listening for @{me.Username}");
-            
+
             Thread.Sleep(int.MaxValue);
         }
 
@@ -66,7 +73,7 @@ namespace ElGuayaBot.Application.Implementation
             {
                 return;
             }
-            
+
             var firstWord = message.Text.Split(' ').First();
 
             if (firstWord.StartsWith("/"))
@@ -82,10 +89,10 @@ namespace ElGuayaBot.Application.Implementation
                         _aboutFlow.Initiate(message);
                         break;
                     case "/ping":
-                        _pingPongFlow.Initiate(message) ;
+                        _pingPongFlow.Initiate(message);
                         break;
                     case "/flip":
-                        _flipCoinFlow.Initiate(message) ;
+                        _flipCoinFlow.Initiate(message);
                         break;
                     case "/comandante":
                         _comandanteFlow.Initiate(message);
@@ -93,12 +100,15 @@ namespace ElGuayaBot.Application.Implementation
                     case "/fruta":
                         _frutaFlow.Initiate(message);
                         break;
+                    case "/dab":
+                        _dabFlow.Initiate(message);
+                        break;
                     default:
                         if (message.Text.Split(' ').First().StartsWith("/"))
                         {
                             _unknownFlow.Initiate(message);
                         }
-                        break;    
+                        break;
                 }
             }
             else
@@ -107,5 +117,22 @@ namespace ElGuayaBot.Application.Implementation
             }
         }
 
+        private void BotOnUpdateReceived(object sender, UpdateEventArgs e)
+        {
+            try
+            {
+                var update = e.Update;
+                if (update.Message != null)
+                {
+                    var message = update.Message;
+                    if (message.NewChatMembers != null)
+                        _welcomeMessageFlow.Initiate(message);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

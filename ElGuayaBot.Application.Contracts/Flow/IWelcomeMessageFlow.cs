@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ElGuayaBot.Application.Contracts.Flow
 {
-    public interface IComandanteFlow : IWebImagesFlow
+    public interface IWelcomeMessageFlow : IBaseFlow
     {
     }
 }

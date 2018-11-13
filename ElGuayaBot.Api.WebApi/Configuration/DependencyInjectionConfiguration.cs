@@ -35,7 +35,9 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             services.AddScoped<IHelpFlow, HelpFlow>();
             services.AddScoped<IComandanteFlow, ComandanteFlow>();
             services.AddScoped<IFrutaFlow, FrutaFlow>();
-            
+            services.AddScoped<IWelcomeMessageFlow, WelcomeMessageFlow>();
+            services.AddScoped<IDabFlow, DabFlow>();
+
             return services;
         }
     }

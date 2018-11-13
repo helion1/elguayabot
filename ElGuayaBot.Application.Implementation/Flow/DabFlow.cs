@@ -9,42 +9,15 @@ using Telegram.Bot.Types;
 
 namespace ElGuayaBot.Application.Implementation.Flow
 {
-    public class ComandanteFlow : BaseFlow, IComandanteFlow
+    public class DabFlow : BaseFlow, IDabFlow
     {
-
-        public ComandanteFlow(IBotClient bot) : base(bot)
+        public DabFlow(IBotClient bot) : base(bot)
         {
-        }
-
-        public override async void Initiate(Message message)
-        {
-            string html = GetHtmlCode();
-            List<string> urls = GetUrls(html);
-            var rnd = new Random();
-
-            try
-            {
-                int randomUrl = rnd.Next(0, urls.Count - 1);
-                string luckyUrl = urls[randomUrl];
-
-                await _bot.SendPhotoAsync(
-                    chatId: message.Chat.Id,
-                    photo: luckyUrl,
-                    caption: "¡Abajo el Imperialismo!",
-                    parseMode: Telegram.Bot.Types.Enums.ParseMode.Html,
-                    replyToMessageId: message.MessageId
-                    );
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
         }
 
         public string GetHtmlCode()
         {
-            List<string> _topics = new List<string> { "nicolas maduro", "hugo chavez", "venezuela flag" };
+            List<string> _topics = new List<string> { "dab gif" };
             var rnd = new Random();
 
             try
@@ -103,6 +76,49 @@ namespace ElGuayaBot.Application.Implementation.Flow
                 throw ex;
             }
         }
+
+        public bool CheckGifUrlExtension(string url)
+        {
+            var extension = url.Substring(url.Length - 4);
+            if (string.Equals(extension, ".gif"))
+                return true;
+            else
+                return false;
+        }
+
+        public override async void Initiate(Message message)
+        {
+            string html = GetHtmlCode();
+            List<string> urls = GetUrls(html);
+            var rnd = new Random();
+
+            try
+            {
+                int randomUrl = rnd.Next(0, urls.Count - 1);
+                string luckyUrl = urls[randomUrl];
+
+                if (CheckGifUrlExtension(luckyUrl))
+                {
+                    await _bot.SendDocumentAsync(
+                    chatId: message.Chat.Id,
+                    document: luckyUrl,
+                    caption: "Dabbing for VNZL",
+                    parseMode: Telegram.Bot.Types.Enums.ParseMode.Html,
+                    replyToMessageId: message.MessageId
+                    );
+                }
+                else
+                {
+                    await _bot.SendTextMessageAsync(
+                        chatId: message.Chat.Id,
+                        text: "No he podido encontrar un dab adecuado. USA debe haberlo embargado. Vuelve a intentarlo.",
+                        replyToMessageId: message.MessageId);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
-
