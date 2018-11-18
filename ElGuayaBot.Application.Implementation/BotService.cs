@@ -24,6 +24,7 @@ namespace ElGuayaBot.Application.Implementation
         private readonly IFrutaFlow _frutaFlow;
         private readonly IWelcomeMessageFlow _welcomeMessageFlow;
         private readonly IDabFlow _dabFlow;
+        private readonly ILeftChatMessageFlow _leftChatMessageFlow;
 
         public BotService(IBotClient bot,
             IUnknownFlow unknownFlow,
@@ -35,7 +36,8 @@ namespace ElGuayaBot.Application.Implementation
             IComandanteFlow comandanteFlow,
             IFrutaFlow frutaFlow,
             IWelcomeMessageFlow welcomeMessageFlow,
-            IDabFlow dabFlow
+            IDabFlow dabFlow,
+            ILeftChatMessageFlow leftChatMessageFlow
             )
         {
             _bot = bot.Client ?? throw new ArgumentNullException(nameof(bot));
@@ -49,6 +51,7 @@ namespace ElGuayaBot.Application.Implementation
             _frutaFlow = frutaFlow ?? throw new ArgumentNullException(nameof(bot));
             _welcomeMessageFlow = welcomeMessageFlow ?? throw new ArgumentNullException(nameof(bot));
             _dabFlow = dabFlow ?? throw new ArgumentNullException(nameof(bot));
+            _leftChatMessageFlow = leftChatMessageFlow ?? throw new ArgumentNullException(nameof(bot));
         }
 
         public void Start()
@@ -124,15 +127,22 @@ namespace ElGuayaBot.Application.Implementation
                 var update = e.Update;
                 if (update.Message != null)
                 {
-                    var message = update.Message;
-                    if (message.NewChatMembers != null)
-                        _welcomeMessageFlow.Initiate(message);
+                    ProcessUpdateReceived(update);
                 }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
+        }
+
+        private void ProcessUpdateReceived(Update update)
+        {
+            var message = update.Message;
+            if (message.NewChatMembers != null)
+                _welcomeMessageFlow.Initiate(message);
+            if (message.LeftChatMember != null)
+                _leftChatMessageFlow.Initiate(message);
         }
     }
 }
