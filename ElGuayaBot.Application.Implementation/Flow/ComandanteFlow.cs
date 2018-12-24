@@ -26,6 +26,7 @@ namespace ElGuayaBot.Application.Implementation.Flow
             {
                 int randomUrl = rnd.Next(0, urls.Count - 1);
                 string luckyUrl = urls[randomUrl];
+                var idsjoder = message.Chat.Id;
 
                 await _bot.SendPhotoAsync(
                     chatId: message.Chat.Id,

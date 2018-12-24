@@ -1,4 +1,5 @@
 using MihaZupan.TelegramBotClients;
+using Telegram.Bot;
 
 namespace ElGuayaBot.Application.Contracts
 {

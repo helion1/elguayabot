@@ -15,11 +15,13 @@
         <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
         <PackageReference Include="Serilog.Exceptions" Version="4.1.0" />
         <PackageReference Include="Serilog.Extensions.Logging" Version="2.0.2" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
         <PackageReference Include="Serilog.Sinks.Elasticsearch" Version="6.5.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\ElGuayaBot.Application.Implementation\ElGuayaBot.Application.Implementation.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Infrastructure.Contracts\ElGuayaBot.Infrastructure.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

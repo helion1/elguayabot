@@ -10,7 +10,7 @@
 
     <ItemGroup>
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.1.1" />
-      <PackageReference Include="TelegramBotClients" Version="1.0.6" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
       <PackageReference Include="Unicode.net" Version="0.1.2" />
     </ItemGroup>
 

@@ -6,6 +6,7 @@ using ElGuayaBot.Api.WebApi.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,17 +14,20 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using ElGuayaBot.Infrastructure.Contracts.Context;
 
 namespace ElGuayaBot.Api.WebApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -40,6 +44,11 @@ namespace ElGuayaBot.Api.WebApi
                 Configuration["Audience"], 
                 Configuration["SecurityKey"]
             );
+
+            if (Environment.IsDevelopment())
+            {
+                //services.AddDbContext<IElGuayaBotContext>(opt => opt.UseInMemoryDatabase("comepingas"));
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

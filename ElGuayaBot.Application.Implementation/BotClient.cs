@@ -3,7 +3,7 @@ using System.Net.Http;
 using ElGuayaBot.Application.Contracts;
 using Microsoft.Extensions.Configuration;
 using MihaZupan.TelegramBotClients;
-using MihaZupan.TelegramBotClients.BlockingClient;
+using Telegram.Bot;
 
 namespace ElGuayaBot.Application.Implementation
 {
@@ -15,7 +15,7 @@ namespace ElGuayaBot.Application.Implementation
          {
              try
              {
-                 Client = new BlockingTelegramBotClient(configuration["TelegramBotToken"], (HttpClient) null, new SchedulerSettings(60, 10, 500, 6, 1500, 6));
+                 Client = new BlockingTelegramBotClient(configuration["TelegramBotToken"], (HttpClient) null/*, new SchedulerSettings(60, 10, 500, 6, 1500, 6)*/);
              }
              catch (Exception e)
              {

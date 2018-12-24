@@ -38,6 +38,11 @@ namespace ElGuayaBot.Application.Implementation.Flow
             {
                 ButGold(message);
             }
+            else if(text.ToLower().Contains("tengo hambre") || text.ToLower().Contains("hambre tengo") || text.ToLower().Contains("i'm hungry"))
+            {
+                Fiambre(message);
+            }
+
         }
 
         private async void CallateLaJeta(Message message)
@@ -160,6 +165,17 @@ namespace ElGuayaBot.Application.Implementation.Flow
                     replyToMessageId: message.MessageId
                 );
             }
+        }
+        
+        private async void Fiambre(Message message)
+        {
+            //TODO: ta mare es una marrana
+            //TODO: Well here is cold meat
+            await _bot.SendTextMessageAsync(
+                chatId: message.Chat.Id,
+                text: "pues aquí hay fiambre",
+                replyToMessageId: message.MessageId
+            );
         }
     }
 }

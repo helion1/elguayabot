@@ -25,6 +25,8 @@ namespace ElGuayaBot.Application.Implementation
         private readonly IWelcomeMessageFlow _welcomeMessageFlow;
         private readonly IDabFlow _dabFlow;
         private readonly ILeftChatMessageFlow _leftChatMessageFlow;
+        private readonly ITenorGifFlow _tenorGifFlow;
+        private readonly IComunicaTest _comunicaTest;
 
         public BotService(IBotClient bot,
             IUnknownFlow unknownFlow,
@@ -37,7 +39,9 @@ namespace ElGuayaBot.Application.Implementation
             IFrutaFlow frutaFlow,
             IWelcomeMessageFlow welcomeMessageFlow,
             IDabFlow dabFlow,
-            ILeftChatMessageFlow leftChatMessageFlow
+            ILeftChatMessageFlow leftChatMessageFlow,
+            ITenorGifFlow tenorGifFlow,
+            IComunicaTest comunicaTest
             )
         {
             _bot = bot.Client ?? throw new ArgumentNullException(nameof(bot));
@@ -52,6 +56,8 @@ namespace ElGuayaBot.Application.Implementation
             _welcomeMessageFlow = welcomeMessageFlow ?? throw new ArgumentNullException(nameof(bot));
             _dabFlow = dabFlow ?? throw new ArgumentNullException(nameof(bot));
             _leftChatMessageFlow = leftChatMessageFlow ?? throw new ArgumentNullException(nameof(bot));
+            _tenorGifFlow = tenorGifFlow ?? throw new ArgumentNullException(nameof(bot));
+            _comunicaTest = comunicaTest ?? throw new ArgumentNullException(nameof(bot));
         }
 
         public void Start()
@@ -78,6 +84,7 @@ namespace ElGuayaBot.Application.Implementation
             }
 
             var firstWord = message.Text.Split(' ').First();
+            var restOfText = message.Text.Substring(message.Text.IndexOf(' ') + 1);
 
             if (firstWord.StartsWith("/"))
             {
@@ -106,6 +113,10 @@ namespace ElGuayaBot.Application.Implementation
                     case "/dab":
                         _dabFlow.Initiate(message);
                         break;
+                    case "/comunica":
+                        message.Text = restOfText;
+                        _comunicaTest.Initiate(message);
+                        break;
                     default:
                         if (message.Text.Split(' ').First().StartsWith("/"))
                         {
@@ -115,8 +126,16 @@ namespace ElGuayaBot.Application.Implementation
                 }
             }
             else
-            {
-                _randomTextFlow.Initiate(message);
+            {            
+                if (message.Text.ToLower().Contains(".gif") && message.Text.ToLower().StartsWith("https://"))
+                {
+                    _tenorGifFlow.Initiate(message);
+                }
+                else
+                {
+                    _randomTextFlow.Initiate(message);
+
+                }
             }
         }
 

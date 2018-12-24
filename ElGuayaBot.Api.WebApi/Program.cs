@@ -30,14 +30,15 @@ namespace ElGuayaBot.Api.WebApi
         public static void Main(string[] args)
         {
             var elasticUri = Configuration["ElasticConfiguration:Uri"];
-            
+
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .Enrich.WithExceptionDetails()
-                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
-                {
-                    AutoRegisterTemplate = true,
-                })
+                .WriteTo.Console()
+                //.WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
+                //{
+                //    AutoRegisterTemplate = true,
+                //})
                 .CreateLogger();
             
             try
