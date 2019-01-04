@@ -27,6 +27,7 @@ namespace ElGuayaBot.Application.Implementation
         private readonly ILeftChatMessageFlow _leftChatMessageFlow;
         private readonly ITenorGifFlow _tenorGifFlow;
         private readonly IComunicaTest _comunicaTest;
+        private readonly IPutoGuayabaFlow _putoGuayaba;
 
         public BotService(IBotClient bot,
             IUnknownFlow unknownFlow,
@@ -41,7 +42,8 @@ namespace ElGuayaBot.Application.Implementation
             IDabFlow dabFlow,
             ILeftChatMessageFlow leftChatMessageFlow,
             ITenorGifFlow tenorGifFlow,
-            IComunicaTest comunicaTest
+            IComunicaTest comunicaTest,
+            IPutoGuayabaFlow putoGuayaba
             )
         {
             _bot = bot.Client ?? throw new ArgumentNullException(nameof(bot));
@@ -58,6 +60,7 @@ namespace ElGuayaBot.Application.Implementation
             _leftChatMessageFlow = leftChatMessageFlow ?? throw new ArgumentNullException(nameof(bot));
             _tenorGifFlow = tenorGifFlow ?? throw new ArgumentNullException(nameof(bot));
             _comunicaTest = comunicaTest ?? throw new ArgumentNullException(nameof(bot));
+            _putoGuayaba = putoGuayaba ?? throw new ArgumentNullException(nameof(bot));
         }
 
         public void Start()
@@ -133,7 +136,14 @@ namespace ElGuayaBot.Application.Implementation
                 }
                 else
                 {
-                    _randomTextFlow.Initiate(message);
+                    if(message.Text.ToLower().Contains("puto guayaba"))
+                    {
+                        _putoGuayaba.Initiate(message);
+                    }
+                    else
+                    {
+                        _randomTextFlow.Initiate(message);
+                    }
 
                 }
             }
