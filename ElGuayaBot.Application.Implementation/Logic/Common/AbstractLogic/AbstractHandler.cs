@@ -1,5 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
+using ElGuayaBot.Application.Contracts.Client;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using MihaZupan.TelegramBotClients;
@@ -12,9 +13,10 @@ namespace ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic
 
         private readonly ILogger _logger;
 
-        protected AbstractHandler(BlockingTelegramBotClient bot, ILogger logger)
+        protected AbstractHandler(IBotClient bot, ILogger logger)
         {
-            Bot = bot;
+            Bot = bot.Client;
+
             _logger = logger;
         }
 

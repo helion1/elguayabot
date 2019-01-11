@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
+using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -11,7 +12,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.PingPongLogic
 {
     public class PingPongHandler: AbstractHandler<PingPongRequest>
     {
-        public PingPongHandler(BlockingTelegramBotClient bot, ILogger<AbstractHandler<PingPongRequest>> logger) : base(bot, logger)
+        public PingPongHandler(IBotClient bot, ILogger<PingPongHandler> logger) : base(bot, logger)
         {
         }
         
@@ -26,8 +27,8 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.PingPongLogic
             await Bot.SendTextMessageAsync(
                 chatId: message.Chat.Id, 
                 text: $"pong! He tardado `{difference.TotalSeconds:N2}` milisegundos en recibir tu mensaje. Los mismos que duras tu en la cama, muerdealmohadas",
-                parseMode: ParseMode.Markdown
-            );
+                parseMode: ParseMode.Markdown, 
+                cancellationToken: cancellationToken);
             
             return Unit.Value;
         }

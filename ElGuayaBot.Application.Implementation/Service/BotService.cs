@@ -6,6 +6,7 @@ using ElGuayaBot.Application.Contracts.Flow;
 using ElGuayaBot.Application.Contracts.Service;
 using ElGuayaBot.Application.Implementation.Logic.Command.PingPongLogic;
 using ElGuayaBot.Application.Implementation.Logic.Common.EntityPersistenceLogic;
+using ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatcherLogic;
 using ElGuayaBot.Persistence.Contracts;
 using ElGuayaBot.Persistence.Model;
 using MediatR;
@@ -79,7 +80,7 @@ namespace ElGuayaBot.Application.Implementation.Service
             var me = _bot.GetMeAsync().Result;
 
             _bot.OnMessage += HandleEntityPeristance;
-            _bot.OnMessage += BotOnMessageReceived;
+            _bot.OnMessage += HandleOnMessage;
 //            _bot.OnMessageEdited += BotOnMessageReceived;
             _bot.OnUpdate += BotOnUpdateReceived;
 
@@ -88,10 +89,15 @@ namespace ElGuayaBot.Application.Implementation.Service
 
             Thread.Sleep(int.MaxValue);
         }
-
+        
         private void HandleEntityPeristance(object sender, MessageEventArgs e)
         {
-            MediatR.Send(new EntityPersistenceRequest{ Message = e.Message});
+            MediatR.Send(new EntityPersistenceRequest { Message = e.Message });
+        }
+
+        private void HandleOnMessage(object sender, MessageEventArgs e)
+        {
+            MediatR.Send(new OnMessageDispatcherRequest {Message = e.Message });
         }
 
         private async void BotOnMessageReceived(object sender, MessageEventArgs e)
