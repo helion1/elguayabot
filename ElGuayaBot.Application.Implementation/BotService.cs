@@ -10,6 +10,7 @@ using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using Chat = ElGuayaBot.Persistence.Model.Chat;
 using User = ElGuayaBot.Persistence.Model.User;
 
 namespace ElGuayaBot.Application.Implementation
@@ -90,11 +91,11 @@ namespace ElGuayaBot.Application.Implementation
 
             try
             {
-                    var chat = _unitOfWork.GroupRepository.GetById(e.Message.Chat.Id);
+                    var chat = _unitOfWork.ChatRepository.GetById(e.Message.Chat.Id);
 
                     if (chat == null)
                     {
-                    _unitOfWork.GroupRepository.Insert(new Group
+                    _unitOfWork.ChatRepository.Insert(new Chat
                     {
                         Id = e.Message.Chat.Id,
                         Type = e.Message.Chat.Type.ToString(),
@@ -142,13 +143,13 @@ namespace ElGuayaBot.Application.Implementation
             
             try
             {
-                var groupUser = _unitOfWork.GroupUserRepository.GetAll().FirstOrDefault(gu => gu.UserId == e.Message.From.Id && gu.GroupId == e.Message.Chat.Id);
+                var groupUser = _unitOfWork.ChatUserRepository.GetAll().FirstOrDefault(gu => gu.UserId == e.Message.From.Id && gu.ChatId == e.Message.Chat.Id);
 
                 if (groupUser == null)
                 {
-                    _unitOfWork.GroupUserRepository.Insert(new GroupUser
+                    _unitOfWork.ChatUserRepository.Insert(new ChatUser
                     {
-                        GroupId = e.Message.Chat.Id,
+                        ChatId = e.Message.Chat.Id,
                         UserId = e.Message.From.Id
                     });
                     

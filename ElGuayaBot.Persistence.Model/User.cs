@@ -7,7 +7,7 @@ namespace ElGuayaBot.Persistence.Model
     {
         public User()
         {
-            GroupUsers = new HashSet<GroupUser>();
+            GroupUsers = new HashSet<ChatUser>();
         }
 
         public int Id { get; set; }
@@ -16,6 +16,6 @@ namespace ElGuayaBot.Persistence.Model
         public string Username { get; set; }
         public DateTime FirstInteractionDate { get; set; }
 
-        public ICollection<GroupUser> GroupUsers { get; set; }
+        public ICollection<ChatUser> GroupUsers { get; set; }
     }
 }

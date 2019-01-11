@@ -4,7 +4,7 @@ using ElGuayaBot.Persistence.Model;
 
 namespace ElGuayaBot.Persistence.Implementation.Repository
 {
-    public class GroupUserRepository : AbstractGenericRepository<ElGuayaBotDbContext, GroupUser>, IGroupUserRepository
+    public class GroupUserRepository : AbstractGenericRepository<ElGuayaBotDbContext, ChatUser>, IGroupUserRepository
     {
         public GroupUserRepository(ElGuayaBotDbContext dbContext) : base(dbContext)
         {

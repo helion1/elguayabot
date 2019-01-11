@@ -41,7 +41,7 @@ namespace ElGuayaBot.Application.Implementation.Flow
 
                     var comunicaMessage = sb.ToString();
                 
-                    var groups = _UnitOfWork.GroupRepository.GetAll().Where(ch => ch.Type == "Group" || ch.Type == "Supergroup");
+                    var groups = _UnitOfWork.ChatRepository.GetAll().Where(ch => ch.Type == "Group" || ch.Type == "Supergroup");
 
                     foreach (var group in groups)
                     {

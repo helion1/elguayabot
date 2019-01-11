@@ -14,9 +14,9 @@ namespace ElGuayaBot.Persistence.Implementation.Context
         {
         }
 
-        public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<Chat> Groups { get; set; }
         
-        public virtual DbSet<GroupUser> GroupUsers { get; set; }
+        public virtual DbSet<ChatUser> GroupUsers { get; set; }
         
         public virtual DbSet<User> Users { get; set; }
 
@@ -29,7 +29,7 @@ namespace ElGuayaBot.Persistence.Implementation.Context
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Group>(entity =>
+            modelBuilder.Entity<Chat>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -43,13 +43,13 @@ namespace ElGuayaBot.Persistence.Implementation.Context
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<GroupUser>(entity =>
+            modelBuilder.Entity<ChatUser>(entity =>
             {
-                entity.HasKey(e => new { e.GroupId, e.UserId });
+                entity.HasKey(e => new { GroupId = e.ChatId, e.UserId });
 
-                entity.HasOne(d => d.Group)
-                    .WithMany(p => p.GroupUsers)
-                    .HasForeignKey(d => d.GroupId)
+                entity.HasOne(d => d.Chat)
+                    .WithMany(p => p.ChatUsers)
+                    .HasForeignKey(d => d.ChatId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_GroupUsers_Groups");
 

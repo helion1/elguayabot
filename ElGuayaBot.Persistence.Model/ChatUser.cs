@@ -1,11 +1,11 @@
 ﻿namespace ElGuayaBot.Persistence.Model
 {
-    public partial class GroupUser
+    public partial class ChatUser
     {
-        public long GroupId { get; set; }
+        public long ChatId { get; set; }
         public int UserId { get; set; }
 
-        public Group Group { get; set; }
+        public Chat Chat { get; set; }
         public User User { get; set; }
     }
 }

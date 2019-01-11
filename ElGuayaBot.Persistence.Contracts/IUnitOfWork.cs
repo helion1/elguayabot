@@ -5,9 +5,9 @@ namespace ElGuayaBot.Persistence.Contracts
 {
     public interface IUnitOfWork
     {
-        IGroupRepository GroupRepository { get; set; }
+        IGroupRepository ChatRepository { get; set; }
         
-        IGroupUserRepository GroupUserRepository { get; set; }
+        IGroupUserRepository ChatUserRepository { get; set; }
         
         IUserRepository UserRepository { get; set; }
         

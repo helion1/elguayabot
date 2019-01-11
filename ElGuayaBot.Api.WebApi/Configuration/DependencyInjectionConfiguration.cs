@@ -9,15 +9,14 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Scrutor;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace ElGuayaBot.Api.WebApi.Configuration
 {
     public static class DependencyInjectionConfiguration
     {
-        public static IServiceCollection AddBotBackgroundServices(this IServiceCollection services)
+        public static IServiceCollection AddBotBackgroundServices(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
         {
-            services.AddSingleton<IBotClient, BotClient>();
-            services.AddScoped<IBotService, BotService>();
             
             services.AddSingleton<IHostedService, TelegramBotBackgroundService>();
 
@@ -30,7 +29,17 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             {
                 options.UseNpgsql(configuration.GetConnectionString("PostgreSQL"));
             });
+            
+            services.AddSingleton<IBotClient, BotClient>();
 
+            // Register every service
+            services.Scan(scan => scan
+                .FromAssemblyOf<IBotService>()
+                .AddClasses(classes => classes.Where(c => c.Name.EndsWith("Service")))
+                .UsingRegistrationStrategy(RegistrationStrategy.Skip)
+                .AsImplementedInterfaces()
+                .WithScopedLifetime());
+            
             // Register every repository
             services.Scan(scan => scan
                 .FromAssemblyOf<UnitOfWork>()

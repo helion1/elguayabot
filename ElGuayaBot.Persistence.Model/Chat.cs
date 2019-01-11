@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace ElGuayaBot.Persistence.Model
 {
-    public partial class Group
+    public partial class Chat
     {
-        public Group()
+        public Chat()
         {
-            GroupUsers = new HashSet<GroupUser>();
+            ChatUsers = new HashSet<ChatUser>();
         }
 
         public long Id { get; set; }
@@ -15,6 +15,6 @@ namespace ElGuayaBot.Persistence.Model
         public string Type { get; set; }
         public DateTime FirstInteractionDate { get; set; }
 
-        public ICollection<GroupUser> GroupUsers { get; set; }
+        public ICollection<ChatUser> ChatUsers { get; set; }
     }
 }
