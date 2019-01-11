@@ -3,17 +3,23 @@ using System.Linq;
 using System.Threading;
 using ElGuayaBot.Application.Contracts;
 using ElGuayaBot.Application.Contracts.Flow;
+using ElGuayaBot.Persistence.Contracts;
+using ElGuayaBot.Persistence.Model;
 using MihaZupan.TelegramBotClients;
 using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
+using User = ElGuayaBot.Persistence.Model.User;
 
 namespace ElGuayaBot.Application.Implementation
 {
     public class BotService : IBotService
     {
         private readonly BlockingTelegramBotClient _bot;
+        
+        private readonly IUnitOfWork _unitOfWork;
+        
         private readonly IUnknownFlow _unknownFlow;
         private readonly IRandomTextFlow _randomTextFlow;
         private readonly IFlipCoinFlow _flipCoinFlow;
@@ -27,6 +33,7 @@ namespace ElGuayaBot.Application.Implementation
         private readonly ILeftChatMessageFlow _leftChatMessageFlow;
         private readonly ITenorGifFlow _tenorGifFlow;
         private readonly IComunicaTest _comunicaTest;
+        private readonly IPutoGuayabaFlow _putoGuayaba;
 
         public BotService(IBotClient bot,
             IUnknownFlow unknownFlow,
@@ -41,8 +48,9 @@ namespace ElGuayaBot.Application.Implementation
             IDabFlow dabFlow,
             ILeftChatMessageFlow leftChatMessageFlow,
             ITenorGifFlow tenorGifFlow,
-            IComunicaTest comunicaTest
-            )
+            IComunicaTest comunicaTest,
+            IPutoGuayabaFlow putoGuayaba, 
+            IUnitOfWork unitOfWork)
         {
             _bot = bot.Client ?? throw new ArgumentNullException(nameof(bot));
             _unknownFlow = unknownFlow ?? throw new ArgumentNullException(nameof(bot));
@@ -58,12 +66,15 @@ namespace ElGuayaBot.Application.Implementation
             _leftChatMessageFlow = leftChatMessageFlow ?? throw new ArgumentNullException(nameof(bot));
             _tenorGifFlow = tenorGifFlow ?? throw new ArgumentNullException(nameof(bot));
             _comunicaTest = comunicaTest ?? throw new ArgumentNullException(nameof(bot));
+            _putoGuayaba = putoGuayaba ?? throw new ArgumentNullException(nameof(bot));
+            _unitOfWork = unitOfWork;
         }
 
         public void Start()
         {
             var me = _bot.GetMeAsync().Result;
 
+            _bot.OnMessage += RegisterUserOrGroup;
             _bot.OnMessage += BotOnMessageReceived;
             _bot.OnMessageEdited += BotOnMessageReceived;
             _bot.OnUpdate += BotOnUpdateReceived;
@@ -74,15 +85,107 @@ namespace ElGuayaBot.Application.Implementation
             Thread.Sleep(int.MaxValue);
         }
 
+        private async void RegisterUserOrGroup(object sender, MessageEventArgs e)
+        {
+
+            try
+            {
+                    var chat = _unitOfWork.GroupRepository.GetById(e.Message.Chat.Id);
+
+                    if (chat == null)
+                    {
+                    _unitOfWork.GroupRepository.Insert(new Group
+                    {
+                        Id = e.Message.Chat.Id,
+                        Type = e.Message.Chat.Type.ToString(),
+                        Title = e.Message.Chat.Title,
+                        FirstInteractionDate = DateTime.Now
+                    });
+                    
+                    await _unitOfWork.SaveAsync();
+                }
+        
+            }
+            catch (Exception)
+            {
+                //TODO: Logs
+            }
+            
+            try
+            {
+                var user = _unitOfWork.UserRepository.GetById(e.Message.From.Id);
+        
+                if (user == null)
+                {
+          
+                    _unitOfWork.UserRepository.Insert(new User
+                    {
+                        Id = e.Message.From.Id,
+                        Username = e.Message.From.Username,
+                        LanguageCode = e.Message.From.LanguageCode,
+                        IsBot = e.Message.From.IsBot,
+                        FirstInteractionDate = DateTime.Now
+                    });
+                    
+                    await _unitOfWork.SaveAsync();
+                }
+               
+            }
+            catch (Exception exception)
+            {
+                //TODO: Logs
+
+            }
+            
+
+
+            
+            try
+            {
+                var groupUser = _unitOfWork.GroupUserRepository.GetAll().FirstOrDefault(gu => gu.UserId == e.Message.From.Id && gu.GroupId == e.Message.Chat.Id);
+
+                if (groupUser == null)
+                {
+                    _unitOfWork.GroupUserRepository.Insert(new GroupUser
+                    {
+                        GroupId = e.Message.Chat.Id,
+                        UserId = e.Message.From.Id
+                    });
+                    
+                    await _unitOfWork.SaveAsync();
+                }
+
+            }
+            catch (Exception exception)
+            {
+                //TODO: logs
+            }
+
+        }
+
         private async void BotOnMessageReceived(object sender, MessageEventArgs e)
         {
             var message = e.Message;
+    
+            if (message.SupergroupChatCreated)
+            {
+                //TODO
+
+                return;
+            }
+            
+            if (message.GroupChatCreated)
+            {
+                //TODO
+
+                return;
+            }
 
             if (message == null || message.Type != MessageType.Text)
             {
                 return;
             }
-
+            
             var firstWord = message.Text.Split(' ').First();
             var restOfText = message.Text.Substring(message.Text.IndexOf(' ') + 1);
 
@@ -133,7 +236,14 @@ namespace ElGuayaBot.Application.Implementation
                 }
                 else
                 {
-                    _randomTextFlow.Initiate(message);
+                    if(message.Text.ToLower().Contains("puto guayaba"))
+                    {
+                        _putoGuayaba.Initiate(message);
+                    }
+                    else
+                    {
+                        _randomTextFlow.Initiate(message);
+                    }
 
                 }
             }

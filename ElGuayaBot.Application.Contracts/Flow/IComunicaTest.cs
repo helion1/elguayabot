@@ -8,6 +8,6 @@ namespace ElGuayaBot.Application.Contracts.Flow
 {
     public interface IComunicaTest : IBaseFlow
     {
-        void PinChatComunica(Message message);
+        void PinGuayabaComunicaMessage(Message message);
     }
 }

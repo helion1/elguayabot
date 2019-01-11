@@ -29,27 +29,27 @@ namespace ElGuayaBot.Api.WebApi
         
         public static void Main(string[] args)
         {
-            var elasticUri = Configuration["ElasticConfiguration:Uri"];
+            var elasticUri = Configuration.GetConnectionString("ElasticSearch");
 
             Log.Logger = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .Enrich.WithExceptionDetails()
                 .WriteTo.Console()
-                //.WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
-                //{
-                //    AutoRegisterTemplate = true,
-                //})
+                .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
+                {
+                    AutoRegisterTemplate = true,
+                })
                 .CreateLogger();
             
             try
             {
-                Log.Information("Starting ElGUayaBot");
+                Log.Information("Starting ElGuayaBot");
 
                 CreateWebHostBuilder(args).Build().Run();
             }
             catch (Exception ex)
             {
-                Log.Fatal(ex, "Host terminated unexpectedly");
+                Log.Fatal(ex, "ElGuayaBot terminated unexpectedly");
             }
             finally
             {

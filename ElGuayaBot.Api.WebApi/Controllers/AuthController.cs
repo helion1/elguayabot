@@ -27,25 +27,25 @@ namespace ElGuayaBot.Api.WebApi.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        [Route("login")]
-        public IActionResult RequestToken([FromBody] LoginRequest request)
-        {
-            if (!ModelState.IsValid)
-            {
-                //log
-                return BadRequest(ModelState);
-            }
-            
-            if (request.Username != Configuration["Admin:Username"] || request.Password != Configuration["Admin:Password"])
-            {
-                return NotFound("User not found in the app database");
-            }
-            else
-            {
-                return Ok("adsad");
-            }
-        }
+//        [HttpPost]
+//        [AllowAnonymous]
+//        [Route("login")]
+//        public IActionResult RequestToken([FromBody] LoginRequest request)
+//        {
+//            if (!ModelState.IsValid)
+//            {
+//                //log
+//                return BadRequest(ModelState);
+//            }
+//            
+//            if (request.Username != Configuration["Admin:Username"] || request.Password != Configuration["Admin:Password"])
+//            {
+//                return NotFound("User not found in the app database");
+//            }
+//            else
+//            {
+//                return Ok("adsad");
+//            }
+//        }
     }
 }

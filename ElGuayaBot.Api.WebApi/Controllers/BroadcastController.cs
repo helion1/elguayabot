@@ -22,15 +22,15 @@ namespace ElGuayaBot.Api.WebApi.Controllers
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
         }
 
-        [HttpPost]
-        [Authorize(Policy = "Administrator")]
-        [Route("login")]
-        public ActionResult Communicate([FromBody] string message)
-        {
-            _logger.LogInformation($"Trying to broadcast the message: {message}");
-            _broadcastService.CommunicateToAll(message);
-            //TODO
-            return Ok();
-        }
+//        [HttpPost]
+//        [Authorize(Policy = "Administrator")]
+//        [Route("login")]
+//        public ActionResult Communicate([FromBody] string message)
+//        {
+//            _logger.LogInformation($"Trying to broadcast the message: {message}");
+//            _broadcastService.CommunicateToAll(message);
+//            //TODO
+//            return Ok();
+//        }
     }
 }

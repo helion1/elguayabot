@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -16,6 +16,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ElGuayaBot.Application.Contracts\ElGuayaBot.Application.Contracts.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Persistence.Contracts\ElGuayaBot.Persistence.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

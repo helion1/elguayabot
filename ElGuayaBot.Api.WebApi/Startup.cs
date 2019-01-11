@@ -14,7 +14,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
-using ElGuayaBot.Infrastructure.Contracts.Context;
 
 namespace ElGuayaBot.Api.WebApi
 {
@@ -33,22 +32,19 @@ namespace ElGuayaBot.Api.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            
             services.AddBotDI();
             services.AddBackgroundServices();
             services.AddFlows();
+            services.AddDatabase(Configuration, Environment);
 
-            services.AddCustomAuthorization();
-            
-            services.AddCustomAuthentication(
-                Configuration["Issuer"], 
-                Configuration["Audience"], 
-                Configuration["SecurityKey"]
-            );
-
-            if (Environment.IsDevelopment())
-            {
-                //services.AddDbContext<IElGuayaBotContext>(opt => opt.UseInMemoryDatabase("comepingas"));
-            }
+//            services.AddCustomAuthorization();
+//            
+//            services.AddCustomAuthentication(
+//                Configuration["Issuer"], 
+//                Configuration["Audience"], 
+//                Configuration["SecurityKey"]
+//            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

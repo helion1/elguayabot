@@ -5,15 +5,18 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types;
 
 namespace ElGuayaBot.Application.Implementation.Flow
 {
     public class ComandanteFlow : BaseFlow, IComandanteFlow
     {
-
-        public ComandanteFlow(IBotClient bot) : base(bot)
+        protected readonly ILogger<ComandanteFlow> Logger;
+        
+        public ComandanteFlow(IBotClient bot, ILogger<ComandanteFlow> logger) : base(bot)
         {
+            Logger = logger;
         }
 
         public override async void Initiate(Message message)
@@ -22,6 +25,8 @@ namespace ElGuayaBot.Application.Implementation.Flow
             List<string> urls = GetUrls(html);
             var rnd = new Random();
 
+//            Logger.LogInformation("This is a test");
+            
             try
             {
                 int randomUrl = rnd.Next(0, urls.Count - 1);
@@ -31,15 +36,14 @@ namespace ElGuayaBot.Application.Implementation.Flow
                 await _bot.SendPhotoAsync(
                     chatId: message.Chat.Id,
                     photo: luckyUrl,
-                    caption: "¡Abajo el Imperialismo!",
-                    parseMode: Telegram.Bot.Types.Enums.ParseMode.Html,
-                    replyToMessageId: message.MessageId
+                    caption: "Hasta la victoria, siempre!",
+                    parseMode: Telegram.Bot.Types.Enums.ParseMode.Html
+//                    replyToMessageId: message.MessageId
                     );
             }
             catch (Exception ex)
             {
 
-                throw ex;
             }
         }
 

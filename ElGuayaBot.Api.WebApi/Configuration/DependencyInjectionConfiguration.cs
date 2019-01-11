@@ -3,8 +3,15 @@ using ElGuayaBot.Application.Contracts.Flow;
 using ElGuayaBot.Application.Implementation;
 using ElGuayaBot.Application.Implementation.Background;
 using ElGuayaBot.Application.Implementation.Flow;
+using ElGuayaBot.Persistence.Contracts;
+using ElGuayaBot.Persistence.Implementation;
+using ElGuayaBot.Persistence.Implementation.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Scrutor;
+using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
 namespace ElGuayaBot.Api.WebApi.Configuration
 {
@@ -40,7 +47,30 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             services.AddScoped<ILeftChatMessageFlow, LeftChatMessageFlow>();
             services.AddScoped<ITenorGifFlow, TenorGifFlow>();
             services.AddScoped<IComunicaTest, ComunicaTest>();
+            services.AddScoped<IPutoGuayabaFlow, PutoGuayabaFlow>();
 
+            return services;
+        }
+
+        public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
+        {
+            services.AddDbContext<ElGuayaBotDbContext>(options =>
+            {
+                options.UseNpgsql(configuration.GetConnectionString("PostgreSQL"));
+            });
+
+            // Register every repository
+            services.Scan(scan => scan
+                .FromAssemblyOf<UnitOfWork>()
+                .AddClasses(classes => classes.Where(c => c.Name.EndsWith("Repository")))
+                .UsingRegistrationStrategy(RegistrationStrategy.Skip)
+                .AsImplementedInterfaces()
+                .WithScopedLifetime());
+            
+            // Register UoW
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            
             return services;
         }
     }
