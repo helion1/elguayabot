@@ -5,9 +5,9 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types;
 
-namespace ElGuayaBot.Application.Implementation.Logic.EntityPersistenceLogic
+namespace ElGuayaBot.Application.Implementation.Logic.Common.EntityPersistenceLogic
 {
-    public class EntityPersistenceLogicHandler : IRequestHandler<EntityPersistenceLogicRequest>
+    public class EntityPersistenceHandler : IRequestHandler<EntityPersistenceRequest>
     {
         private readonly IChatService _chatService;
         
@@ -15,9 +15,9 @@ namespace ElGuayaBot.Application.Implementation.Logic.EntityPersistenceLogic
         
         private readonly IChatUserService _chatUserService;
 
-        private readonly ILogger<EntityPersistenceLogicHandler> _logger;
+        private readonly ILogger<EntityPersistenceHandler> _logger;
 
-        public EntityPersistenceLogicHandler(IChatService chatService, IUserService userService, IChatUserService chatUserService, ILogger<EntityPersistenceLogicHandler> logger)
+        public EntityPersistenceHandler(IChatService chatService, IUserService userService, IChatUserService chatUserService, ILogger<EntityPersistenceHandler> logger)
         {
             _chatService = chatService;
             _userService = userService;
@@ -25,7 +25,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.EntityPersistenceLogic
             _logger = logger;
         }
 
-        public async Task<Unit> Handle(EntityPersistenceLogicRequest request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(EntityPersistenceRequest request, CancellationToken cancellationToken)
         {
             var message = request.Message;
             

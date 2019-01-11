@@ -1,5 +1,5 @@
 using System.Reflection;
-using ElGuayaBot.Application.Implementation.Logic.EntityPersistenceLogic;
+using ElGuayaBot.Application.Implementation.Logic.Common.EntityPersistenceLogic;
 using ElGuayaBot.Application.Implementation.Pipelines;
 using FluentValidation.AspNetCore;
 using MediatR;
@@ -24,7 +24,7 @@ namespace ElGuayaBot.Api.WebApi.Configuration
 
         public static IServiceCollection AddMediatRHandlers(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
         {
-            services.AddMediatR(typeof(EntityPersistenceLogicHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(EntityPersistenceHandler).GetTypeInfo().Assembly);
 
             return services;
         }
@@ -35,7 +35,7 @@ namespace ElGuayaBot.Api.WebApi.Configuration
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(fv =>
                 {
-                    fv.RegisterValidatorsFromAssemblyContaining<EntityPersistenceLogicHandler>();
+                    fv.RegisterValidatorsFromAssemblyContaining<EntityPersistenceHandler>();
                     fv.RegisterValidatorsFromAssemblyContaining<Startup>();
                 });
             

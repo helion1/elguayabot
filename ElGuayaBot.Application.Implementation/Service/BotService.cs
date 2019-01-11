@@ -4,7 +4,8 @@ using System.Threading;
 using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Contracts.Flow;
 using ElGuayaBot.Application.Contracts.Service;
-using ElGuayaBot.Application.Implementation.Logic.EntityPersistenceLogic;
+using ElGuayaBot.Application.Implementation.Logic.Command.PingPongLogic;
+using ElGuayaBot.Application.Implementation.Logic.Common.EntityPersistenceLogic;
 using ElGuayaBot.Persistence.Contracts;
 using ElGuayaBot.Persistence.Model;
 using MediatR;
@@ -26,7 +27,6 @@ namespace ElGuayaBot.Application.Implementation.Service
         private readonly IUnknownFlow _unknownFlow;
         private readonly IRandomTextFlow _randomTextFlow;
         private readonly IFlipCoinFlow _flipCoinFlow;
-        private readonly IPingPongFlow _pingPongFlow;
         private readonly IAboutFlow _aboutFlow;
         private readonly IHelpFlow _helpFlow;
         private readonly IComandanteFlow _comandanteFlow;
@@ -44,7 +44,6 @@ namespace ElGuayaBot.Application.Implementation.Service
             IUnknownFlow unknownFlow,
             IRandomTextFlow randomTextFlow,
             IFlipCoinFlow flipCoinFlow,
-            IPingPongFlow pingPongFlow,
             IAboutFlow aboutFlow,
             IHelpFlow helpFlow,
             IComandanteFlow comandanteFlow,
@@ -61,7 +60,6 @@ namespace ElGuayaBot.Application.Implementation.Service
             _unknownFlow = unknownFlow ?? throw new ArgumentNullException(nameof(bot));
             _randomTextFlow = randomTextFlow ?? throw new ArgumentNullException(nameof(bot));
             _flipCoinFlow = flipCoinFlow ?? throw new ArgumentNullException(nameof(bot));
-            _pingPongFlow = pingPongFlow ?? throw new ArgumentNullException(nameof(bot));
             _aboutFlow = aboutFlow ?? throw new ArgumentNullException(nameof(bot));
             _helpFlow = helpFlow ?? throw new ArgumentNullException(nameof(bot));
             _comandanteFlow = comandanteFlow ?? throw new ArgumentNullException(nameof(bot));
@@ -82,7 +80,7 @@ namespace ElGuayaBot.Application.Implementation.Service
 
             _bot.OnMessage += HandleEntityPeristance;
             _bot.OnMessage += BotOnMessageReceived;
-            _bot.OnMessageEdited += BotOnMessageReceived;
+//            _bot.OnMessageEdited += BotOnMessageReceived;
             _bot.OnUpdate += BotOnUpdateReceived;
 
             _bot.StartReceiving(Array.Empty<UpdateType>());
@@ -93,7 +91,7 @@ namespace ElGuayaBot.Application.Implementation.Service
 
         private void HandleEntityPeristance(object sender, MessageEventArgs e)
         {
-            MediatR.Send(new EntityPersistenceLogicRequest{ Message = e.Message});
+            MediatR.Send(new EntityPersistenceRequest{ Message = e.Message});
         }
 
         private async void BotOnMessageReceived(object sender, MessageEventArgs e)
@@ -135,7 +133,7 @@ namespace ElGuayaBot.Application.Implementation.Service
                         _aboutFlow.Initiate(message);
                         break;
                     case "/ping":
-                        _pingPongFlow.Initiate(message);
+                        await MediatR.Send(new PingPongRequest {Message = message});
                         break;
                     case "/flip":
                         _flipCoinFlow.Initiate(message);

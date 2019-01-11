@@ -60,7 +60,6 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             services.AddScoped<IUnknownFlow, UnknownFlow>();
             services.AddScoped<IRandomTextFlow, RandomTextFlow>();
             services.AddScoped<IFlipCoinFlow, FlipCoinFlow>();
-            services.AddScoped<IPingPongFlow, PingPongFlow>();
             services.AddScoped<IAboutFlow, AboutFlow>();
             services.AddScoped<IHelpFlow, HelpFlow>();
             services.AddScoped<IComandanteFlow, ComandanteFlow>();
@@ -72,9 +71,6 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             services.AddScoped<IComunicaTest, ComunicaTest>();
             services.AddScoped<IPutoGuayabaFlow, PutoGuayabaFlow>();
 
-            return services;
-
-            
             return services;
         }
     }
