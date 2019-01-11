@@ -1,4 +1,4 @@
-namespace ElGuayaBot.Application.Contracts
+namespace ElGuayaBot.Application.Contracts.Service
 {
     public interface IBotService
     {

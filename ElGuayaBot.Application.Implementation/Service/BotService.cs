@@ -1,19 +1,21 @@
 using System;
 using System.Linq;
 using System.Threading;
-using ElGuayaBot.Application.Contracts;
+using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Contracts.Flow;
+using ElGuayaBot.Application.Contracts.Service;
+using ElGuayaBot.Application.Implementation.Logic.EntityPersistenceLogic;
 using ElGuayaBot.Persistence.Contracts;
 using ElGuayaBot.Persistence.Model;
+using MediatR;
 using MihaZupan.TelegramBotClients;
-using Telegram.Bot;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Chat = ElGuayaBot.Persistence.Model.Chat;
 using User = ElGuayaBot.Persistence.Model.User;
 
-namespace ElGuayaBot.Application.Implementation
+namespace ElGuayaBot.Application.Implementation.Service
 {
     public class BotService : IBotService
     {
@@ -35,6 +37,8 @@ namespace ElGuayaBot.Application.Implementation
         private readonly ITenorGifFlow _tenorGifFlow;
         private readonly IComunicaTest _comunicaTest;
         private readonly IPutoGuayabaFlow _putoGuayaba;
+        
+        protected readonly IMediator MediatR;
 
         public BotService(IBotClient bot,
             IUnknownFlow unknownFlow,
@@ -51,7 +55,7 @@ namespace ElGuayaBot.Application.Implementation
             ITenorGifFlow tenorGifFlow,
             IComunicaTest comunicaTest,
             IPutoGuayabaFlow putoGuayaba, 
-            IUnitOfWork unitOfWork)
+            IUnitOfWork unitOfWork, IMediator mediatR)
         {
             _bot = bot.Client ?? throw new ArgumentNullException(nameof(bot));
             _unknownFlow = unknownFlow ?? throw new ArgumentNullException(nameof(bot));
@@ -69,13 +73,14 @@ namespace ElGuayaBot.Application.Implementation
             _comunicaTest = comunicaTest ?? throw new ArgumentNullException(nameof(bot));
             _putoGuayaba = putoGuayaba ?? throw new ArgumentNullException(nameof(bot));
             _unitOfWork = unitOfWork;
+            MediatR = mediatR;
         }
 
         public void Start()
         {
             var me = _bot.GetMeAsync().Result;
 
-            _bot.OnMessage += RegisterUserOrGroup;
+            _bot.OnMessage += HandleEntityPeristance;
             _bot.OnMessage += BotOnMessageReceived;
             _bot.OnMessageEdited += BotOnMessageReceived;
             _bot.OnUpdate += BotOnUpdateReceived;
@@ -86,82 +91,9 @@ namespace ElGuayaBot.Application.Implementation
             Thread.Sleep(int.MaxValue);
         }
 
-        private async void RegisterUserOrGroup(object sender, MessageEventArgs e)
+        private void HandleEntityPeristance(object sender, MessageEventArgs e)
         {
-
-            try
-            {
-                    var chat = _unitOfWork.ChatRepository.GetById(e.Message.Chat.Id);
-
-                    if (chat == null)
-                    {
-                    _unitOfWork.ChatRepository.Insert(new Chat
-                    {
-                        Id = e.Message.Chat.Id,
-                        Type = e.Message.Chat.Type.ToString(),
-                        Title = e.Message.Chat.Title,
-                        FirstInteractionDate = DateTime.Now
-                    });
-                    
-                    await _unitOfWork.SaveAsync();
-                }
-        
-            }
-            catch (Exception)
-            {
-                //TODO: Logs
-            }
-            
-            try
-            {
-                var user = _unitOfWork.UserRepository.GetById(e.Message.From.Id);
-        
-                if (user == null)
-                {
-          
-                    _unitOfWork.UserRepository.Insert(new User
-                    {
-                        Id = e.Message.From.Id,
-                        Username = e.Message.From.Username,
-                        LanguageCode = e.Message.From.LanguageCode,
-                        IsBot = e.Message.From.IsBot,
-                        FirstInteractionDate = DateTime.Now
-                    });
-                    
-                    await _unitOfWork.SaveAsync();
-                }
-               
-            }
-            catch (Exception exception)
-            {
-                //TODO: Logs
-
-            }
-            
-
-
-            
-            try
-            {
-                var groupUser = _unitOfWork.ChatUserRepository.GetAll().FirstOrDefault(gu => gu.UserId == e.Message.From.Id && gu.ChatId == e.Message.Chat.Id);
-
-                if (groupUser == null)
-                {
-                    _unitOfWork.ChatUserRepository.Insert(new ChatUser
-                    {
-                        ChatId = e.Message.Chat.Id,
-                        UserId = e.Message.From.Id
-                    });
-                    
-                    await _unitOfWork.SaveAsync();
-                }
-
-            }
-            catch (Exception exception)
-            {
-                //TODO: logs
-            }
-
+            MediatR.Send(new EntityPersistenceLogicRequest{ Message = e.Message});
         }
 
         private async void BotOnMessageReceived(object sender, MessageEventArgs e)

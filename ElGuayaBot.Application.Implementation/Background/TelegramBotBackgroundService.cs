@@ -1,6 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Application.Contracts;
+using ElGuayaBot.Application.Contracts.Service;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ElGuayaBot.Application.Implementation.Background
@@ -21,8 +21,6 @@ namespace ElGuayaBot.Application.Implementation.Background
                 var botService = scope.ServiceProvider.GetRequiredService<IBotService>();
                 
                 botService.Start();
-
-                //Do your stuff
             }
 
             return Task.CompletedTask;

@@ -1,5 +1,6 @@
 using System;
 using ElGuayaBot.Application.Contracts;
+using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Contracts.Flow;
 using MihaZupan.TelegramBotClients;
 using NeoSmart.Unicode;

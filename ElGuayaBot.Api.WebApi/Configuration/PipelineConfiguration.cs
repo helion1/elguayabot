@@ -1,6 +1,6 @@
 using System.Reflection;
-using Argo.Athena.Application.Implementation.Pipelines;
 using ElGuayaBot.Application.Implementation.Logic.EntityPersistenceLogic;
+using ElGuayaBot.Application.Implementation.Pipelines;
 using FluentValidation.AspNetCore;
 using MediatR;
 using MediatR.Pipeline;

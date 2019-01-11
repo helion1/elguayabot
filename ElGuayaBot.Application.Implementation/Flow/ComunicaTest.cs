@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Persistence.Contracts;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using ElGuayaBot.Application.Contracts.Client;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types;
 

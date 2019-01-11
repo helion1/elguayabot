@@ -31,12 +31,14 @@ namespace ElGuayaBot.Api.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            
+            services.AddBotBackgroundServices(Configuration, Environment);
 
             services.AddCustomDependencyInjection(Configuration, Environment);
-
-            services.AddBotBackgroundServices(Configuration, Environment);
             
             services.AddCustomPipelines(Configuration, Environment);
+
+            services.AddMediatRHandlers(Configuration, Environment);
             
             services.AddCustomValidation(Configuration, Environment);
         }

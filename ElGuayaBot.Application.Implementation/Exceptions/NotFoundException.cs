@@ -1,6 +1,6 @@
 using System;
 
-namespace Argo.Athena.Application.Implementation.Exceptions
+namespace ElGuayaBot.Application.Implementation.Exceptions
 {
     public class NotFoundException : Exception
     {

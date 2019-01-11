@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using ElGuayaBot.Application.Contracts;
+using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Contracts.Flow;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;

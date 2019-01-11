@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ElGuayaBot.Application.Contracts;
+using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Contracts.Flow;
 using Telegram.Bot;
 using Telegram.Bot.Types;

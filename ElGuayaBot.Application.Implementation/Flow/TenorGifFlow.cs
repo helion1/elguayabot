@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Text;
+using ElGuayaBot.Application.Contracts.Client;
 using Telegram.Bot.Types;
 
 namespace ElGuayaBot.Application.Implementation.Flow

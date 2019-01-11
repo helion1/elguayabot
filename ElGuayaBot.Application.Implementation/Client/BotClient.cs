@@ -1,12 +1,11 @@
 using System;
 using System.Net.Http;
-using ElGuayaBot.Application.Contracts;
+using ElGuayaBot.Application.Contracts.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MihaZupan.TelegramBotClients;
-using Telegram.Bot;
 
-namespace ElGuayaBot.Application.Implementation
+namespace ElGuayaBot.Application.Implementation.Client
 {
     public class BotClient: IBotClient
     {

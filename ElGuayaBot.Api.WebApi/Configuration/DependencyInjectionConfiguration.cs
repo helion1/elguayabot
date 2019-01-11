@@ -1,6 +1,10 @@
-using ElGuayaBot.Application.Contracts;
-using ElGuayaBot.Application.Implementation;
+using ElGuayaBot.Application.Contracts.Client;
+using ElGuayaBot.Application.Contracts.Flow;
+using ElGuayaBot.Application.Contracts.Service;
 using ElGuayaBot.Application.Implementation.Background;
+using ElGuayaBot.Application.Implementation.Client;
+using ElGuayaBot.Application.Implementation.Flow;
+using ElGuayaBot.Application.Implementation.Service;
 using ElGuayaBot.Persistence.Contracts;
 using ElGuayaBot.Persistence.Implementation;
 using ElGuayaBot.Persistence.Implementation.Context;
@@ -17,6 +21,9 @@ namespace ElGuayaBot.Api.WebApi.Configuration
     {
         public static IServiceCollection AddBotBackgroundServices(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
         {
+            services.AddSingleton<IBotClient, BotClient>();
+            
+            services.AddScoped<IBotService, BotService>();
             
             services.AddSingleton<IHostedService, TelegramBotBackgroundService>();
 
@@ -29,13 +36,11 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             {
                 options.UseNpgsql(configuration.GetConnectionString("PostgreSQL"));
             });
-            
-            services.AddSingleton<IBotClient, BotClient>();
 
             // Register every service
             services.Scan(scan => scan
-                .FromAssemblyOf<IBotService>()
-                .AddClasses(classes => classes.Where(c => c.Name.EndsWith("Service")))
+                .FromAssemblyOf<BotService>()
+                .AddClasses(classes => classes.Where(c => c.Name.EndsWith("Service") && c.Name != "BotService"))
                 .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                 .AsImplementedInterfaces()
                 .WithScopedLifetime());
@@ -50,6 +55,24 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             
             // Register UoW
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            
+            // Register flows (Erase this when possible)
+            services.AddScoped<IUnknownFlow, UnknownFlow>();
+            services.AddScoped<IRandomTextFlow, RandomTextFlow>();
+            services.AddScoped<IFlipCoinFlow, FlipCoinFlow>();
+            services.AddScoped<IPingPongFlow, PingPongFlow>();
+            services.AddScoped<IAboutFlow, AboutFlow>();
+            services.AddScoped<IHelpFlow, HelpFlow>();
+            services.AddScoped<IComandanteFlow, ComandanteFlow>();
+            services.AddScoped<IFrutaFlow, FrutaFlow>();
+            services.AddScoped<IWelcomeMessageFlow, WelcomeMessageFlow>();
+            services.AddScoped<IDabFlow, DabFlow>();
+            services.AddScoped<ILeftChatMessageFlow, LeftChatMessageFlow>();
+            services.AddScoped<ITenorGifFlow, TenorGifFlow>();
+            services.AddScoped<IComunicaTest, ComunicaTest>();
+            services.AddScoped<IPutoGuayabaFlow, PutoGuayabaFlow>();
+
+            return services;
 
             
             return services;

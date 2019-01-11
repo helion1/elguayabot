@@ -1,4 +1,5 @@
 using ElGuayaBot.Application.Contracts;
+using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Contracts.Flow;
 using Telegram.Bot.Types;
 

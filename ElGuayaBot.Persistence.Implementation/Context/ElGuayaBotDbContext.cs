@@ -14,9 +14,9 @@ namespace ElGuayaBot.Persistence.Implementation.Context
         {
         }
 
-        public virtual DbSet<Chat> Groups { get; set; }
+        public virtual DbSet<Chat> Chats { get; set; }
         
-        public virtual DbSet<ChatUser> GroupUsers { get; set; }
+        public virtual DbSet<ChatUser> ChatUsers { get; set; }
         
         public virtual DbSet<User> Users { get; set; }
 
@@ -50,14 +50,12 @@ namespace ElGuayaBot.Persistence.Implementation.Context
                 entity.HasOne(d => d.Chat)
                     .WithMany(p => p.ChatUsers)
                     .HasForeignKey(d => d.ChatId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_GroupUsers_Groups");
+                    .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.GroupUsers)
+                    .WithMany(p => p.ChatUsers)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_GroupUsers_Users");
+                    .OnDelete(DeleteBehavior.ClientSetNull);
             });
 
             modelBuilder.Entity<User>(entity =>

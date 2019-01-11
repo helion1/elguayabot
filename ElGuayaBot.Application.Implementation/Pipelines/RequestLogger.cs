@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 
-namespace Argo.Athena.Application.Implementation.Pipelines
+namespace ElGuayaBot.Application.Implementation.Pipelines
 {
     public class RequestLogger<TRequest> : IRequestPreProcessor<TRequest>
     {

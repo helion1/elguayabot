@@ -1,7 +1,6 @@
 using MihaZupan.TelegramBotClients;
-using Telegram.Bot;
 
-namespace ElGuayaBot.Application.Contracts
+namespace ElGuayaBot.Application.Contracts.Client
 {
     public interface IBotClient
     {
