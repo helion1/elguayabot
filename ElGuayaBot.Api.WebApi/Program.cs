@@ -40,7 +40,11 @@ namespace ElGuayaBot.Api.WebApi
                     AutoRegisterTemplate = true
                 });
 
-            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+            {
+                loggerConf.MinimumLevel.Information();
+            }
+            else
             {
                 loggerConf.MinimumLevel.Warning();
             }

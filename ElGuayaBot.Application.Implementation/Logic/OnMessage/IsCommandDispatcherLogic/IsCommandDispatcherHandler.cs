@@ -6,6 +6,7 @@ using ElGuayaBot.Application.Implementation.Logic.Command.AboutLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.ComandanteLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.ComunicaLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.DabLogic;
+using ElGuayaBot.Application.Implementation.Logic.Command.EchoLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.FlipLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.GuayabaLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.HelpLogic;
@@ -53,6 +54,9 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatc
                     break;
                 case "/dab":
                     await _mediatR.Send(new DabRequest { Message = message });
+                    break;
+                case "/echo":
+                    await _mediatR.Send(new EchoRequest { Message = message });
                     break;
                 case "/flip":
                     await _mediatR.Send(new FlipRequest { Message = message });
