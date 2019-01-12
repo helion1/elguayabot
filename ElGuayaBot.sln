@@ -46,6 +46,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docker", ".docker", "{71971D10-BD9E-4509-ABE7-AB0F9A9E2C29}"
 ProjectSection(SolutionItems) = preProject
 	.docker\docker-compose.yml = .docker\docker-compose.yml
+	.docker\docker-compose-development.yml = .docker\docker-compose-development.yml
 EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Api.WebApi", "ElGuayaBot.Api.WebApi\ElGuayaBot.Api.WebApi.csproj", "{489FEE39-CF3D-4CAF-90AD-D30E4F2D9DE0}"

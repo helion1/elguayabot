@@ -1,15 +1,6 @@
 version: '3.1'
 
 services:
-  elguayabot:
-    image: elguayabot:latest
-    container_name: elguayabot
-    ports:
-      - "5100:5100"
-    depends_on:
-      - postgre-elguayabot
-      - elasticsearch
-    
   postgre-elguayabot:
     image: postgres:11.1-alpine
     container_name: postgre-elguayabot

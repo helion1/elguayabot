@@ -1,16 +1,17 @@
 # ElGuayaBot
 Simple yet Guayaba. Telegram Bot for my friends.
 
-
-Setup:
+Production setup:
 ```bash
-# Retore nugget packages
-dotnet restore
+# create docker image
+docker build -t elguayabot:latest .
 
-# Start docker containers
-cd docker
-docker-compose up -d
+# start docker-compose
+docker-compose -f .docker/docker-compose.yml up -d
+```
 
-# Dev-only: setup https
-dotnet dev-certs https
+Development setup:
+```bash
+docker-compose -f .docker/docker-compose-development.yml up -d
+
 ```
