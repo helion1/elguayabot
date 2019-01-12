@@ -20,7 +20,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres-elguayabot-data:/var/lib/postgresql/data
+      - postgre-elguayabot-data:/var/lib/postgresql/data
   
   adminer:
     image: adminer
@@ -48,4 +48,4 @@ services:
 volumes:
   elasticsearch-elguayabot-data:
     
-  postgres-elguayabot-data:
+  postgre-elguayabot-data:
