@@ -60,15 +60,11 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             services.AddScoped<IUnknownFlow, UnknownFlow>();
             services.AddScoped<IRandomTextFlow, RandomTextFlow>();
             services.AddScoped<IFlipCoinFlow, FlipCoinFlow>();
-            services.AddScoped<IAboutFlow, AboutFlow>();
             services.AddScoped<IHelpFlow, HelpFlow>();
-            services.AddScoped<IComandanteFlow, ComandanteFlow>();
             services.AddScoped<IFrutaFlow, FrutaFlow>();
             services.AddScoped<IWelcomeMessageFlow, WelcomeMessageFlow>();
-            services.AddScoped<IDabFlow, DabFlow>();
             services.AddScoped<ILeftChatMessageFlow, LeftChatMessageFlow>();
             services.AddScoped<ITenorGifFlow, TenorGifFlow>();
-            services.AddScoped<IComunicaTest, ComunicaTest>();
             services.AddScoped<IPutoGuayabaFlow, PutoGuayabaFlow>();
 
             return services;
