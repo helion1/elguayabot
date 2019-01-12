@@ -13,21 +13,20 @@ using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.NacionalidadLogi
 using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.NoEstesTristeLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using MihaZupan.TelegramBotClients;
 using NeoSmart.Unicode;
 
-namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.MiscellaneousMessageLogic
+namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsMiscellaneousDispatcherLogic
 {
-    public class MiscellaneousMessageHandler : AbstractHandler<MiscellaneousMessageRequest>
+    public class IsMiscellaneousDispatcherHandler : AbstractHandler<IsMiscellaneousDispatcherRequest>
     {
         private readonly IMediator _mediatR;
 
-        public MiscellaneousMessageHandler(IBotClient bot, ILogger<AbstractHandler<MiscellaneousMessageRequest>> logger, IMediator mediatR) : base(bot, logger)
+        public IsMiscellaneousDispatcherHandler(IBotClient bot, ILogger<AbstractHandler<IsMiscellaneousDispatcherRequest>> logger, IMediator mediatR) : base(bot, logger)
         {
             _mediatR = mediatR;
         }
 
-        public override async Task<Unit> Handle(MiscellaneousMessageRequest request, CancellationToken cancellationToken)
+        public override async Task<Unit> Handle(IsMiscellaneousDispatcherRequest request, CancellationToken cancellationToken)
         {
             var message = request.Message;
 

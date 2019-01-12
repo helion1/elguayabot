@@ -7,7 +7,8 @@
     <ItemGroup>
       <Folder Include="Background" />
       <Folder Include="Logic\Common" />
-      <Folder Include="Logic\OnUpdate" />
+      <Folder Include="Logic\OnUpdate\IsGroupChatCreated" />
+      <Folder Include="Logic\OnUpdate\IsSupergroupChatCreated" />
     </ItemGroup>
 
     <ItemGroup>

@@ -8,18 +8,18 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.UrlMessageLogic
+namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsUrlDispatcherLogic
 {
-    public class UrlMessageHandler : AbstractHandler<UrlMessageRequest>
+    public class IsUrlDispatcherHandler : AbstractHandler<IsUrlDispatcherRequest>
     {
         private readonly IMediator _mediatR;
 
-        public UrlMessageHandler(IBotClient bot, ILogger<AbstractHandler<UrlMessageRequest>> logger, IMediator mediatR) : base(bot, logger)
+        public IsUrlDispatcherHandler(IBotClient bot, ILogger<AbstractHandler<IsUrlDispatcherRequest>> logger, IMediator mediatR) : base(bot, logger)
         {
             _mediatR = mediatR;
         }
 
-        public override async Task<Unit> Handle(UrlMessageRequest request, CancellationToken cancellationToken)
+        public override async Task<Unit> Handle(IsUrlDispatcherRequest request, CancellationToken cancellationToken)
         {
             var message = request.Message;
 

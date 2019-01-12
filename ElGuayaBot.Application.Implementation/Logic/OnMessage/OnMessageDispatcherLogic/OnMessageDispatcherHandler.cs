@@ -3,9 +3,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
-using ElGuayaBot.Application.Implementation.Logic.OnMessage.CommandMessageLogic;
-using ElGuayaBot.Application.Implementation.Logic.OnMessage.MiscellaneousMessageLogic;
-using ElGuayaBot.Application.Implementation.Logic.OnMessage.UrlMessageLogic;
+using ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatcherLogic;
+using ElGuayaBot.Application.Implementation.Logic.OnMessage.IsMiscellaneousDispatcherLogic;
+using ElGuayaBot.Application.Implementation.Logic.OnMessage.IsUrlDispatcherLogic;
 using MediatR;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
@@ -34,6 +34,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatc
             }
 
             MessageEntity firstEntity = null;
+            
             if (message.Entities?.Length == 0)
             {
                 firstEntity = message.Entities.First();
@@ -41,15 +42,15 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatc
             
             if (firstEntity?.Type == MessageEntityType.BotCommand)
             {
-                await _mediatR.Send(new CommandMessageRequest { Message = message}, cancellationToken);
+                await _mediatR.Send(new IsCommandDispatcherRequest { Message = message}, cancellationToken);
             }
             else if (message.Entities != null && message.Entities.Any( m => m.Type == MessageEntityType.Url))
             {
-                await _mediatR.Send(new UrlMessageRequest { Message = message}, cancellationToken);
+                await _mediatR.Send(new IsUrlDispatcherRequest { Message = message}, cancellationToken);
             }
             else if (message.Text.Trim() != "")
             {
-                await _mediatR.Send(new MiscellaneousMessageRequest {Message = message}, cancellationToken);
+                await _mediatR.Send(new IsMiscellaneousDispatcherRequest {Message = message}, cancellationToken);
             }
             
             return Unit.Value;

@@ -16,18 +16,18 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.CommandMessageLogic
+namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatcherLogic
 {
-    public class CommandMessageHandler: AbstractHandler<CommandMessageRequest>
+    public class IsCommandDispatcherHandler: AbstractHandler<IsCommandDispatcherRequest>
     {
         private readonly IMediator _mediatR;
 
-        public CommandMessageHandler(IBotClient bot, ILogger<AbstractHandler<CommandMessageRequest>> logger, IMediator mediatR) : base(bot, logger)
+        public IsCommandDispatcherHandler(IBotClient bot, ILogger<AbstractHandler<IsCommandDispatcherRequest>> logger, IMediator mediatR) : base(bot, logger)
         {
             _mediatR = mediatR;
         }
 
-        public override async Task<Unit> Handle(CommandMessageRequest request, CancellationToken cancellationToken)
+        public override async Task<Unit> Handle(IsCommandDispatcherRequest request, CancellationToken cancellationToken)
         {
             var message = request.Message;
 

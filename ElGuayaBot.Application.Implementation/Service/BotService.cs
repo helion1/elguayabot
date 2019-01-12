@@ -1,21 +1,16 @@
 using System;
-using System.Linq;
 using System.Threading;
 using ElGuayaBot.Application.Contracts.Client;
-using ElGuayaBot.Application.Contracts.Flow;
 using ElGuayaBot.Application.Contracts.Service;
-using ElGuayaBot.Application.Implementation.Logic.Command.PingPongLogic;
 using ElGuayaBot.Application.Implementation.Logic.Common.EntityPersistenceLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatcherLogic;
+using ElGuayaBot.Application.Implementation.Logic.OnUpdate.OnUpdateDispatcherLogic;
 using ElGuayaBot.Persistence.Contracts;
-using ElGuayaBot.Persistence.Model;
 using MediatR;
 using MihaZupan.TelegramBotClients;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
-using Chat = ElGuayaBot.Persistence.Model.Chat;
-using User = ElGuayaBot.Persistence.Model.User;
 
 namespace ElGuayaBot.Application.Implementation.Service
 {
@@ -41,14 +36,14 @@ namespace ElGuayaBot.Application.Implementation.Service
             _bot.OnMessage += HandleEntityPeristance;
             _bot.OnMessage += HandleOnMessage;
 //            _bot.OnMessageEdited += BotOnMessageReceived;
-            _bot.OnUpdate += BotOnUpdateReceived;
+            _bot.OnUpdate += HandleOnUpdate;
 
             _bot.StartReceiving(Array.Empty<UpdateType>());
             Console.WriteLine($"Start listening for @{me.Username}");
 
             Thread.Sleep(int.MaxValue);
         }
-        
+
         private void HandleEntityPeristance(object sender, MessageEventArgs e)
         {
             MediatR.Send(new EntityPersistenceRequest { Message = e.Message });
@@ -56,36 +51,14 @@ namespace ElGuayaBot.Application.Implementation.Service
 
         private void HandleOnMessage(object sender, MessageEventArgs e)
         {
-            MediatR.Send(new OnMessageDispatcherRequest {Message = e.Message });
+            MediatR.Send(new OnMessageDispatcherRequest { Message = e.Message });
         }
 
-        private async void BotOnMessageReceived(object sender, MessageEventArgs e)
+        private void HandleOnUpdate(object sender, UpdateEventArgs e)
         {
-            var message = e.Message;
-    
-            if (message.SupergroupChatCreated)
-            {
-                //TODO
-
-                return;
-            }
-            
-            if (message.GroupChatCreated)
-            {
-                //TODO
-
-                return;
-            }
-
-            if (message == null || message.Type != MessageType.Text)
-            {
-                return;
-            }
-            
-            var firstWord = message.Text.Split(' ').First();
-            var restOfText = message.Text.Substring(message.Text.IndexOf(' ') + 1);
+            MediatR.Send(new OnUpdateDispatcherRequest { Update = e.Update });
         }
-
+        
         private void BotOnUpdateReceived(object sender, UpdateEventArgs e)
         {
             try
