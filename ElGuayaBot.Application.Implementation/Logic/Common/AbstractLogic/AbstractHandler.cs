@@ -11,13 +11,13 @@ namespace ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic
     {
         protected readonly BlockingTelegramBotClient Bot;
 
-        private readonly ILogger _logger;
+        protected readonly ILogger<AbstractHandler<T>> Logger;
 
-        protected AbstractHandler(IBotClient bot, ILogger logger)
+        protected AbstractHandler(IBotClient bot, ILogger<AbstractHandler<T>> logger)
         {
             Bot = bot.Client;
 
-            _logger = logger;
+            Logger = logger;
         }
 
         public abstract Task<Unit> Handle(T request, CancellationToken cancellationToken);

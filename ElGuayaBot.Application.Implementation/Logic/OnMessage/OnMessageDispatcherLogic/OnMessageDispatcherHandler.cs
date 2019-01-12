@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.CommandMessageLogic;
+using ElGuayaBot.Application.Implementation.Logic.OnMessage.MiscellaneousMessageLogic;
+using ElGuayaBot.Application.Implementation.Logic.OnMessage.UrlMessageLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using MihaZupan.TelegramBotClients;
@@ -15,7 +17,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatc
     {
         private readonly IMediator _mediatR;
 
-        public OnMessageDispatcherHandler(IBotClient bot, ILogger<OnMessageDispatcherHandler> logger, IMediator mediatR) : base(bot, logger)
+        public OnMessageDispatcherHandler(IBotClient bot, ILogger<AbstractHandler<OnMessageDispatcherRequest>> logger, IMediator mediatR) : base(bot, logger)
         {
             _mediatR = mediatR;
         }
@@ -34,32 +36,16 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatc
             if (firstEntity != null && firstEntity.Type == MessageEntityType.BotCommand)
             {
                 await _mediatR.Send(new CommandMessageRequest { Message = message}, cancellationToken);
-                
             }
             else if (message.Entities.Any( m => m.Type == MessageEntityType.Url))
             {
-                //URL
-                //                if (message.Text.ToLower().Contains(".gif") && message.Text.ToLower().StartsWith("https://"))
-//                {
-//                    _tenorGifFlow.Initiate(message);
-//                }
+                await _mediatR.Send(new UrlMessageRequest { Message = message}, cancellationToken);
             }
-            else
-            {            
-
-//                else
-//                {
-//                    if(message.Text.ToLower().Contains("puto guayaba"))
-//                    {
-//                        _putoGuayaba.Initiate(message);
-//                    }
-//                    else
-//                    {
-//                        _randomTextFlow.Initiate(message);
-//                    }
-//
-//                }
-            }            
+            else if (message.Text.Trim() != "")
+            {
+                await _mediatR.Send(new MiscellaneousMessageRequest {Message = message}, cancellationToken);
+            }
+            
             return Unit.Value;
         }
     }

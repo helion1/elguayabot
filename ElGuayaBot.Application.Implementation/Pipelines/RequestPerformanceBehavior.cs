@@ -32,7 +32,7 @@ namespace ElGuayaBot.Application.Implementation.Pipelines
 
                 // TODO: Add User Details
 
-                _logger.LogWarning("Argo Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
+                _logger.LogWarning("ElGuayaBot Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
             }
 
             return response;

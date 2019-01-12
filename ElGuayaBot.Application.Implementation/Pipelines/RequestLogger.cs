@@ -20,7 +20,7 @@ namespace ElGuayaBot.Application.Implementation.Pipelines
 
             //TODO: Add User Details
 
-            _logger.LogInformation("Argo Request: {Name} {@Request}", name, request);
+            _logger.LogInformation("ElGuayaBot Request: {Name} {@Request}", name, request);
 
             return Task.CompletedTask;
         }

@@ -5,14 +5,13 @@ using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
-using MihaZupan.TelegramBotClients;
 using Telegram.Bot.Types.Enums;
 
 namespace ElGuayaBot.Application.Implementation.Logic.Command.PingPongLogic
 {
-    public class PingPongHandler: AbstractHandler<PingPongRequest>
+    public class PingPongHandler : AbstractHandler<PingPongRequest>
     {
-        public PingPongHandler(IBotClient bot, ILogger<PingPongHandler> logger) : base(bot, logger)
+        public PingPongHandler(IBotClient bot, ILogger<AbstractHandler<PingPongRequest>> logger) : base(bot, logger)
         {
         }
         

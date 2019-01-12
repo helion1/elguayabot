@@ -10,12 +10,23 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.MiscellaneousMes
 {
     public class MiscellaneousMessageHandler : AbstractHandler<MiscellaneousMessageRequest>
     {
-        public MiscellaneousMessageHandler(IBotClient bot, ILogger<MiscellaneousMessageHandler> logger) : base(bot, logger)
+        public MiscellaneousMessageHandler(IBotClient bot, ILogger<AbstractHandler<MiscellaneousMessageRequest>> logger) : base(bot, logger)
         {
         }
 
         public override Task<Unit> Handle(MiscellaneousMessageRequest request, CancellationToken cancellationToken)
         {
+            //                else
+//                {
+//                    if(message.Text.ToLower().Contains("puto guayaba"))
+//                    {
+//                        _putoGuayaba.Initiate(message);
+//                    }
+//                    else
+//                    {
+//                        _randomTextFlow.Initiate(message);
+//                    }
+//
             throw new System.NotImplementedException();
         }
     }
