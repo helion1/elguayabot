@@ -7,9 +7,7 @@
     <ItemGroup>
       <Folder Include="Background" />
       <Folder Include="Logic\Common" />
-      <Folder Include="Logic\Miscellaneous" />
       <Folder Include="Logic\OnUpdate" />
-      <Folder Include="Logic\Url" />
     </ItemGroup>
 
     <ItemGroup>

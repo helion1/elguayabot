@@ -57,15 +57,8 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             
             // Register flows (Erase this when possible)
-            services.AddScoped<IUnknownFlow, UnknownFlow>();
-            services.AddScoped<IRandomTextFlow, RandomTextFlow>();
-            services.AddScoped<IFlipCoinFlow, FlipCoinFlow>();
-            services.AddScoped<IHelpFlow, HelpFlow>();
-            services.AddScoped<IFrutaFlow, FrutaFlow>();
             services.AddScoped<IWelcomeMessageFlow, WelcomeMessageFlow>();
             services.AddScoped<ILeftChatMessageFlow, LeftChatMessageFlow>();
-            services.AddScoped<ITenorGifFlow, TenorGifFlow>();
-            services.AddScoped<IPutoGuayabaFlow, PutoGuayabaFlow>();
 
             return services;
         }

@@ -7,8 +7,10 @@ using ElGuayaBot.Application.Implementation.Logic.OnMessage.CommandMessageLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.MiscellaneousMessageLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.UrlMessageLogic;
 using MediatR;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
 using MihaZupan.TelegramBotClients;
+using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
 namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatcherLogic
@@ -31,13 +33,17 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatc
                 return Unit.Value;
             }
 
-            var firstEntity = message.Entities.FirstOrDefault();
+            MessageEntity firstEntity = null;
+            if (message.Entities?.Length == 0)
+            {
+                firstEntity = message.Entities.First();
+            }
             
-            if (firstEntity != null && firstEntity.Type == MessageEntityType.BotCommand)
+            if (firstEntity?.Type == MessageEntityType.BotCommand)
             {
                 await _mediatR.Send(new CommandMessageRequest { Message = message}, cancellationToken);
             }
-            else if (message.Entities.Any( m => m.Type == MessageEntityType.Url))
+            else if (message.Entities != null && message.Entities.Any( m => m.Type == MessageEntityType.Url))
             {
                 await _mediatR.Send(new UrlMessageRequest { Message = message}, cancellationToken);
             }

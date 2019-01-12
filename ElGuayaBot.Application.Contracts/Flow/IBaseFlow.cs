@@ -5,7 +5,5 @@ namespace ElGuayaBot.Application.Contracts.Flow
     public interface IBaseFlow
     {
         void Initiate(Message message);
-
-        bool IsAllUpper(string input);
     }
 }
