@@ -26,6 +26,8 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.ComunicaLogic
         {
             var message = request.Message;
             
+            var restOfText = message.Text.Substring(message.Text.IndexOf(' ') + 1);
+            
             if (message.Text.Trim() != "" && UserHasRights(message))
             {
                 try
@@ -33,7 +35,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.ComunicaLogic
                     var sb = new StringBuilder( "<b>El Guayaba Comunica:</b> ");
                     
                     sb.Append("<i>");
-                    sb.Append(message.Text);
+                    sb.Append(restOfText);
                     sb.Append("</i>");
 
                     var comunicaMessage = sb.ToString();
@@ -46,7 +48,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.ComunicaLogic
 
                         if (chat.Type == ChatType.Supergroup.ToString())
                         {
-                            PinGuayabaComunicaMessage(messageSent, cancellationToken);                            
+                            await PinGuayabaComunicaMessage(messageSent, cancellationToken);                            
                         }
                     }
                 }

@@ -84,29 +84,6 @@ namespace ElGuayaBot.Application.Implementation.Service
             
             var firstWord = message.Text.Split(' ').First();
             var restOfText = message.Text.Substring(message.Text.IndexOf(' ') + 1);
-
-//            if (firstWord.StartsWith("/"))
-//            {
-//            }
-//            else
-//            {            
-//                if (message.Text.ToLower().Contains(".gif") && message.Text.ToLower().StartsWith("https://"))
-//                {
-//                    _tenorGifFlow.Initiate(message);
-//                }
-//                else
-//                {
-//                    if(message.Text.ToLower().Contains("puto guayaba"))
-//                    {
-//                        _putoGuayaba.Initiate(message);
-//                    }
-//                    else
-//                    {
-//                        _randomTextFlow.Initiate(message);
-//                    }
-//
-//                }
-//            }
         }
 
         private void BotOnUpdateReceived(object sender, UpdateEventArgs e)
