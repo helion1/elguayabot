@@ -28,7 +28,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.ComunicaLogic
             
             var restOfText = message.Text.Substring(message.Text.IndexOf(' ') + 1);
             
-            if (restOfText.Trim() != "" && UserHasRights(message))
+            if (restOfText != message.Text && restOfText.Trim() != "" && UserHasRights(message))
             {
                 try
                 {

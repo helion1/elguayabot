@@ -20,16 +20,15 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.EchoLogic
             
             var restOfText = message.Text.Substring(message.Text.IndexOf(' ') + 1);
 
-            if (restOfText.Trim() != "")
+            if (restOfText != message.Text && restOfText.Trim() != "")
             {
                 await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id, 
-                    text: message.Text,
+                    text: restOfText,
                     parseMode: ParseMode.Markdown, 
                     cancellationToken: cancellationToken);
             }
 
-            
             return Unit.Value;
         }
     }
