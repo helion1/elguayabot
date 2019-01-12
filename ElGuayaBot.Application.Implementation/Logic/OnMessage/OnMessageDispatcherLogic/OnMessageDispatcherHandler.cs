@@ -35,7 +35,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatc
 
             MessageEntity firstEntity = null;
             
-            if (message.Entities?.Length == 0)
+            if (message.Entities?.Length != 0)
             {
                 firstEntity = message.Entities.First();
             }
