@@ -6,6 +6,7 @@ using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Telegram.Bot.Types.Enums;
 
 namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.CallateLaJetaLogic
 {
@@ -36,7 +37,8 @@ namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.CallateLaJet
             {
                 await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
-                    text: responses[r],
+                    text: response,
+                    parseMode: ParseMode.Html,
                     replyToMessageId: message.MessageId,
                     cancellationToken: cancellationToken);
             }

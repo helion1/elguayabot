@@ -4,6 +4,7 @@ using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Telegram.Bot.Types.Enums;
 
 namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.ButGoldLogic
 {
@@ -19,7 +20,8 @@ namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.ButGoldLogic
             
             await Bot.SendTextMessageAsync(
                 chatId: message.Chat.Id,
-                text: "but (g)old",
+                text: "but (<b>g</b>)old",
+                parseMode: ParseMode.Html,
                 cancellationToken: cancellationToken);
             
             return Unit.Value;

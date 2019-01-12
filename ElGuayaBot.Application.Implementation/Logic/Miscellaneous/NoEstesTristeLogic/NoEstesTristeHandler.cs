@@ -6,6 +6,7 @@ using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Telegram.Bot.Types.Enums;
 
 namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.NoEstesTristeLogic
 {
@@ -33,11 +34,12 @@ namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.NoEstesTrist
             
             var response = $"{responses[r]}";
 
-            if (r % 2 == 0)
+            if (DateTime.Now.Millisecond % 2 == 0)
             {
                 await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id,
                     text: response,
+                    parseMode: ParseMode.Html,
                     replyToMessageId: message.MessageId,
                     cancellationToken: cancellationToken);
             }
