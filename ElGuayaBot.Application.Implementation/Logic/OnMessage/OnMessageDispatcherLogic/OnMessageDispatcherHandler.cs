@@ -7,9 +7,7 @@ using ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatcherL
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.IsMiscellaneousDispatcherLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.IsUrlDispatcherLogic;
 using MediatR;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Logging;
-using MihaZupan.TelegramBotClients;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
@@ -35,7 +33,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatc
 
             MessageEntity firstEntity = null;
             
-            if (message.Entities?.Length != 0)
+            if (message.Entities != null && message.Entities.Length != 0)
             {
                 firstEntity = message.Entities.First();
             }

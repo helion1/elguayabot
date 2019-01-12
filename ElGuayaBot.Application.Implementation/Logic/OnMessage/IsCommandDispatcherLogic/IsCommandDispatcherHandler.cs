@@ -33,11 +33,9 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatc
 
             await Bot.SendChatActionAsync(message.Chat.Id, ChatAction.Typing, cancellationToken);
             
-            var command = message.EntityValues.FirstOrDefault();
+            var command = message.EntityValues.First();
 
-            var restOfText = message.Text.Substring(message.Text.IndexOf(' ') + 1);
-
-            switch (command)
+            switch (command.Substring(0, command.IndexOf('@')))
             {
                 case "/about":
                     await _mediatR.Send(new AboutRequest { Message = message });
