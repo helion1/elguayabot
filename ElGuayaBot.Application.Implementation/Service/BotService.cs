@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Contracts.Service;
 using ElGuayaBot.Application.Implementation.Logic.Common.EntityPersistenceLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatcherLogic;
@@ -17,9 +18,9 @@ namespace ElGuayaBot.Application.Implementation.Service
         
         protected readonly IMediator MediatR;
 
-        public BotService(BlockingTelegramBotClient bot, IMediator mediatR)
+        public BotService(IBotClient bot, IMediator mediatR)
         {
-            Bot = bot;
+            Bot = bot.Client;
             MediatR = mediatR;
         }
 
