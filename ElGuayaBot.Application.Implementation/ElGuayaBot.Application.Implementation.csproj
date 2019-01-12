@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Background" />
+      <Folder Include="Logic\Common" />
+      <Folder Include="Logic\OnUpdate\IsGroupChatCreated" />
+      <Folder Include="Logic\OnUpdate\IsSupergroupChatCreated" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="8.1.2" />
+      <PackageReference Include="MediatR" Version="6.0.0" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
+      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+      <PackageReference Include="Unicode.net" Version="0.1.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\ElGuayaBot.Application.Contracts\ElGuayaBot.Application.Contracts.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Persistence.Contracts\ElGuayaBot.Persistence.Contracts.csproj" />
+    </ItemGroup>
+
+</Project>
