@@ -20,7 +20,7 @@ namespace ElGuayaBot.Application.Implementation.Background
             {
                 var botService = scope.ServiceProvider.GetRequiredService<IBotService>();
                 
-                botService.Start();
+                botService.FundarRepublica();
             }
 
             return Task.CompletedTask;

@@ -55,10 +55,6 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             
             // Register UoW
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            
-            // Register flows (Erase this when possible)
-            services.AddScoped<IWelcomeMessageFlow, WelcomeMessageFlow>();
-            services.AddScoped<ILeftChatMessageFlow, LeftChatMessageFlow>();
 
             return services;
         }
