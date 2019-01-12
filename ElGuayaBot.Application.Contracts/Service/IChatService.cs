@@ -12,5 +12,6 @@ namespace ElGuayaBot.Application.Contracts.Service
         Task AddAsync(long chatId, ChatType chatType, string chatTitle);
 
         IEnumerable<Chat> GetGroupAndSupergroupChats();
+        Task UpdateTitleForChat(long chatId, string messageNewChatTitle);
     }
 }

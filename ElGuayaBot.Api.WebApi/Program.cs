@@ -31,15 +31,21 @@ namespace ElGuayaBot.Api.WebApi
         {
             var elasticUri = Configuration.GetConnectionString("ElasticSearch");
 
-            Log.Logger = new LoggerConfiguration()
+            var loggerConf = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .Enrich.WithExceptionDetails()
                 .WriteTo.Console()
                 .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri(elasticUri))
                 {
-                    AutoRegisterTemplate = true,
-                })
-                .CreateLogger();
+                    AutoRegisterTemplate = true
+                });
+
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+            {
+                loggerConf.MinimumLevel.Warning();
+            }
+            
+            Log.Logger = loggerConf.CreateLogger();
             
             try
             {

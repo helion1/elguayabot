@@ -4,6 +4,7 @@ using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnUpdate.IsLeftChatMemberLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnUpdate.IsNewChatMembersLogic;
+using ElGuayaBot.Application.Implementation.Logic.OnUpdate.IsNewChatTitleLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -31,6 +32,9 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnUpdate.OnUpdateDispatche
             else if (message?.LeftChatMember != null)
             {
                 await _mediatR.Send(new IsLeftChatMemberRequest {Update = update}, cancellationToken);
+            } else if (message?.NewChatTitle != null)
+            {
+                await _mediatR.Send(new IsNewChatTitleRequest {Update = update}, cancellationToken);
             }
             
             return Unit.Value;
