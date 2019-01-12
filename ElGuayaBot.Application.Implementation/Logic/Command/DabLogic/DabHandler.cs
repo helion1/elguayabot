@@ -38,7 +38,6 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.DabLogic
                         document: luckyUrl,
                         caption: "Dabbing for VNZL",
                         parseMode: Telegram.Bot.Types.Enums.ParseMode.Html,
-                        replyToMessageId: message.MessageId,
                         cancellationToken: cancellationToken);
                 }
                 else
@@ -46,7 +45,6 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.DabLogic
                     await Bot.SendTextMessageAsync(
                         chatId: message.Chat.Id,
                         text: "No he podido encontrar un dab adecuado. USA debe haberlo embargado. Vuelve a intentarlo.",
-                        replyToMessageId: message.MessageId,
                         cancellationToken: cancellationToken);
                 }
             }
