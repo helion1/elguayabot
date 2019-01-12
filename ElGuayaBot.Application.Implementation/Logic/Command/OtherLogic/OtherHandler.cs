@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayaBot.Application.Contracts.Client;
@@ -13,9 +15,33 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.OtherLogic
         {
         }
 
-        public override Task<Unit> Handle(OtherRequest request, CancellationToken cancellationToken)
+        public override async Task<Unit> Handle(OtherRequest request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            var message = request.Message;
+            
+            var responses = new List<string>
+            {
+                "No te entiendo maldito lázaro",
+                "Sacate el huevo de la boca"
+            };
+            
+            //TODO: refactor this random mess
+            var rnd = new Random();
+
+            var r = rnd.Next(responses.Count);
+
+            var r2 = rnd.Next(10);
+            
+            if (r2 == 1)
+            {
+                await Bot.SendTextMessageAsync(
+                    chatId: message.Chat.Id,
+                    text: responses[r],
+                    replyToMessageId: message.MessageId,
+                    cancellationToken: cancellationToken);
+            }
+            
+            return Unit.Value;
         }
     }
 }
