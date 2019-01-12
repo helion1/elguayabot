@@ -1,5 +1,6 @@
 using System;
-using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using ElGuayaBot.Application.Contracts.Service;
 using ElGuayaBot.Persistence.Contracts;
@@ -55,6 +56,11 @@ namespace ElGuayaBot.Application.Implementation.Service
             {
                 _logger.LogError($"Error persisting chat with id: {chatId}", e);
             }
+        }
+
+        public IEnumerable<Chat> GetGroupAndSupergroupChats()
+        {
+            return _unitOfWork.ChatRepository.GetAll().Where(ch => ch.Type == "Group" || ch.Type == "Supergroup");
         }
     }
 }

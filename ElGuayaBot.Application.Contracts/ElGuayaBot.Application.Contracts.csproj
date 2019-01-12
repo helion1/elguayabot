@@ -15,4 +15,8 @@
       </Reference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ElGuayaBot.Persistence.Model\ElGuayaBot.Persistence.Model.csproj" />
+    </ItemGroup>
+
 </Project>
