@@ -15,7 +15,7 @@ namespace ElGuayaBot.Application.Implementation.Flow
 
         public override async void Initiate(Message message)
         {
-            var responses = new List<string>()
+            var responses = new List<string>
             {
                 "Si la piña es conocida como el 'rey' de las frutas, entonces la guayaba se considera la reina",
                 "Se cree que es originaria del sur de América Central y México, donde ha sido un cultivo importante durante varios siglos, las guayabas son miembros de la familia de mirto y el eucalipto, que crece en las zonas tropicales en pequeños árboles con corteza lisa, de color cobre",
