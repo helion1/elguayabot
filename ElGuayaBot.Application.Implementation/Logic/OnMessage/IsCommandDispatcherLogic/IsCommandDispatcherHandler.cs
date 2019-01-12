@@ -35,7 +35,12 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatc
             
             var command = message.EntityValues.First();
 
-            switch (command.Substring(0, command.IndexOf('@')))
+            if (command.Contains('@'))
+            {
+                command = command.Substring(0, command.IndexOf('@'));
+            }
+            
+            switch (command)
             {
                 case "/about":
                     await _mediatR.Send(new AboutRequest { Message = message });
