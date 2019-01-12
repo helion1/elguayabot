@@ -62,5 +62,23 @@ namespace ElGuayaBot.Application.Implementation.Service
         {
             return _unitOfWork.ChatRepository.GetAll().Where(ch => ch.Type == "Group" || ch.Type == "Supergroup");
         }
+
+        public async Task UpdateTitleForChat(long chatId, string newChatTitle)
+        {
+            try
+            {
+                var chat = _unitOfWork.ChatRepository.GetById(chatId);
+
+                chat.Title = newChatTitle;
+
+                _unitOfWork.ChatRepository.Update(chat);
+                
+                await _unitOfWork.SaveAsync();
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Error updating title for chat with id: {chatId}", e);
+            }
+        }
     }
 }
