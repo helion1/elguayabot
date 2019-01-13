@@ -35,7 +35,7 @@ namespace ElGuayaBot.Persistence.Implementation.Context
 
                 entity.Property(e => e.FirstInteractionDate).HasColumnType("datetime");
 
-                entity.Property(e => e.Title).HasMaxLength(100);
+                entity.Property(e => e.Title).HasMaxLength(250);
 
                 entity.Property(e => e.Type)
                     .IsRequired()
@@ -69,7 +69,6 @@ namespace ElGuayaBot.Persistence.Implementation.Context
                     .IsUnicode(false);
 
                 entity.Property(e => e.Username)
-                    .IsRequired()
                     .HasMaxLength(100);
             });
 

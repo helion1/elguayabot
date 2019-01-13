@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using ElGuayaBot.Persistence.Contracts.Repository;
 using ElGuayaBot.Persistence.Implementation.Context;
@@ -9,19 +8,19 @@ namespace ElGuayaBot.Persistence.Implementation.Repository
 {
     public abstract class AbstractGenericRepository<TC, TE> : IAbstractGenericRepository<TC, TE> where TC : ElGuayaBotDbContext where TE : class
     {
-        internal readonly TC Context;
+        protected readonly TC Context;
         
-        internal readonly DbSet<TE> DbSet;
+        protected readonly DbSet<TE> DbSet;
 
-        public AbstractGenericRepository(TC dbContext)
+        protected AbstractGenericRepository(TC dbContext)
         {
-            this.Context = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-            this.DbSet = dbContext.Set<TE>();
+            Context = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
+            DbSet = dbContext.Set<TE>();
         }
 
         public virtual IQueryable<TE> GetAll()
         {
-            return DbSet as IQueryable<TE>;
+            return DbSet;
         }
 
         public virtual TE GetById(object id)

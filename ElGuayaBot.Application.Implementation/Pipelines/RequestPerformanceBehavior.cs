@@ -26,13 +26,15 @@ namespace ElGuayaBot.Application.Implementation.Pipelines
 
             _timer.Stop();
 
-            if (_timer.ElapsedMilliseconds > 3000)
+            if (_timer.ElapsedMilliseconds <= 3000)
             {
-                var name = typeof(TRequest).Name;
-
-
-                _logger.LogWarning("ElGuayaBot Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
+                return response;
             }
+
+            var name = typeof(TRequest).Name;
+
+
+            _logger.LogWarning("ElGuayaBot Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
 
             return response;
         }
