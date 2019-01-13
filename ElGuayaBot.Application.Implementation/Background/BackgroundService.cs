@@ -19,13 +19,9 @@ namespace ElGuayaBot.Application.Implementation.Background
 
             // If the task is completed then return it,
             // this will bubble cancellation and failure to the caller
-            if (_executingTask.IsCompleted)
-            {
-                return _executingTask;
-            }
+            return _executingTask.IsCompleted ? _executingTask : Task.CompletedTask;
 
             // Otherwise it's running
-            return Task.CompletedTask;
         }
 
         public virtual async Task StopAsync(CancellationToken cancellationToken)

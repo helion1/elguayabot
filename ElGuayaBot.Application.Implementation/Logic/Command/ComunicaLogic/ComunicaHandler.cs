@@ -27,35 +27,37 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.ComunicaLogic
             var message = request.Message;
             
             var restOfText = message.Text.Substring(message.Text.IndexOf(' ') + 1);
-            
-            if (restOfText != message.Text && restOfText.Trim() != "" && UserHasRights(message))
+
+            if (restOfText == message.Text || restOfText.Trim() == "" || !UserHasRights(message))
             {
-                try
-                {
-                    var sb = new StringBuilder( "<b>El Guayaba Comunica:</b> ");
+                return Unit.Value;
+            }
+
+            try
+            {
+                var sb = new StringBuilder( "<b>El Guayaba Comunica:</b> ");
                     
-                    sb.Append("<i>");
-                    sb.Append(restOfText);
-                    sb.Append("</i>");
+                sb.Append("<i>");
+                sb.Append(restOfText);
+                sb.Append("</i>");
 
-                    var comunicaMessage = sb.ToString();
+                var comunicaMessage = sb.ToString();
 
-                    var chats = _chatService.GetGroupAndSupergroupChats();
+                var chats = _chatService.GetGroupAndSupergroupChats();
 
-                    foreach (var chat in chats)
+                foreach (var chat in chats)
+                {
+                    var messageSent = await SendGuayabaComunicaMessage(chat.Id, comunicaMessage, cancellationToken);
+
+                    if (chat.Type == ChatType.Supergroup.ToString())
                     {
-                        var messageSent = await SendGuayabaComunicaMessage(chat.Id, comunicaMessage, cancellationToken);
-
-                        if (chat.Type == ChatType.Supergroup.ToString())
-                        {
-                            await PinGuayabaComunicaMessage(messageSent, cancellationToken);                            
-                        }
+                        await PinGuayabaComunicaMessage(messageSent, cancellationToken);                            
                     }
                 }
-                catch (Exception e)
-                {
-                    Logger.LogError("Error handling Guayaba Comunica request", e);
-                }
+            }
+            catch (Exception e)
+            {
+                Logger.LogError("Error handling Guayaba Comunica request", e);
             }
 
             return Unit.Value;
