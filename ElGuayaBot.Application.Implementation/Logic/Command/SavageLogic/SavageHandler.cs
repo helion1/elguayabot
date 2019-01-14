@@ -9,13 +9,13 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayaBot.Application.Implementation.Logic.Command.SavageLogic
 {
-    public class SavageHandler : AbstractHandler<AbstractMessageRequest>
+    public class SavageHandler : AbstractHandler<SavageRequest>
     {
-        public SavageHandler(IBotClient bot, ILogger<AbstractHandler<AbstractMessageRequest>> logger) : base(bot, logger)
+        public SavageHandler(IBotClient bot, ILogger<AbstractHandler<SavageRequest>> logger) : base(bot, logger)
         {
         }
 
-        public override async Task<Unit> Handle(AbstractMessageRequest request, CancellationToken cancellationToken)
+        public override async Task<Unit> Handle(SavageRequest request, CancellationToken cancellationToken)
         {
             var message = request.Message;
 
