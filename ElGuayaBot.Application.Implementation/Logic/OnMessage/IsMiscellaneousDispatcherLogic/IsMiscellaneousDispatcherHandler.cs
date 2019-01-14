@@ -44,7 +44,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsMiscellaneousD
             {
                 await _mediatR.Send(new NacionalidadRequest { Message = message }, cancellationToken);
             } 
-            else if (text.ToLower().Contains(":(") || text.ToLower().Contains("😭") || text.ToLower().Contains("☹️"))
+            else if (NoEstesTristeTrigger(text))
             {
                 await _mediatR.Send(new NoEstesTristeRequest { Message = message }, cancellationToken);
             } 
@@ -91,6 +91,20 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsMiscellaneousD
             }
             
             return containsLetters;
+        }
+
+        private bool NoEstesTristeTrigger(string text)
+        {
+            return text.ToLower().Contains("😭") 
+                   || text.ToLower().Contains("😢") 
+                   || text.ToLower().Contains("😖") 
+                   || text.ToLower().Contains("😖") 
+                   || text.ToLower().Contains("😿")
+                   || text.ToLower().Contains("😫")
+                   || text.ToLower().Contains(":(")
+                   || text.ToLower().Contains(":-(")
+                   || text.ToLower().Contains(":'(")
+                   || text.ToLower().Contains("¡_¡");
         }
     }
 }
