@@ -50,7 +50,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatc
                 case "/comandante":
                     await _mediatR.Send(new ComandanteRequest { Message = message });
                     break;
-                case "//comepingas":
+                case "/comepingas":
                     await _mediatR.Send(new ComepingasRequest { Message = message });
                     break;
                 case "/comunica":
