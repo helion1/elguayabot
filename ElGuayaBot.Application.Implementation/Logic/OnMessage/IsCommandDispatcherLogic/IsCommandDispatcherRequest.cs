@@ -2,7 +2,7 @@ using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 
 namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatcherLogic
 {
-    public class IsCommandDispatcherRequest: AbstractRequest
+    public class IsCommandDispatcherRequest: AbstractMessageRequest
     {
         
     }

@@ -24,7 +24,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.EchoLogic
             {
                 await Bot.SendTextMessageAsync(
                     chatId: message.Chat.Id, 
-                    text: restOfText,
+                    text: $"`{restOfText}`",
                     parseMode: ParseMode.Markdown, 
                     cancellationToken: cancellationToken);
             }

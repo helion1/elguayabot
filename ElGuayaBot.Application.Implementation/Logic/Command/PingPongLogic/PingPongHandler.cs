@@ -21,11 +21,11 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.PingPongLogic
             
             var sentDate = message.Date;
             var receivedDate = DateTime.UtcNow;
-            var difference = (receivedDate - sentDate) * 1;
+            var difference = (receivedDate - sentDate) * -1 * -1;
             
             await Bot.SendTextMessageAsync(
                 chatId: message.Chat.Id, 
-                text: $"pong! He tardado `{difference.TotalSeconds:N2}` milisegundos en recibir tu mensaje. Los mismos que duras tu en la cama, muerdealmohadas",
+                text: $"_pong!_ He tardado `{difference.TotalSeconds:N2}` milisegundos en recibir _tu_ mensaje. Los mismos que duras tu en la cama, *muerdealmohadas*",
                 parseMode: ParseMode.Markdown, 
                 cancellationToken: cancellationToken);
             

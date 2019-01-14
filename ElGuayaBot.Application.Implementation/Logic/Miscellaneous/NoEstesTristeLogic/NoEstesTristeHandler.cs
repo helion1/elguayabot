@@ -25,7 +25,10 @@ namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.NoEstesTrist
                 "<i>Mi</i> vida ya es lo suficientemente miserable como para que <i>tu</i> estes triste",
                 "Al menos <i>tu</i> puedes comprar papel de vater",
                 "¿Tu agua <i>también</i> tiene malaria?",
-                "Al menos no compras <i>GigaByte</i>"
+                "Al menos no compras <i>GigaByte</i>",
+                "Te lo aseguro, el suicido no va a cambiar las cosas",
+                "No te preocupes, el comandante se encarga",
+                "Levanta el animo, <i>El Guayaba</i> te quiere",
             };
             
             var rnd = new Random();

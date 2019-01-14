@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayaBot.Application.Contracts.Client;
+using ElGuayaBot.Application.Implementation.Logic.Command.SavageLogic;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.AlFinalMeMosqueoLogic;
 using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.ButGoldLogic;
@@ -44,7 +45,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsMiscellaneousD
             {
                 await _mediatR.Send(new NacionalidadRequest { Message = message }, cancellationToken);
             } 
-            else if (text.ToLower().Contains(":(") || text.ToLower().Contains("😭") || text.ToLower().Contains("☹️"))
+            else if (NoEstesTristeTrigger(text))
             {
                 await _mediatR.Send(new NoEstesTristeRequest { Message = message }, cancellationToken);
             } 
@@ -63,6 +64,10 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsMiscellaneousD
             else if(message.Text.ToLower().Contains("maldito guayaba") || message.Text.ToLower().Contains("bendito guayaba"))
             {
                 await _mediatR.Send(new MalditoGuayabaRequest { Message = message }, cancellationToken);
+            }
+            else if (message.Text.ToLower().Contains("😂😂😂😂😂😂😂😂😂😂"))
+            {
+                await _mediatR.Send(new SavageRequest {Message = message}, cancellationToken);
             }
 
             return Unit.Value;
@@ -91,6 +96,20 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsMiscellaneousD
             }
             
             return containsLetters;
+        }
+
+        private bool NoEstesTristeTrigger(string text)
+        {
+            return text.ToLower().Contains("😭") 
+                   || text.ToLower().Contains("😢") 
+                   || text.ToLower().Contains("😖") 
+                   || text.ToLower().Contains("😖") 
+                   || text.ToLower().Contains("😿")
+                   || text.ToLower().Contains("😫")
+                   || text.ToLower().Contains(":(")
+                   || text.ToLower().Contains(":-(")
+                   || text.ToLower().Contains(":'(")
+                   || text.ToLower().Contains("¡_¡");
         }
     }
 }
