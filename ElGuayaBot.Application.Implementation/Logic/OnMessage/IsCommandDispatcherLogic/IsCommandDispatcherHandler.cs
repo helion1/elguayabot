@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Implementation.Logic.Command.AboutLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.ComandanteLogic;
+using ElGuayaBot.Application.Implementation.Logic.Command.ComepingasLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.ComunicaLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.DabLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.EchoLogic;
@@ -48,6 +49,9 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatc
                     break;
                 case "/comandante":
                     await _mediatR.Send(new ComandanteRequest { Message = message });
+                    break;
+                case "//comepingas":
+                    await _mediatR.Send(new ComepingasRequest { Message = message });
                     break;
                 case "/comunica":
                     await _mediatR.Send(new ComunicaRequest { Message = message });
