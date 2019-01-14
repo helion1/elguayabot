@@ -24,7 +24,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.Nacionalidad
                 "La primera gestoría no valió de nada",
                 "Cuando pedi el de la segunda me llego el de la primera",
                 "Fuí victima de racismo",
-                "Soy español, queridos compradres",
+                "Soy español, queridos compadres",
                 "llegué el 19 de mayo y me lo dieron hace una semana",
                 "Tan solo he necesitado 5 meses y 3 días para obtener la nacionalidad",
                 "en teoría si es por primera vez y tienes todos los recaudos tardas un solo día"
