@@ -54,18 +54,18 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.ComepingasLogic
             if (message.Entities.Any(m => m.Type == MessageEntityType.Mention))
             {
                 var user = message.EntityValues.First(m => m.StartsWith("@"));
-                
-                return $"{user} eres un";
+
+                return user.ToLower() != "@elguayabot" ? $"{user} eres un" : $"@{message.From.Username} eres un maldito";
             }
 
             if (message.Entities.Any(m => m.Type == MessageEntityType.TextMention))
             {
                 var user = message.Entities.First(m => m.Type == MessageEntityType.TextMention).User.FirstName;
+                
                 return $"<i>{user}</i> eres un";
-
             }
             
-            return "Todos <i>ustedes</i> son unos";
+            return "Todos <i>ustedes</i> son unos malditos";
         }
     }
 }
