@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ElGuayaBot.Application.Contracts.Service;
@@ -22,6 +21,26 @@ namespace ElGuayaBot.Application.Implementation.Service
             _logger = logger;
         }
 
+        public IQueryable<Chat> GetAllChats()
+        {
+            return _unitOfWork.ChatRepository.GetAll();
+        }
+
+        public IQueryable<Chat> GetGroupChats()
+        {
+            return _unitOfWork.ChatRepository.GetAll().Where(ch => ch.Type == "Group");
+        }
+
+        public IQueryable<Chat> GetSupergroupChats()
+        {
+            return _unitOfWork.ChatRepository.GetAll().Where(ch => ch.Type == "Supergroup");
+        }
+
+        public IQueryable<Chat> GetPrivateChats()
+        {
+            return _unitOfWork.ChatRepository.GetAll().Where(ch => ch.Type == "Private");
+        }
+        
         public bool IsPersisted(long chatId)
         {
             try
@@ -58,7 +77,7 @@ namespace ElGuayaBot.Application.Implementation.Service
             }
         }
 
-        public IEnumerable<Chat> GetGroupAndSupergroupChats()
+        public IQueryable<Chat> GetGroupAndSupergroupChats()
         {
             return _unitOfWork.ChatRepository.GetAll().Where(ch => ch.Type == "Group" || ch.Type == "Supergroup");
         }

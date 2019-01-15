@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using ElGuayaBot.Application.Contracts.Service;
 using ElGuayaBot.Persistence.Contracts;
@@ -17,6 +18,11 @@ namespace ElGuayaBot.Application.Implementation.Service
         {
             _unitOfWork = unitOfWork;
             _logger = logger;
+        }
+
+        public IQueryable<User> GetAll()
+        {
+            return _unitOfWork.UserRepository.GetAll();
         }
 
         public bool IsPersisted(int fromId)
