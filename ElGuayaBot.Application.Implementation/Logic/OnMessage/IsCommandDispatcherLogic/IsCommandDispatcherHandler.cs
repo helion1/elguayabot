@@ -14,6 +14,7 @@ using ElGuayaBot.Application.Implementation.Logic.Command.HelpLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.OtherLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.PingPongLogic;
 using ElGuayaBot.Application.Implementation.Logic.Command.SavageLogic;
+using ElGuayaBot.Application.Implementation.Logic.Command.StatsLogic;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -78,6 +79,9 @@ namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatc
                     break;
                 case "/savage":
                     await _mediatR.Send(new SavageRequest { Message = message });
+                    break;    
+                case "/stats":
+                    await _mediatR.Send(new StatsRequest { Message = message });
                     break;
 
                 default:
