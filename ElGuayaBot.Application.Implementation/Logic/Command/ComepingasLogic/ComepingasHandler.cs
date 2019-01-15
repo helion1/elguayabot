@@ -26,8 +26,8 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.ComepingasLogic
             {
                 "zampavergas", "ingierepitos", "mascacipotes", "devorafalos", "meriendachorras", "almuerzapollas", "consumerabos", "cenapuntas", 
                 "degustavaras", "roemingas", "embocachurras", "yantapenes", "picatrancas", "desgastapichas", "saboreacucas", "catamangos", 
-                "succionaporras", "relamepijas", "bebelefas", "absorbeleches", "chupapepinos", "extraejugos", "cagapalos", "mamagüevo", "mochador", 
-                "tragabolas", "limpiasables", "comepingas", "engullenabos"
+                "succionaporras", "relamepijas", "bebelefas", "absorbeleches", "chupapepinos", "extraejugos", "cagapalos", "mamagüevo", "tragabolas", 
+                "limpiasables", "comepingas", "engullenabos", "comestacas", "abrazapostes"
             };
             
             var rnd = new Random();
