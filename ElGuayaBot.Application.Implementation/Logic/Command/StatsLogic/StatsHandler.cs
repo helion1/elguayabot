@@ -29,7 +29,7 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.StatsLogic
         {
             var message = request.Message;
 
-            if (!UserHasRights(message))
+            if (!UserHasRights(message) || message.Chat.Type != ChatType.Private)
             {
                 return Unit.Value;
             }
