@@ -6,7 +6,7 @@
 # Configuration
 
 appsettings.Development.json
-appsettings.Production.json
+appsettings.Release.json
 appsettings.json
 
 # User-specific files
