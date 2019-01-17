@@ -10,17 +10,22 @@ namespace ElGuayaBot.Infrastructure.Implementation.Client
     public class SpotifyClient
     {
         private readonly ILogger<SpotifyClient> _logger;
+
+        private readonly IConfiguration _configuration;
         
-        public readonly SpotifyWebAPI Client;
+        public SpotifyWebAPI Client { get; private set; }
 
-
-        public SpotifyClient(IConfiguration configuration, ILogger<SpotifyClient> logger)
+        public SpotifyClient(ILogger<SpotifyClient> logger, IConfiguration configuration)
         {
             _logger = logger;
-            
+            _configuration = configuration;
+        }
+
+        public SpotifyWebAPI GetClient()
+        {
             try
             {
-                var auth = new CredentialsAuth(configuration["Spotify:ClientId"], configuration["Spotify:ClientSecret"]);
+                var auth = new CredentialsAuth(_configuration["Spotify:ClientId"], _configuration["Spotify:ClientSecret"]);
                 var token = auth.GetToken().Result;
                 
                 Client = new SpotifyWebAPI
@@ -35,6 +40,8 @@ namespace ElGuayaBot.Infrastructure.Implementation.Client
                 
                 throw;
             }
+
+            return Client;
         }
     }
 }

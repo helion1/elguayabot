@@ -12,7 +12,7 @@ namespace ElGuayaBot.Infrastructure.Implementation.Mapping
             return new TrackDto
             {
                 Id = track.Id,
-                Duration = track.DurationMs * 1000,
+                Duration = track.DurationMs * 60,
                 ExternalUri = track.ExternUrls?.FirstOrDefault().Value,
                 Name = track.Name,
                 Number = track.TrackNumber

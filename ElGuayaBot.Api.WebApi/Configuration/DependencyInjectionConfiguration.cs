@@ -38,7 +38,7 @@ namespace ElGuayaBot.Api.WebApi.Configuration
             });
 
                         
-            services.AddTransient<SpotifyClient>();
+            services.AddScoped<SpotifyClient>();
             
             // Register every service from Application
             services.Scan(scan => scan

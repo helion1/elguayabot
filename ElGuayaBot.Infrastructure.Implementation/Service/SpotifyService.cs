@@ -12,19 +12,19 @@ namespace ElGuayaBot.Infrastructure.Implementation.Service
     public class SpotifyService : ISpotifyService
     {
         private ILogger<SpotifyService> _logger;
-        private SpotifyWebAPI _client;
+        private SpotifyClient _client;
 
         public SpotifyService(ILogger<SpotifyService> logger, SpotifyClient spotifyClient)
         {
             _logger = logger;
-            _client = spotifyClient.Client;
+            _client = spotifyClient;
         }
 
         public async Task<AlbumDto> GetAlbumAsync(Uri uri)
         {
             var albumId = uri.Segments[2];
             
-            var album = await _client.GetAlbumAsync(albumId);
+            var album = await _client.GetClient().GetAlbumAsync(albumId);
 
             return AlbumMapper.ToAlbumDto(album);
         }

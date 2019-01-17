@@ -1,12 +1,16 @@
 using System;
+using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayaBot.Application.Contracts.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using ElGuayaBot.Infrastructure.Contracts.Service;
+using ElGuayaBot.Infrastructure.Dto.Spotify;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Telegram.Bot.Types.Enums;
 
 namespace ElGuayaBot.Application.Implementation.Logic.Url.SpotifyAlbumLogic
 {
@@ -26,8 +30,47 @@ namespace ElGuayaBot.Application.Implementation.Logic.Url.SpotifyAlbumLogic
             var uri = new Uri(message.EntityValues.First(en => en.Contains("spotify")));
 
             var album = await _spotifyService.GetAlbumAsync(uri);
+
+            var response = GenerateResponse(album);
+
+            await Bot.SendPhotoAsync(
+                chatId: message.Chat.Id,
+                photo: album.ImageUrl,
+                caption: response,
+                parseMode: ParseMode.Html,
+                replyToMessageId: message.MessageId,
+                cancellationToken: cancellationToken);
             
             return Unit.Value;
+        }
+
+        private string GenerateResponse(AlbumDto albumDto)
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine($"💿 <b>Album</b>");
+            sb.AppendLine();
+            sb.AppendLine($"<i>Título</i> -  <a href=\"{albumDto.ExternalUri}\">{albumDto.Name}</a>");
+            sb.AppendLine(value: $"<i>Artista(s)</i> - {String.Join(", ", albumDto.Artists.Select(dto => dto.Name))}");
+            
+            if (albumDto.Genres.Count != 0)
+            {
+                sb.AppendLine($"<i>Géneros</i> - {String.Join(", ", albumDto.Genres)}");
+            }
+            
+            sb.AppendLine($"<i>Año</i> - {albumDto.ReleaseDate.Year}");
+            
+            sb.AppendLine();
+            
+            sb.AppendLine($"💿 <b>Tracks</b>");
+            sb.AppendLine();
+
+            var albums = albumDto.Tracks.Select(dto => $"{dto.Number} - {dto.Name} ({string.Format("{0:hh\\:mm}", TimeSpan.FromMilliseconds(dto.Duration))})");
+            
+            sb.Append($"{string.Join("\n", albums)}");
+
+
+            return sb.ToString();
         }
     }
 }
