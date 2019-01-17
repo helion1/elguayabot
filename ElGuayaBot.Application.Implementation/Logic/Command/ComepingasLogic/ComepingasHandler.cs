@@ -26,8 +26,8 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.ComepingasLogic
             {
                 "zampavergas", "ingierepitos", "mascacipotes", "devorafalos", "meriendachorras", "almuerzapollas", "consumerabos", "cenapuntas", 
                 "degustavaras", "roemingas", "embocachurras", "yantapenes", "picatrancas", "desgastapichas", "saboreacucas", "catamangos", 
-                "succionaporras", "relamepijas", "bebelefas", "absorbeleches", "chupapepinos", "extraejugos", "cagapalos", "mamagüevo", "tragabolas", 
-                "limpiasables", "comepingas", "engullenabos", "comestacas", "abrazapostes"
+                "succionaporras", "relamepijas", "bebelefas", "absorbeleches", "chupapepinos", "extraejugos", "cagapalos", "mamagüevo", "mochador", 
+                "tragabolas", "limpiasables", "comepingas", "engullenabos"
             };
             
             var rnd = new Random();
@@ -54,18 +54,18 @@ namespace ElGuayaBot.Application.Implementation.Logic.Command.ComepingasLogic
             if (message.Entities.Any(m => m.Type == MessageEntityType.Mention))
             {
                 var user = message.EntityValues.First(m => m.StartsWith("@"));
-
-                return user.ToLower() != "@elguayabot" ? $"{user} eres un" : $"@{message.From.Username} eres un maldito";
+                
+                return $"{user} eres un";
             }
 
             if (message.Entities.Any(m => m.Type == MessageEntityType.TextMention))
             {
                 var user = message.Entities.First(m => m.Type == MessageEntityType.TextMention).User.FirstName;
-                
                 return $"<i>{user}</i> eres un";
+
             }
             
-            return "Todos <i>ustedes</i> son unos malditos";
+            return "Todos <i>ustedes</i> son unos";
         }
     }
 }

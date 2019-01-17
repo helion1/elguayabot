@@ -3,6 +3,8 @@ using ElGuayaBot.Application.Contracts.Service;
 using ElGuayaBot.Application.Implementation.Background;
 using ElGuayaBot.Application.Implementation.Client;
 using ElGuayaBot.Application.Implementation.Service;
+using ElGuayaBot.Infrastructure.Implementation.Client;
+using ElGuayaBot.Infrastructure.Implementation.Service;
 using ElGuayaBot.Persistence.Contracts;
 using ElGuayaBot.Persistence.Implementation;
 using ElGuayaBot.Persistence.Implementation.Context;
@@ -20,7 +22,7 @@ namespace ElGuayaBot.Api.WebApi.Configuration
         public static IServiceCollection AddBotBackgroundServices(this IServiceCollection services, IConfiguration configuration, IHostingEnvironment env)
         {
             services.AddSingleton<IBotClient, BotClient>();
-            
+
             services.AddScoped<IBotService, BotService>();
             
             services.AddSingleton<IHostedService, TelegramBotBackgroundService>();
@@ -35,7 +37,10 @@ namespace ElGuayaBot.Api.WebApi.Configuration
                 options.UseNpgsql(configuration.GetConnectionString("PostgreSQL"));
             });
 
-            // Register every service
+                        
+            services.AddTransient<SpotifyClient>();
+            
+            // Register every service from Application
             services.Scan(scan => scan
                 .FromAssemblyOf<BotService>()
                 .AddClasses(classes => classes.Where(c => c.Name.EndsWith("Service") && c.Name != "BotService"))
@@ -43,7 +48,15 @@ namespace ElGuayaBot.Api.WebApi.Configuration
                 .AsImplementedInterfaces()
                 .WithScopedLifetime());
             
-            // Register every repository
+            // Register every service from Infrastructure
+            services.Scan(scan => scan
+                .FromAssemblyOf<SpotifyService>()
+                .AddClasses(classes => classes.Where(c => c.Name.EndsWith("Service")))
+                .UsingRegistrationStrategy(RegistrationStrategy.Skip)
+                .AsImplementedInterfaces()
+                .WithScopedLifetime());
+            
+            // Register every repository of Persistence
             services.Scan(scan => scan
                 .FromAssemblyOf<UnitOfWork>()
                 .AddClasses(classes => classes.Where(c => c.Name.EndsWith("Repository")))
@@ -51,7 +64,7 @@ namespace ElGuayaBot.Api.WebApi.Configuration
                 .AsImplementedInterfaces()
                 .WithScopedLifetime());
             
-            // Register UoW
+            // Register Unit of Work
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;

@@ -16,16 +16,16 @@ namespace ElGuayaBot.Persistence.Implementation
         
         private bool _disposed;
 
-        public IGroupRepository ChatRepository { get; set; }
-        public IGroupUserRepository ChatUserRepository { get; set; }
+        public IChatRepository ChatRepository { get; set; }
+        public IChatUserRepository ChatUserRepository { get; set; }
         public IUserRepository UserRepository { get; set; }
 
-        public UnitOfWork(ElGuayaBotDbContext context, ILogger<UnitOfWork> logger, IGroupRepository groupRepository, IGroupUserRepository groupUserRepository, IUserRepository userRepository)
+        public UnitOfWork(ElGuayaBotDbContext context, ILogger<UnitOfWork> logger, IChatRepository ichatRepository, IChatUserRepository chatUserRepository, IUserRepository userRepository)
         {
             Context = context;
             Logger = logger;
-            ChatRepository = groupRepository;
-            ChatUserRepository = groupUserRepository;
+            ChatRepository = ichatRepository;
+            ChatUserRepository = chatUserRepository;
             UserRepository = userRepository;
         }
 

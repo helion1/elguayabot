@@ -12,7 +12,7 @@ COPY *.sln ./
 # Copy csproj and restore as distinct layers
 COPY ElGuayaBot.Api.WebApi/*.csproj ElGuayaBot.Api.WebApi/
 COPY ElGuayaBot.Application.Contracts/*.csproj ElGuayaBot.Application.Contracts/
-COPY ElGuayaBot.Application.DTO/*.csproj ElGuayaBot.Application.DTO/
+COPY ElGuayaBot.Application.Dto/*.csproj ElGuayaBot.Application.Dto/
 COPY ElGuayaBot.Application.Implementation/*.csproj ElGuayaBot.Application.Implementation/
 COPY ElGuayaBot.Domain.Contracts/*.csproj ElGuayaBot.Domain.Contracts/
 COPY ElGuayaBot.Domain.Entity/*.csproj ElGuayaBot.Domain.Entity/
