@@ -3,7 +3,7 @@ using ElGuayaBot.Persistence.Model;
 
 namespace ElGuayaBot.Persistence.Contracts.Repository
 {
-    public interface IGroupUserRepository : IAbstractGenericRepository<IElGuayaBotDbContext, ChatUser>
+    public interface IChatUserRepository : IAbstractGenericRepository<IElGuayaBotDbContext, ChatUser>
     {
         
     }

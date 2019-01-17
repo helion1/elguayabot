@@ -8,4 +8,8 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ElGuayaBot.Infrastructure.Dto\ElGuayaBot.Infrastructure.Dto.csproj" />
+    </ItemGroup>
+
 </Project>
