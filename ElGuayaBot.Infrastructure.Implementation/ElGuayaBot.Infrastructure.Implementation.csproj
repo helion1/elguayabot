@@ -14,8 +14,4 @@
       <ProjectReference Include="..\ElGuayaBot.Infrastructure.Contracts\ElGuayaBot.Infrastructure.Contracts.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Mapping" />
-    </ItemGroup>
-
 </Project>

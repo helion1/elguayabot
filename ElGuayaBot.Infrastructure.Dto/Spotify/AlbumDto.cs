@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace ElGuayaBot.Infrastructure.Dto.Spotify
 {
-    public class Album
+    public class AlbumDto
     {
         public string Id { get; set; }
         
         public string Name { get; set; }
         
-        public List<Artist> Artists { get; set; }
+        public List<ArtistDto> Artists { get; set; }
         
-        public List<Track> Tracks { get; set; }
+        public List<TrackDto> Tracks { get; set; }
         
         public string Type { get; set; }
         

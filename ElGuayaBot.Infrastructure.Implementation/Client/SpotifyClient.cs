@@ -23,7 +23,7 @@ namespace ElGuayaBot.Infrastructure.Implementation.Client
                 var auth = new CredentialsAuth(configuration["Spotify:ClientId"], configuration["Spotify:ClientSecret"]);
                 var token = auth.GetToken().Result;
                 
-                Client = new SpotifyWebAPI()
+                Client = new SpotifyWebAPI
                 {
                     TokenType = token.TokenType, 
                     AccessToken = token.AccessToken

@@ -6,8 +6,8 @@ namespace ElGuayaBot.Infrastructure.Contracts.Service
 {
     public interface ISpotifyService
     {
-        Task<Album> GetAlbumAsync(Uri uri);
+        Task<AlbumDto> GetAlbumAsync(Uri uri);
 
-        Playlist GetPlaylist(Uri uri);
+        PlaylistDto GetPlaylist(Uri uri);
     }
 }
