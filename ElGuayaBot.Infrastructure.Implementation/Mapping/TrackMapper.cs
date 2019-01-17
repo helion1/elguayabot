@@ -15,7 +15,8 @@ namespace ElGuayaBot.Infrastructure.Implementation.Mapping
                 Duration = track.DurationMs * 60,
                 ExternalUri = track.ExternUrls?.FirstOrDefault().Value,
                 Name = track.Name,
-                Number = track.TrackNumber
+                TrackNumber = track.TrackNumber,
+                DiscNumber = track.DiscNumber
             };
         }
 

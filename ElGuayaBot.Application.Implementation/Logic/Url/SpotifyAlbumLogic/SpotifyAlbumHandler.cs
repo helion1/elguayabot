@@ -73,13 +73,13 @@ namespace ElGuayaBot.Application.Implementation.Logic.Url.SpotifyAlbumLogic
             sb.AppendLine($"💿 <b>Tracks</b>");
             sb.AppendLine();
 
-            var albums = albumDto.Tracks.Where(dto => dto.Number <= 10).Select(dto => $"{dto.Number} - {dto.Name} ({string.Format("{0:hh\\:mm}", TimeSpan.FromMilliseconds(dto.Duration))})");
+            var albums = albumDto.Tracks.Where(dto => dto.TrackNumber <= 15 && dto.DiscNumber == 1).Select(dto => $"<i>{dto.TrackNumber}</i> - {dto.Name} ({string.Format("{0:hh\\:mm}", TimeSpan.FromMilliseconds(dto.Duration))})");
             
             sb.AppendLine($"{string.Join("\n", albums)}");
             
             if (albumDto.Tracks.Count > 10)
             {
-                sb.AppendLine($"...más tracks en <a href=\"{albumDto.ExternalUri}\">spotify</a>");
+                sb.AppendLine($"<i>...más tracks en</i> <a href=\"{albumDto.ExternalUri}\">spotify</a>");
             }
             
             return sb.ToString();

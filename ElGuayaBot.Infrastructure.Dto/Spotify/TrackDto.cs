@@ -6,7 +6,9 @@ namespace ElGuayaBot.Infrastructure.Dto.Spotify
         
         public string Name { get; set; }
         
-        public int Number { get; set; }
+        public int TrackNumber { get; set; }
+        
+        public int DiscNumber { get; set; }
 
         public int Duration { get; set; }
 
