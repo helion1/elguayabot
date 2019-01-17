@@ -33,13 +33,21 @@ namespace ElGuayaBot.Application.Implementation.Logic.Url.SpotifyAlbumLogic
 
             var response = GenerateResponse(album);
 
-            await Bot.SendPhotoAsync(
-                chatId: message.Chat.Id,
-                photo: album.ImageUrl,
-                caption: response,
-                parseMode: ParseMode.Html,
-                replyToMessageId: message.MessageId,
-                cancellationToken: cancellationToken);
+            try
+            {
+                await Bot.SendPhotoAsync(
+                    chatId: message.Chat.Id,
+                    photo: album.ImageUrl,
+                    caption: response,
+                    parseMode: ParseMode.Html,
+                    replyToMessageId: message.MessageId,
+                    cancellationToken: cancellationToken);
+
+            }
+            catch (Exception e)
+            {
+                Logger.LogError("SPotify Album not handled", e);
+            }
             
             return Unit.Value;
         }
@@ -65,11 +73,15 @@ namespace ElGuayaBot.Application.Implementation.Logic.Url.SpotifyAlbumLogic
             sb.AppendLine($"💿 <b>Tracks</b>");
             sb.AppendLine();
 
-            var albums = albumDto.Tracks.Select(dto => $"{dto.Number} - {dto.Name} ({string.Format("{0:hh\\:mm}", TimeSpan.FromMilliseconds(dto.Duration))})");
+            var albums = albumDto.Tracks.Where(dto => dto.Number <= 10).Select(dto => $"{dto.Number} - {dto.Name} ({string.Format("{0:hh\\:mm}", TimeSpan.FromMilliseconds(dto.Duration))})");
             
-            sb.Append($"{string.Join("\n", albums)}");
-
-
+            sb.AppendLine($"{string.Join("\n", albums)}");
+            
+            if (albumDto.Tracks.Count > 10)
+            {
+                sb.AppendLine($"...más tracks en <a href=\"{albumDto.ExternalUri}\">spotify</a>");
+            }
+            
             return sb.ToString();
         }
     }
