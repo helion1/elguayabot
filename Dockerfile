@@ -18,9 +18,9 @@ COPY ElGuayaBot.Domain.Contracts/*.csproj ElGuayaBot.Domain.Contracts/
 COPY ElGuayaBot.Domain.Entity/*.csproj ElGuayaBot.Domain.Entity/
 COPY ElGuayaBot.Domain.Implementation/*.csproj ElGuayaBot.Domain.Implementation/
 COPY ElGuayaBot.Infrastructure.Contracts/*.csproj ElGuayaBot.Infrastructure.Contracts/
+COPY ElGuayaBot.Infrastructure.Dto/*.csproj ElGuayaBot.Infrastructure.Dto/
 COPY ElGuayaBot.Infrastructure.Implementation/*.csproj ElGuayaBot.Infrastructure.Implementation/
 COPY ElGuayaBot.Persistence.Contracts/*.csproj ElGuayaBot.Persistence.Contracts/
-COPY ElGuayaBot.Persistence.Dto/*.csproj ElGuayaBot.Persistence.Dto/
 COPY ElGuayaBot.Persistence.Implementation/*.csproj ElGuayaBot.Persistence.Implementation/
 COPY ElGuayaBot.Persistence.Model/*.csproj ElGuayaBot.Persistence.Model/
 RUN dotnet restore
