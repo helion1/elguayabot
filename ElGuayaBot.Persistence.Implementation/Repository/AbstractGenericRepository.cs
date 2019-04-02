@@ -1,41 +1,69 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 using ElGuayaBot.Persistence.Contracts.Repository;
-using ElGuayaBot.Persistence.Implementation.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace ElGuayaBot.Persistence.Implementation.Repository
 {
-    public abstract class AbstractGenericRepository<TC, TE> : IAbstractGenericRepository<TC, TE> where TC : ElGuayaBotDbContext where TE : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        protected readonly TC Context;
-        
-        protected readonly DbSet<TE> DbSet;
+        internal readonly DbContext Context;
+        internal readonly DbSet<T> DbSet;
 
-        protected AbstractGenericRepository(TC dbContext)
+        public GenericRepository(DbContext dbContext)
         {
             Context = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
-            DbSet = dbContext.Set<TE>();
+            DbSet = dbContext.Set<T>();
         }
 
-        public virtual IQueryable<TE> GetAll()
+        public async Task<T> FindById(object id)
         {
-            return DbSet;
+            return await DbSet.FindAsync(id);
         }
 
-        public virtual TE GetById(object id)
+        public async Task<T> FindBy(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
         {
-            return DbSet.Find(id);
+            var result = DbSet.Where(predicate);
+
+            result = includes.Aggregate(result, (current, includeExpression) => current.Include(includeExpression));
+
+            return await result.FirstOrDefaultAsync();
         }
 
-        public virtual TE Insert(TE entity)
+        public virtual async Task<IEnumerable<T>> GetAll()
         {
-            var entry = DbSet.Add(entity);
+            return await DbSet.ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetAll(params Expression<Func<T, object>>[] includes)
+        {
+            var result = DbSet.Where(i => true);
+
+            result = includes.Aggregate(result, (current, includeExpression) => current.Include(includeExpression));
+
+            return await result.ToListAsync();
+        }
+
+        public async Task<IEnumerable<T>> SearchBy(Expression<Func<T, bool>> searchBy, params Expression<Func<T, object>>[] includes)
+        {
+            var result = DbSet.Where(searchBy);
+
+            result = includes.Aggregate(result, (current, includeExpression) => current.Include(includeExpression));
+
+            return await result.ToListAsync();
+        }
+
+        public virtual async Task<T> Insert(T entity)
+        {
+            var entry = await DbSet.AddAsync(entity);
             
             return entry.Entity;
         }
 
-        public virtual TE Update(TE entityToUpdate)
+        public virtual T Update(T entityToUpdate)
         {
             var entry = DbSet.Attach(entityToUpdate);
             
@@ -44,14 +72,14 @@ namespace ElGuayaBot.Persistence.Implementation.Repository
             return entry.Entity;
         }
 
-        public virtual TE Delete(object id)
+        public virtual T Delete(object id)
         {
-            var entityToDelete = DbSet.Find(id);
+            T entityToDelete = DbSet.Find(id);
             
             return Delete(entityToDelete);
         }
 
-        public virtual TE Delete(TE entityToDelete)
+        public virtual T Delete(T entityToDelete)
         {
             if (Context.Entry(entityToDelete).State == EntityState.Detached)
             {
