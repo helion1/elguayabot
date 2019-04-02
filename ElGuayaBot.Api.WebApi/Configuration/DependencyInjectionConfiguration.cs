@@ -55,17 +55,6 @@ namespace ElGuayaBot.Api.WebApi.Configuration
                 .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                 .AsImplementedInterfaces()
                 .WithScopedLifetime());
-            
-            // Register every repository of Persistence
-            services.Scan(scan => scan
-                .FromAssemblyOf<UnitOfWork>()
-                .AddClasses(classes => classes.Where(c => c.Name.EndsWith("Repository")))
-                .UsingRegistrationStrategy(RegistrationStrategy.Skip)
-                .AsImplementedInterfaces()
-                .WithScopedLifetime());
-            
-            // Register Unit of Work
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }
