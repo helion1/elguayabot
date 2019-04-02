@@ -1,5 +1,4 @@
 using ElGuayaBot.Domain.Entity;
-using ElGuayaBot.Persistence.Contracts.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace ElGuayaBot.Persistence.Implementation.Context
