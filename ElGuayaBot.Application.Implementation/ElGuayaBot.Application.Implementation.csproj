@@ -21,9 +21,9 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ElGuayaBot.Application.Contracts\ElGuayaBot.Application.Contracts.csproj" />
-      <ProjectReference Include="..\ElGuayaBot.Infrastructure.Contracts\ElGuayaBot.Infrastructure.Contracts.csproj" />
-      <ProjectReference Include="..\ElGuayaBot.Persistence.Contracts\ElGuayaBot.Persistence.Contracts.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Application.Contract\ElGuayaBot.Application.Contract.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Infrastructure.Contract\ElGuayaBot.Infrastructure.Contract.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Persistence.Contract\ElGuayaBot.Persistence.Contract.csproj" />
     </ItemGroup>
 
 </Project>

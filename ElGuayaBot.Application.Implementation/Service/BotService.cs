@@ -1,7 +1,7 @@
 using System;
 using System.Threading;
-using ElGuayaBot.Application.Contracts.Client;
-using ElGuayaBot.Application.Contracts.Service;
+using ElGuayaBot.Application.Contract.Client;
+using ElGuayaBot.Application.Contract.Service;
 using ElGuayaBot.Application.Implementation.Logic.Common.EntityPersistenceLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatcherLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnUpdate.OnUpdateDispatcherLogic;

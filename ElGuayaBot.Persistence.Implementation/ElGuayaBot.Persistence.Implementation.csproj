@@ -12,7 +12,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ElGuayaBot.Domain.Entity\ElGuayaBot.Domain.Entity.csproj" />
-      <ProjectReference Include="..\ElGuayaBot.Persistence.Contracts\ElGuayaBot.Persistence.Contracts.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Persistence.Contract\ElGuayaBot.Persistence.Contract.csproj" />
     </ItemGroup>
 
     <ItemGroup>

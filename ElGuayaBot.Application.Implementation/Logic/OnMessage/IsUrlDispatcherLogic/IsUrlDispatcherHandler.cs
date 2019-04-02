@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Application.Contracts.Client;
+using ElGuayaBot.Application.Contract.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using ElGuayaBot.Application.Implementation.Logic.Url.GifUrlLogic;
 using ElGuayaBot.Application.Implementation.Logic.Url.SpotifyAlbumLogic;

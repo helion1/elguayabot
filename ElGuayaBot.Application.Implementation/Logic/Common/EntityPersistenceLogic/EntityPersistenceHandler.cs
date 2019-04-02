@@ -1,6 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Application.Contracts.Service;
+using ElGuayaBot.Application.Contract.Service;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types;

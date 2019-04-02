@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-using ElGuayaBot.Application.Contracts.Service;
-using ElGuayaBot.Persistence.Contracts;
+using ElGuayaBot.Application.Contract.Service;
+using ElGuayaBot.Persistence.Contract;
 using ElGuayaBot.Persistence.Model;
 using Microsoft.Extensions.Logging;
 

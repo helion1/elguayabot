@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ElGuayaBot.Persistence.Model;
 
-namespace ElGuayaBot.Application.Contracts.Service
+namespace ElGuayaBot.Application.Contract.Service
 {
     public interface IUserService
     {

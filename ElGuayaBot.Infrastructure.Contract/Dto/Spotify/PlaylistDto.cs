@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ElGuayaBot.Infrastructure.Contracts.Dto.Spotify
+namespace ElGuayaBot.Infrastructure.Contract.Dto.Spotify
 {
     public class PlaylistDto
     {

@@ -1,6 +1,6 @@
 using System;
 using System.Net.Http;
-using ElGuayaBot.Application.Contracts.Client;
+using ElGuayaBot.Application.Contract.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MihaZupan.TelegramBotClients;

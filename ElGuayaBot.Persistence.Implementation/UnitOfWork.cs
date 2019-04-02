@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
-using ElGuayaBot.Persistence.Contracts;
-using ElGuayaBot.Persistence.Contracts.Repository;
+using ElGuayaBot.Persistence.Contract;
+using ElGuayaBot.Persistence.Contract.Repository;
 using ElGuayaBot.Persistence.Implementation.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

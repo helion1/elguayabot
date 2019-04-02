@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using ElGuayaBot.Persistence.Contracts.Repository;
+using ElGuayaBot.Persistence.Contract.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace ElGuayaBot.Persistence.Implementation.Repository

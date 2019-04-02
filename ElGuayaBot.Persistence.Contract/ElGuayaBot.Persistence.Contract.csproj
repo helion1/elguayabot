@@ -9,11 +9,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ElGuayaBot.Infrastructure.Dto\ElGuayaBot.Infrastructure.Dto.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Dto" />
+      <ProjectReference Include="..\ElGuayaBot.Domain.Entity\ElGuayaBot.Domain.Entity.csproj" />
     </ItemGroup>
 
 </Project>

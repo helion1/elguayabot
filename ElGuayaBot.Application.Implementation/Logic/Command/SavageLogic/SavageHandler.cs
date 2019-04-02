@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Application.Contracts.Client;
+using ElGuayaBot.Application.Contract.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;

@@ -1,6 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Application.Contracts.Client;
+using ElGuayaBot.Application.Contract.Client;
 using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnUpdate.IsLeftChatMemberLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnUpdate.IsNewChatMembersLogic;

@@ -1,6 +1,6 @@
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Application.Contracts.Background;
+using ElGuayaBot.Application.Contract.Background;
 
 namespace ElGuayaBot.Application.Implementation.Background
 {

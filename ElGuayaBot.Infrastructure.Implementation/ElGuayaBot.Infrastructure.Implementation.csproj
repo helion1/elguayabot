@@ -11,7 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ElGuayaBot.Infrastructure.Contracts\ElGuayaBot.Infrastructure.Contracts.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Infrastructure.Contract\ElGuayaBot.Infrastructure.Contract.csproj" />
     </ItemGroup>
 
 </Project>

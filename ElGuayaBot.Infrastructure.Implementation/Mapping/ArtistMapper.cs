@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using ElGuayaBot.Infrastructure.Contracts.Dto.Spotify;
+using ElGuayaBot.Infrastructure.Contract.Dto.Spotify;
 using Microsoft.EntityFrameworkCore.Internal;
 using SpotifyAPI.Web.Models;
 

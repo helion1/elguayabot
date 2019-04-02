@@ -1,5 +1,5 @@
-using ElGuayaBot.Application.Contracts.Client;
-using ElGuayaBot.Application.Contracts.Service;
+using ElGuayaBot.Application.Contract.Client;
+using ElGuayaBot.Application.Contract.Service;
 using ElGuayaBot.Application.Implementation.Background;
 using ElGuayaBot.Application.Implementation.Client;
 using ElGuayaBot.Application.Implementation.Service;

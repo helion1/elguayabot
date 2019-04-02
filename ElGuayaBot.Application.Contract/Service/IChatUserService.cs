@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace ElGuayaBot.Application.Contracts.Service
+namespace ElGuayaBot.Application.Contract.Service
 {
     public interface IChatUserService
     {

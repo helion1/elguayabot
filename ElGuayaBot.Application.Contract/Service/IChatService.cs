@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using ElGuayaBot.Persistence.Model;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Contracts.Service
+namespace ElGuayaBot.Application.Contract.Service
 {
     public interface IChatService
     {

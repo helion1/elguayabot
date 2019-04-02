@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{24EF5727-B068-4C2A-9B01-A175670FFD38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Application.Contracts", "ElGuayaBot.Application.Contracts\ElGuayaBot.Application.Contracts.csproj", "{0A83231E-6F28-4921-B89C-E286F2E4467A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Application.Contract", "ElGuayaBot.Application.Contract\ElGuayaBot.Application.Contract.csproj", "{0A83231E-6F28-4921-B89C-E286F2E4467A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Application.Implementation", "ElGuayaBot.Application.Implementation\ElGuayaBot.Application.Implementation.csproj", "{7E958A81-AF10-46BA-9E7E-094FF8236351}"
 EndProject
@@ -25,13 +25,13 @@ ProjectSection(SolutionItems) = preProject
 	.dockerignore = .dockerignore
 EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Infrastructure.Contracts", "ElGuayaBot.Infrastructure.Contracts\ElGuayaBot.Infrastructure.Contracts.csproj", "{62F2D420-048E-4036-BD60-D5A63ED9321D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Infrastructure.Contract", "ElGuayaBot.Infrastructure.Contract\ElGuayaBot.Infrastructure.Contract.csproj", "{62F2D420-048E-4036-BD60-D5A63ED9321D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Infrastructure.Implementation", "ElGuayaBot.Infrastructure.Implementation\ElGuayaBot.Infrastructure.Implementation.csproj", "{87B3DEC7-44DB-4E6F-9053-30E177053FD0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence", "{6F3CCC6A-ED74-4526-81BA-F21686DB2F05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Persistence.Contracts", "ElGuayaBot.Persistence.Contracts\ElGuayaBot.Persistence.Contracts.csproj", "{29EF2FEC-9DBA-48AF-B443-F81E6C565AEA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Persistence.Contract", "ElGuayaBot.Persistence.Contract\ElGuayaBot.Persistence.Contract.csproj", "{29EF2FEC-9DBA-48AF-B443-F81E6C565AEA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Persistence.Implementation", "ElGuayaBot.Persistence.Implementation\ElGuayaBot.Persistence.Implementation.csproj", "{07D56A1B-73F3-415D-8A06-314ABC34358A}"
 EndProject
