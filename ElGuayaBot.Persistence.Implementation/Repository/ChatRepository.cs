@@ -4,7 +4,7 @@ using ElGuayaBot.Persistence.Implementation.Context;
 
 namespace ElGuayaBot.Persistence.Implementation.Repository
 {
-    public class ChatRepository : AbstractGenericRepository<ElGuayaBotDbContext, Chat>, IChatRepository
+    public class ChatRepository : GenericRepository<Chat>, IChatRepository
     {
         public ChatRepository(ElGuayaBotDbContext dbContext) : base(dbContext)
         {
