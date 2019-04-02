@@ -1,10 +1,10 @@
+using ElGuayaBot.Domain.Entity;
 using ElGuayaBot.Persistence.Contracts.Context;
-using ElGuayaBot.Persistence.Model;
 using Microsoft.EntityFrameworkCore;
 
 namespace ElGuayaBot.Persistence.Implementation.Context
 {
-    public partial class ElGuayaBotDbContext : DbContext, IElGuayaBotDbContext
+    public partial class ElGuayaBotDbContext : DbContext
     {
         protected ElGuayaBotDbContext()
         {
@@ -33,7 +33,7 @@ namespace ElGuayaBot.Persistence.Implementation.Context
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.FirstInteractionDate).HasColumnType("datetime");
+                entity.Property(e => e.FirstSeen).HasColumnType("datetime");
 
                 entity.Property(e => e.Title).HasMaxLength(250);
 
@@ -48,12 +48,12 @@ namespace ElGuayaBot.Persistence.Implementation.Context
                 entity.HasKey(e => new { GroupId = e.ChatId, e.UserId });
 
                 entity.HasOne(d => d.Chat)
-                    .WithMany(p => p.ChatUsers)
+                    .WithMany(p => p.Users)
                     .HasForeignKey(d => d.ChatId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.ChatUsers)
+                    .WithMany(p => p.Chats)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull);
             });
@@ -62,7 +62,7 @@ namespace ElGuayaBot.Persistence.Implementation.Context
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
-                entity.Property(e => e.FirstInteractionDate).HasColumnType("datetime");
+                entity.Property(e => e.FirstSeen).HasColumnType("datetime");
 
                 entity.Property(e => e.LanguageCode)
                     .HasMaxLength(5)
