@@ -11,21 +11,18 @@ namespace ElGuayaBot.Persistence.Implementation
     public class UnitOfWork : IUnitOfWork
     {
         protected readonly ElGuayaBotDbContext Context;
-        
         protected readonly ILogger<UnitOfWork> Logger;
         
         private bool _disposed;
 
         public IChatRepository ChatRepository { get; set; }
-        public IChatUserRepository ChatUserRepository { get; set; }
         public IUserRepository UserRepository { get; set; }
 
-        public UnitOfWork(ElGuayaBotDbContext context, ILogger<UnitOfWork> logger, IChatRepository ichatRepository, IChatUserRepository chatUserRepository, IUserRepository userRepository)
+        public UnitOfWork(ElGuayaBotDbContext context, ILogger<UnitOfWork> logger, IChatRepository chatRepository, IUserRepository userRepository)
         {
             Context = context;
             Logger = logger;
-            ChatRepository = ichatRepository;
-            ChatUserRepository = chatUserRepository;
+            ChatRepository = chatRepository;
             UserRepository = userRepository;
         }
 
