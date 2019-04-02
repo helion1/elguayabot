@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using ElGuayaBot.Infrastructure.Dto.Spotify;
+using ElGuayaBot.Infrastructure.Contracts.Dto.Spotify;
 using SpotifyAPI.Web.Models;
 
 namespace ElGuayaBot.Infrastructure.Implementation.Mapping

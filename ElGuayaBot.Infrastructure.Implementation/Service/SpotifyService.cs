@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
+using ElGuayaBot.Infrastructure.Contracts.Dto.Spotify;
 using ElGuayaBot.Infrastructure.Contracts.Service;
-using ElGuayaBot.Infrastructure.Dto.Spotify;
 using ElGuayaBot.Infrastructure.Implementation.Client;
 using ElGuayaBot.Infrastructure.Implementation.Mapping;
 using Microsoft.Extensions.Logging;

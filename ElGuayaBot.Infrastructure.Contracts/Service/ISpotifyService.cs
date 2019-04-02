@@ -1,6 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using ElGuayaBot.Infrastructure.Dto.Spotify;
+using ElGuayaBot.Infrastructure.Contracts.Dto.Spotify;
 
 namespace ElGuayaBot.Infrastructure.Contracts.Service
 {
