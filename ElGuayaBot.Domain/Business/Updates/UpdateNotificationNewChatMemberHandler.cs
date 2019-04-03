@@ -1,4 +1,5 @@
 using System.Linq;
+using ElGuayaBot.Domain.Business.Messages;
 using MediatR;
 
 namespace ElGuayaBot.Domain.Business.Updates
@@ -30,8 +31,12 @@ namespace ElGuayaBot.Domain.Business.Updates
                 //TODO: get all usernames
                 message = $"Bienvenidos todos a la noble causa del bolivarismo.";
             }
-            
-            
+
+            _mediatR.Publish(new SendMessageRequest()
+            {
+                ChatId = notification.ChatId,
+                Message = message
+            });
         }
     }
 }
