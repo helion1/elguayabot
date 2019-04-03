@@ -7,6 +7,11 @@ namespace ElGuayaBot.Domain.Business.Updates
     {
         private readonly IMediator _mediatR;
 
+        public UpdateNotificationChatMemberAddedHandler(IMediator mediatR)
+        {
+            _mediatR = mediatR;
+        }
+
         protected override void Handle(UpdateNotification notification)
         {
             if (notification.Type != UpdateType.ChatMembersAdded) return;
