@@ -30,6 +30,8 @@ namespace ElGuayaBot.Domain.Business.Updates
                 //TODO: get all usernames
                 message = $"Bienvenidos todos a la noble causa del bolivarismo.";
             }
+            
+            
         }
     }
 }
