@@ -11,6 +11,7 @@
     <ItemGroup>
       <ProjectReference Include="..\ElGuayaBot.Common\ElGuayaBot.Common.csproj" />
       <ProjectReference Include="..\ElGuayaBot.Domain.Entity\ElGuayaBot.Domain.Entity.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Persistence.Contract\ElGuayaBot.Persistence.Contract.csproj" />
     </ItemGroup>
 
 </Project>
