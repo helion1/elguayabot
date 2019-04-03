@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayaBot.Common.Result;
@@ -32,7 +33,14 @@ namespace ElGuayaBot.Domain.Business.UserChat.RegisterUserChat
             {
                 user = await _unitOfWork.UserRepository.Insert(request.User);
             }
+
+            // If the user already exists and has a chat registered with that Id.
+            if (user.Chats.Any(chatUser => chatUser.ChatId == chat.Id))
+            {
+                return Result.Success();
+            }
             
+            // If not, then create it.
             user.Chats.Add(new ChatUser
             {
                 User = user,

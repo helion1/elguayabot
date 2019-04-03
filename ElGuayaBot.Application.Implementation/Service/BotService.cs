@@ -5,6 +5,8 @@ using ElGuayaBot.Application.Contract.Service;
 using ElGuayaBot.Application.Implementation.Logic.Common.EntityPersistenceLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatcherLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnUpdate.OnUpdateDispatcherLogic;
+using ElGuayaBot.Application.Implementation.Mapping;
+using ElGuayaBot.Domain.Business.UserChat.RegisterUserChat;
 using MediatR;
 using MihaZupan.TelegramBotClients;
 using Telegram.Bot.Args;
@@ -42,7 +44,14 @@ namespace ElGuayaBot.Application.Implementation.Service
         
         private void HandleEntityPeristance(object sender, MessageEventArgs e)
         {
-            MediatR.Send(new EntityPersistenceRequest { Message = e.Message });
+            var chat = e.Message.Chat.ToDomain();
+            var user = e.Message.From.ToDomain();
+            
+            MediatR.Send(new RegisterUserChatCommand
+            {
+                User = user,
+                Chat = chat
+            });
         }
 
         private void HandleOnMessage(object sender, MessageEventArgs e)
