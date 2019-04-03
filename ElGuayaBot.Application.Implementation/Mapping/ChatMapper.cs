@@ -4,7 +4,7 @@ namespace ElGuayaBot.Application.Implementation.Mapping
 {
     public static class ChatMapper
     {
-        public static Chat ToDomain(Telegram.Bot.Types.Chat chat)
+        public static Chat ToDomain(this Telegram.Bot.Types.Chat chat)
         {
             return new Chat()
             {
