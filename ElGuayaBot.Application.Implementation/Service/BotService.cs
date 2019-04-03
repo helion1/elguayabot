@@ -47,7 +47,7 @@ namespace ElGuayaBot.Application.Implementation.Service
             var chat = e.Message.Chat.ToDomain();
             var user = e.Message.From.ToDomain();
             
-            MediatR.Send(new RegisterUserChatCommand
+            MediatR.Send(new RegisterChatUserCommand
             {
                 User = user,
                 Chat = chat

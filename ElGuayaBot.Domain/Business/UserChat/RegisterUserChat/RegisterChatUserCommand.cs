@@ -4,7 +4,7 @@ using ElGuayaBot.Domain.Entity;
 
 namespace ElGuayaBot.Domain.Business.UserChat.RegisterUserChat
 {
-    public class RegisterUserChatCommand : Request<Result>
+    public class RegisterChatUserCommand : Request<Result>
     {
         public User User { get; set; }
         public Chat Chat { get; set; }
