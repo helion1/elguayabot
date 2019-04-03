@@ -8,4 +8,9 @@
       <PackageReference Include="MediatR" Version="6.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\ElGuayaBot.Common\ElGuayaBot.Common.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Domain.Entity\ElGuayaBot.Domain.Entity.csproj" />
+    </ItemGroup>
+
 </Project>
