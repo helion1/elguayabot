@@ -15,6 +15,7 @@ namespace ElGuayaBot.Domain.Business.Updates
 
     public enum UpdateType
     {
+        Other,
         ChatTitleChanged,
         ChatMemberLeft,
         ChatMembersAdded
