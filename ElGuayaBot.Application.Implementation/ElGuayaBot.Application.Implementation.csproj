@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ElGuayaBot.Application.Contract\ElGuayaBot.Application.Contract.csproj" />
+      <ProjectReference Include="..\ElGuayaBot.Domain\ElGuayaBot.Domain.csproj" />
       <ProjectReference Include="..\ElGuayaBot.Infrastructure.Contract\ElGuayaBot.Infrastructure.Contract.csproj" />
       <ProjectReference Include="..\ElGuayaBot.Persistence.Contract\ElGuayaBot.Persistence.Contract.csproj" />
     </ItemGroup>
