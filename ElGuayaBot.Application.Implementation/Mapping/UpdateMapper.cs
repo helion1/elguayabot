@@ -13,6 +13,7 @@ namespace ElGuayaBot.Application.Implementation.Mapping
             {
                 Id = update.Id,
                 Type = GetType(update),
+                ChatId = update.Message.Chat.Id,
                 NewChatTitle = update.Message.NewChatTitle,
                 LeftChatMember = update.Message.LeftChatMember.ToDomain(),
                 NewChatMembers = update.Message.NewChatMembers.ToDomain(),
