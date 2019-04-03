@@ -1,3 +1,4 @@
+using System.Linq;
 using ElGuayaBot.Domain.Entity;
 
 namespace ElGuayaBot.Application.Implementation.Mapping
@@ -13,6 +14,10 @@ namespace ElGuayaBot.Application.Implementation.Mapping
                 IsBot = user.IsBot,
                 LanguageCode = user.LanguageCode
             };
+        }        
+        public static User[] ToDomain(this Telegram.Bot.Types.User[] users)
+        {
+            return users.Select(user => user.ToDomain()).ToArray();
         }
     }
 }
