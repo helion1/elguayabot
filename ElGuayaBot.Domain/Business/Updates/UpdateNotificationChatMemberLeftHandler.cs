@@ -30,7 +30,7 @@ namespace ElGuayaBot.Domain.Business.Updates
             _mediatR.Publish(new SendMessageRequest()
             {
                 ChatId = notification.ChatId,
-                Message = $"@{leftUser.Username} murió combatiendo el imperialismo. ",
+                Message = $"@{leftUser.Username} murió combatiendo el imperialismo.",
             });
 
             _mediatR.Send(new DeleteChatUserCommand()
