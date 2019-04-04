@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace ElGuayaBot.Domain.Business.Messages
+namespace ElGuayaBot.Domain.Business.Requests
 {
     public class SendMessageRequest : INotification
     {
