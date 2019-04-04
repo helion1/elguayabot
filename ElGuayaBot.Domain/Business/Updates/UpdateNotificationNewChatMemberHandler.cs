@@ -1,5 +1,7 @@
 using System.Linq;
 using ElGuayaBot.Domain.Business.Messages;
+using ElGuayaBot.Domain.Business.UserChat.RegisterUserChat;
+using ElGuayaBot.Domain.Entity;
 using MediatR;
 
 namespace ElGuayaBot.Domain.Business.Updates
@@ -37,6 +39,15 @@ namespace ElGuayaBot.Domain.Business.Updates
                 ChatId = notification.ChatId,
                 Message = message
             });
+
+            foreach (var newUser in newUsers)
+            {
+                _mediatR.Send(new RegisterChatUserCommand()
+                {
+                    User = newUser,
+                    Chat = new Chat(){ Id = notification.Id}
+                });
+            }
         }
     }
 }
