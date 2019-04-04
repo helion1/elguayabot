@@ -28,7 +28,7 @@ namespace ElGuayaBot.Domain.Business.Updates
                 Message = $"@{leftUser.Username} murió combatiendo el imperialismo. ",
             });
 
-            _mediatR.Send(new DeleteUserFromChatCommand()
+            _mediatR.Send(new DeleteChatUserCommand()
             {
                 UserId = leftUser.Id,
                 ChatId = notification.ChatId

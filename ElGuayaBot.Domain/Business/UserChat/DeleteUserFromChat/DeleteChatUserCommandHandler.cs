@@ -9,17 +9,17 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayaBot.Domain.Business.UserChat.DeleteUserFromChat
 {
-    public class DeleteUserFromChatCommandHandler : Common.Request.RequestHandler<DeleteUserFromChatCommand, Result>
+    public class DeleteChatUserCommandHandler : Common.Request.RequestHandler<DeleteChatUserCommand, Result>
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public DeleteUserFromChatCommandHandler(ILogger<Common.Request.RequestHandler<DeleteUserFromChatCommand, Result>> logger, IMediator mediatR,
+        public DeleteChatUserCommandHandler(ILogger<Common.Request.RequestHandler<DeleteChatUserCommand, Result>> logger, IMediator mediatR,
             IUnitOfWork unitOfWork) : base(logger, mediatR)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public override async Task<Result> Handle(DeleteUserFromChatCommand request, CancellationToken cancellationToken)
+        public override async Task<Result> Handle(DeleteChatUserCommand request, CancellationToken cancellationToken)
         {
             var user = await _unitOfWork.UserRepository.FindBy(u => u.Id == request.UserId, u => u.Chats);
             
