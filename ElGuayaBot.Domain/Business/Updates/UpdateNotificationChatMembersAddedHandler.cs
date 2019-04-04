@@ -1,23 +1,27 @@
 using System.Linq;
 using ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat;
-using ElGuayaBot.Domain.Business.Messages;
+using ElGuayaBot.Domain.Business.Requests;
 using ElGuayaBot.Domain.Entity;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace ElGuayaBot.Domain.Business.Updates
 {
     public class UpdateNotificationChatMembersAddedHandler : NotificationHandler<UpdateNotification>
     {
+        private readonly Logger<UpdateNotificationChatMembersAddedHandler> Logger;
         private readonly IMediator _mediatR;
 
-        public UpdateNotificationChatMembersAddedHandler(IMediator mediatR)
+        public UpdateNotificationChatMembersAddedHandler(Logger<UpdateNotificationChatMembersAddedHandler> logger, IMediator mediatR)
         {
+            Logger = logger;
             _mediatR = mediatR;
         }
 
         protected override void Handle(UpdateNotification notification)
         {
             if (notification.Type != UpdateType.ChatMembersAdded) return;
+            Logger.LogTrace($"ChatMembersAdded update handler triggered.");
 
             var newUsers = notification.NewChatMembers.Where(chatMember => !chatMember.IsBot).ToList();
 
