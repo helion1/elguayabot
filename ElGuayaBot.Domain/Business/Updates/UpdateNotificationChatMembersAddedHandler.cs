@@ -6,11 +6,11 @@ using MediatR;
 
 namespace ElGuayaBot.Domain.Business.Updates
 {
-    public class UpdateNotificationChatMemberAddedHandler : NotificationHandler<UpdateNotification>
+    public class UpdateNotificationChatMembersAddedHandler : NotificationHandler<UpdateNotification>
     {
         private readonly IMediator _mediatR;
 
-        public UpdateNotificationChatMemberAddedHandler(IMediator mediatR)
+        public UpdateNotificationChatMembersAddedHandler(IMediator mediatR)
         {
             _mediatR = mediatR;
         }
