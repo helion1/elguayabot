@@ -1,8 +1,9 @@
 using ElGuayaBot.Domain.Entity;
+using MediatR;
 
 namespace ElGuayaBot.Domain.Business.Messages
 {
-    public class MessageNotification
+    public class MessageNotification : INotification
     {
         public int Id { get; set; }
         public MessageType Type { get; set; }
