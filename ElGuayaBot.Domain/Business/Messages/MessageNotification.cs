@@ -1,3 +1,4 @@
+using System;
 using ElGuayaBot.Domain.Entity;
 using MediatR;
 
@@ -11,7 +12,7 @@ namespace ElGuayaBot.Domain.Business.Messages
         public User From { get; set; }
         public string Text { get; set; }
         public string Command { get; set; }
-        public string Url { get; set; }
+        public Uri[] Urls { get; set; }
         public string[] Mentions { get; set; }
     }
 
