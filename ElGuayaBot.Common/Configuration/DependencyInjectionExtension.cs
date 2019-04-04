@@ -1,3 +1,4 @@
+using ElGuayaBot.Common.Pipeline;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,7 @@ namespace ElGuayaBot.Common.Configuration
         public static IServiceCollection AddPipelines(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
+//            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
 
             return services;
         }
