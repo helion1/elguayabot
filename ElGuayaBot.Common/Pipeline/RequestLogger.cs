@@ -18,7 +18,7 @@ namespace ElGuayaBot.Common.Pipeline
         {
             var name = typeof(TRequest).Name;
             
-            _logger.LogInformation("Handling request: {Name}", name);
+            _logger.LogInformation("Executing request: {Name}", name);
 
             return Task.CompletedTask;
         }
