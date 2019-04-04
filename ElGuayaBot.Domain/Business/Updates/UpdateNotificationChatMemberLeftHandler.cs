@@ -1,5 +1,5 @@
+using ElGuayaBot.Domain.Business.ChatsUsers.DeleteUserFromChat;
 using ElGuayaBot.Domain.Business.Messages;
-using ElGuayaBot.Domain.Business.UserChat.DeleteUserFromChat;
 using ElGuayaBot.Domain.Entity;
 using ElGuayaBot.Persistence.Contract;
 using MediatR;

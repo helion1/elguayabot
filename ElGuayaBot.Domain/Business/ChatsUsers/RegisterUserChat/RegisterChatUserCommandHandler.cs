@@ -7,7 +7,7 @@ using ElGuayaBot.Persistence.Contract;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Domain.Business.UserChat.RegisterUserChat
+namespace ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat
 {
     public class RegisterChatUserCommandHandler : Common.Request.RequestHandler<RegisterChatUserCommand, Result>
     {

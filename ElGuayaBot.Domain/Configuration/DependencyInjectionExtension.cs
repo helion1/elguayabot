@@ -1,5 +1,5 @@
 using System.Reflection;
-using ElGuayaBot.Domain.Business.UserChat.RegisterUserChat;
+using ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

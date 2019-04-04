@@ -1,6 +1,6 @@
 using System.Linq;
+using ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat;
 using ElGuayaBot.Domain.Business.Messages;
-using ElGuayaBot.Domain.Business.UserChat.RegisterUserChat;
 using ElGuayaBot.Domain.Entity;
 using MediatR;
 

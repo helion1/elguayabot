@@ -4,7 +4,7 @@ using ElGuayaBot.Application.Contract.Client;
 using ElGuayaBot.Application.Contract.Service;
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatcherLogic;
 using ElGuayaBot.Application.Implementation.Mapping;
-using ElGuayaBot.Domain.Business.UserChat.RegisterUserChat;
+using ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using MihaZupan.TelegramBotClients;

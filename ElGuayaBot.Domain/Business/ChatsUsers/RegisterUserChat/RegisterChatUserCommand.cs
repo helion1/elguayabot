@@ -2,7 +2,7 @@ using ElGuayaBot.Common.Request;
 using ElGuayaBot.Common.Result;
 using ElGuayaBot.Domain.Entity;
 
-namespace ElGuayaBot.Domain.Business.UserChat.RegisterUserChat
+namespace ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat
 {
     public class RegisterChatUserCommand : Request<Result>
     {

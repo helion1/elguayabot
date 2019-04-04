@@ -7,7 +7,7 @@ using ElGuayaBot.Persistence.Contract;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Domain.Business.UserChat.DeleteUserFromChat
+namespace ElGuayaBot.Domain.Business.ChatsUsers.DeleteUserFromChat
 {
     public class DeleteChatUserCommandHandler : Common.Request.RequestHandler<DeleteChatUserCommand, Result>
     {

@@ -1,7 +1,7 @@
 using ElGuayaBot.Common.Request;
 using ElGuayaBot.Common.Result;
 
-namespace ElGuayaBot.Domain.Business.UserChat.DeleteUserFromChat
+namespace ElGuayaBot.Domain.Business.ChatsUsers.DeleteUserFromChat
 {
     public class DeleteChatUserCommand : Request<Result>
     {
