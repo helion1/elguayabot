@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Application.Implementation.Pipelines
+namespace ElGuayaBot.Common.Pipeline
 {
     public class RequestLogger<TRequest> : IRequestPreProcessor<TRequest>
     {
@@ -17,10 +17,8 @@ namespace ElGuayaBot.Application.Implementation.Pipelines
         public Task Process(TRequest request, CancellationToken cancellationToken)
         {
             var name = typeof(TRequest).Name;
-
-            //TODO: Add User Details
-
-            _logger.LogInformation("ElGuayaBot Request: {Name} {@Request}", name, request);
+            
+            _logger.LogInformation("Handling request: {Name}", name);
 
             return Task.CompletedTask;
         }
