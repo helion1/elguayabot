@@ -1,7 +1,12 @@
 using System;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using ElGuayaBot.Domain.Business.Messages;
 using ElGuayaBot.Domain.Business.Updates;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
+using MessageType = ElGuayaBot.Domain.Business.Messages.MessageType;
+using User = ElGuayaBot.Domain.Entity.User;
 
 namespace ElGuayaBot.Application.Implementation.Mapping
 {
@@ -59,7 +64,10 @@ namespace ElGuayaBot.Application.Implementation.Mapping
         
         private static string[] GetMentions(Message message)
         {
-            throw new System.NotImplementedException();
+            var rawMentions = message.EntityValues.Where(m => m.StartsWith("@"));
+            var textMentions = message.Entities.Where(m => m.Type == MessageEntityType.TextMention).Select(m => m.User.FirstName);
+
+            return rawMentions.Concat(textMentions).ToArray();
         }
     }
 }
