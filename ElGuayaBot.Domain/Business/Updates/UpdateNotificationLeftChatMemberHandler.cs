@@ -1,4 +1,7 @@
 using ElGuayaBot.Domain.Business.Messages;
+using ElGuayaBot.Domain.Business.UserChat.DeleteUserFromChat;
+using ElGuayaBot.Domain.Entity;
+using ElGuayaBot.Persistence.Contract;
 using MediatR;
 
 namespace ElGuayaBot.Domain.Business.Updates
@@ -6,7 +9,6 @@ namespace ElGuayaBot.Domain.Business.Updates
     public class UpdateNotificationLeftChatMemberHandler :  NotificationHandler<UpdateNotification>
     {
         private readonly IMediator _mediatR;
-
         public UpdateNotificationLeftChatMemberHandler(IMediator mediatR)
         {
             _mediatR = mediatR;
@@ -24,6 +26,12 @@ namespace ElGuayaBot.Domain.Business.Updates
             {
                 ChatId = notification.ChatId,
                 Message = $"@{leftUser.Username} murió combatiendo el imperialismo. ",
+            });
+
+            _mediatR.Send(new DeleteUserFromChatCommand()
+            {
+                UserId = leftUser.Id,
+                ChatId = notification.ChatId
             });
         }
     }
