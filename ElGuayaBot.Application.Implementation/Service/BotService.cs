@@ -2,12 +2,11 @@ using System;
 using System.Threading;
 using ElGuayaBot.Application.Contract.Client;
 using ElGuayaBot.Application.Contract.Service;
-using ElGuayaBot.Application.Implementation.Logic.Common.EntityPersistenceLogic;
 using ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatcherLogic;
-using ElGuayaBot.Application.Implementation.Logic.OnUpdate.OnUpdateDispatcherLogic;
 using ElGuayaBot.Application.Implementation.Mapping;
 using ElGuayaBot.Domain.Business.UserChat.RegisterUserChat;
 using MediatR;
+using Microsoft.Extensions.Logging;
 using MihaZupan.TelegramBotClients;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types.Enums;
@@ -17,13 +16,14 @@ namespace ElGuayaBot.Application.Implementation.Service
     public class BotService : IBotService
     {
         protected readonly BlockingTelegramBotClient Bot;
-        
         protected readonly IMediator MediatR;
+        protected readonly ILogger<BotService> Logger;
 
-        public BotService(IBotClient bot, IMediator mediatR)
+        public BotService(IBotClient bot, IMediator mediatR, ILogger<BotService> logger)
         {
             Bot = bot.Client;
             MediatR = mediatR;
+            Logger = logger;
         }
 
         public void FundarRepublica()
@@ -37,7 +37,7 @@ namespace ElGuayaBot.Application.Implementation.Service
 
             Bot.StartReceiving(Array.Empty<UpdateType>());
             
-            Console.WriteLine($"Start listening for @{me.Username}");
+            Logger.LogInformation($"Started telegram service for bot: @{me.Username}");
 
             Thread.Sleep(int.MaxValue);
         }
@@ -61,7 +61,9 @@ namespace ElGuayaBot.Application.Implementation.Service
 
         private void HandleOnUpdate(object sender, UpdateEventArgs e)
         {
-            MediatR.Send(new OnUpdateDispatcherRequest { Update = e.Update });
+            var notification = e.Update.ToNotification();
+            
+            MediatR.Publish(notification);
         }
         
         private void HandleOnMessageEdited(object sender, MessageEventArgs e)
