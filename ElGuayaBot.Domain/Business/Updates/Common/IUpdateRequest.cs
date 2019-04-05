@@ -9,4 +9,12 @@ namespace ElGuayaBot.Domain.Business.Updates.Common
         UpdateType Type { get; set; }
         long ChatId { get; set; }
     }
+    
+    public enum UpdateType
+    {
+        Other,
+        ChatTitleChanged,
+        ChatMemberLeft,
+        ChatMembersAdded
+    }
 }
