@@ -9,15 +9,7 @@ namespace ElGuayaBot.Domain.Mapping
     {
         public static BotAction ToBotCommandAction(this MessageCommand messageCommand)
         {
-            var botCommand = new BotAction()
-            {
-                MessageId = messageCommand.Id,
-                Chat = messageCommand.Chat,
-                From = messageCommand.From,
-                Text = messageCommand.Text,
-                Urls = messageCommand.Urls,
-                Mentions = messageCommand.Mentions
-            };
+            var botCommand = messageCommand.ToBotAction();
             
             switch (messageCommand.Command)
             {
@@ -28,5 +20,22 @@ namespace ElGuayaBot.Domain.Mapping
             }
         }
 
+        public static BotAction ToBotUrlAction(this MessageCommand messageCommand)
+        {
+            return ToBotAction(messageCommand);
+        }
+
+        private static BotAction ToBotAction(this MessageCommand messageCommand)
+        {
+            return new BotAction()
+            {
+                MessageId = messageCommand.Id,
+                Chat = messageCommand.Chat,
+                From = messageCommand.From,
+                Text = messageCommand.Text,
+                Urls = messageCommand.Urls,
+                Mentions = messageCommand.Mentions
+            };
+        }
     }
 }
