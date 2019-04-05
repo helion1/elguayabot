@@ -59,7 +59,11 @@ namespace ElGuayaBot.Application.Implementation.Mapping
 
         private static Uri[] GetUrls(Message message)
         {
-            throw new System.NotImplementedException();
+            var urls = message.Entities.Where(entity => entity.Type == MessageEntityType.Url)
+                .Select(entity => new Uri(message.Text.Substring(entity.Offset, entity.Length).ToLower()))
+                .ToArray();
+
+            return urls;
         }
         
         private static string[] GetMentions(Message message)
