@@ -15,8 +15,4 @@
       <ProjectReference Include="..\ElGuayaBot.Persistence.Contract\ElGuayaBot.Persistence.Contract.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Business\BotCommands" />
-    </ItemGroup>
-
 </Project>
