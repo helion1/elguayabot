@@ -3,8 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ElGuayaBot.Common.Result;
 using ElGuayaBot.Domain.Business.ChatsUsers.DeleteUserFromChat;
-using ElGuayaBot.Domain.Business.Requests;
-using ElGuayaBot.Domain.Business.Updates.Common;
+using ElGuayaBot.Domain.Business.Notifications;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -30,7 +29,7 @@ namespace ElGuayaBot.Domain.Business.Updates.ChatMemberLeft
                     ChatId = request.ChatId
                 }, cancellationToken);
                 
-                await MediatR.Publish(new SendMessageRequest()
+                await MediatR.Publish(new SendMessage()
                 {
                     ChatId = request.ChatId,
                     Message = $"@{leftUser.Username} murió combatiendo el imperialismo.",

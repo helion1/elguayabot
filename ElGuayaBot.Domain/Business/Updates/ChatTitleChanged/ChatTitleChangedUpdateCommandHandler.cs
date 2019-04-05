@@ -3,9 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ElGuayaBot.Common.Result;
 using ElGuayaBot.Domain.Business.Chats.ChangeChatTitle;
-using ElGuayaBot.Domain.Business.Requests;
-using ElGuayaBot.Domain.Business.Updates.Common;
-using ElGuayaBot.Persistence.Contract;
+using ElGuayaBot.Domain.Business.Notifications;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
@@ -27,7 +25,7 @@ namespace ElGuayaBot.Domain.Business.Updates.ChatTitleChanged
                     NewChatTitle = request.NewChatTitle
                 });
 
-                await MediatR.Publish(new SendMessageRequest()
+                await MediatR.Publish(new SendMessage()
                 {
                     ChatId = request.ChatId,
                     Message = "¡Vergación! 😱 El nuevo título del chat esta bien ahuevonado"

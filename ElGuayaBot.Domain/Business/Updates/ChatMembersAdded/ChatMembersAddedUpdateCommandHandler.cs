@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ElGuayaBot.Common.Result;
 using ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat;
-using ElGuayaBot.Domain.Business.Requests;
+using ElGuayaBot.Domain.Business.Notifications;
 using ElGuayaBot.Domain.Entity;
 using MediatR;
 using Microsoft.Extensions.Logging;
@@ -45,7 +45,7 @@ namespace ElGuayaBot.Domain.Business.Updates.ChatMembersAdded
                     });
                 }
                 
-                await MediatR.Publish(new SendMessageRequest()
+                await MediatR.Publish(new SendMessage()
                 {
                     ChatId = request.ChatId,
                     Message = message

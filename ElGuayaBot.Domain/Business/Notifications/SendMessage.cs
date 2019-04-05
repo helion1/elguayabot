@@ -1,8 +1,8 @@
 using MediatR;
 
-namespace ElGuayaBot.Domain.Business.Requests
+namespace ElGuayaBot.Domain.Business.Notifications
 {
-    public class SendMessageRequest : INotification
+    public class SendMessage : INotification
     {
         public long ChatId { get; set; }
         public string Message { get; set; }
