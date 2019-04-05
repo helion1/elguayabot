@@ -1,8 +1,8 @@
-using ElGuayaBot.Domain.Business.BotActions.CommandActions.Common;
+using ElGuayaBot.Domain.Business.BotActions.Common;
 
 namespace ElGuayaBot.Domain.Business.BotActions.CommandActions.About
 {
-    public class AboutCommandAction : BotCommandAction
+    public class AboutCommandAction : BotAction
     {
         
     }

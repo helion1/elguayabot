@@ -1,15 +1,15 @@
 using ElGuayaBot.Domain.Business.BotActions.CommandActions.About;
-using ElGuayaBot.Domain.Business.BotActions.CommandActions.Common;
 using ElGuayaBot.Domain.Business.BotActions.CommandActions.Other;
+using ElGuayaBot.Domain.Business.BotActions.Common;
 using ElGuayaBot.Domain.Business.Messages;
 
 namespace ElGuayaBot.Domain.Mapping
 {
     public static class MessageCommandMapper
     {
-        public static BotCommandAction ToBotCommand(this MessageCommand messageCommand)
+        public static BotAction ToBotCommandAction(this MessageCommand messageCommand)
         {
-            var botCommand = new BotCommandAction()
+            var botCommand = new BotAction()
             {
                 MessageId = messageCommand.Id,
                 Chat = messageCommand.Chat,
@@ -27,5 +27,6 @@ namespace ElGuayaBot.Domain.Mapping
                     return botCommand as OtherCommandAction;
             }
         }
+
     }
 }
