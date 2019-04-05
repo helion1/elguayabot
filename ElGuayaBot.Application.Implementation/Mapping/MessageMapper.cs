@@ -54,13 +54,24 @@ namespace ElGuayaBot.Application.Implementation.Mapping
         
         private static string GetCommand(Message message)
         {
-            throw new System.NotImplementedException();
+            if (message.Entities.First()?.Type != MessageEntityType.BotCommand) return null;
+            
+            var command = message.EntityValues.First();
+
+            if (!command.Contains('@')) return command;
+                
+            if (!command.ToLower().Contains("@elguayabot")) return null;
+
+            command = command.Substring(0, command.IndexOf('@'));
+
+            return command;
+
         }
 
         private static Uri[] GetUrls(Message message)
         {
             var urls = message.Entities.Where(entity => entity.Type == MessageEntityType.Url)
-                .Select(entity => new Uri(message.Text.Substring(entity.Offset, entity.Length).ToLower()))
+                .Select(entity => new Uri(message.Text.Substring(entity.Offset, entity.Length)))
                 .ToArray();
 
             return urls;
