@@ -33,7 +33,7 @@ namespace ElGuayaBot.Application.Implementation.Service
             Bot.OnMessage += HandleEntityPeristance;
             Bot.OnMessage += HandleOnMessage;
             Bot.OnUpdate += HandleOnUpdate;
-            Bot.OnMessageEdited += HandleOnMessageEdited;
+//            Bot.OnMessageEdited += HandleOnMessageEdited;
 
             Bot.StartReceiving(Array.Empty<UpdateType>());
             
@@ -56,7 +56,9 @@ namespace ElGuayaBot.Application.Implementation.Service
 
         private void HandleOnMessage(object sender, MessageEventArgs e)
         {
-            MediatR.Send(new OnMessageDispatcherRequest { Message = e.Message });
+            var notification = e.Message.ToNotification();
+
+            MediatR.Publish(notification);
         }
 
         private void HandleOnUpdate(object sender, UpdateEventArgs e)
@@ -66,9 +68,9 @@ namespace ElGuayaBot.Application.Implementation.Service
             MediatR.Publish(notification);
         }
         
-        private void HandleOnMessageEdited(object sender, MessageEventArgs e)
-        {
-            //TODO
-        }
+//        private void HandleOnMessageEdited(object sender, MessageEventArgs e)
+//        {
+//            //TODO
+//        }
     }
 }
