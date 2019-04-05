@@ -3,9 +3,9 @@ using ElGuayaBot.Common.Request;
 using ElGuayaBot.Common.Result;
 using ElGuayaBot.Domain.Entity;
 
-namespace ElGuayaBot.Domain.Business.BotCommands.Common
+namespace ElGuayaBot.Domain.Business.BotActions.Common
 {
-    public class BotCommand : Request<Result>
+    public class BotCommandAction : Request<Result>
     {
         public int MessageId { get; set; }
         public Chat Chat { get; set; }
