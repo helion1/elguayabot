@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayaBot.Domain.Business.Messages
 {
-    public class MessageNotificationDispatcherHandler : NotificationHandler<MessageNotification>
+    public class MessageNotificationDispatcherHandler : NotificationHandler<MessageCommand>
     {
         private readonly Logger<MessageNotificationDispatcherHandler> Logger;
         private readonly IMediator _mediatR;
@@ -14,7 +14,7 @@ namespace ElGuayaBot.Domain.Business.Messages
             _mediatR = mediatR;
         }
 
-        protected override void Handle(MessageNotification notification)
+        protected override void Handle(MessageCommand command)
         {
             throw new System.NotImplementedException();
         }

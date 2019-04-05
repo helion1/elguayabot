@@ -1,10 +1,12 @@
 using System;
+using ElGuayaBot.Common.Request;
+using ElGuayaBot.Common.Result;
 using ElGuayaBot.Domain.Entity;
 using MediatR;
 
 namespace ElGuayaBot.Domain.Business.Messages
 {
-    public class MessageNotification : INotification
+    public class MessageCommand : Request<Result>
     {
         public int Id { get; set; }
         public MessageType Type { get; set; }

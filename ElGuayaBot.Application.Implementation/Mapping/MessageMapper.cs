@@ -12,9 +12,9 @@ namespace ElGuayaBot.Application.Implementation.Mapping
 {
     public static class MessageMapper
     {
-        public static MessageNotification ToNotification(this Message message)
+        public static MessageCommand ToNotification(this Message message)
         {
-            return new MessageNotification()
+            return new MessageCommand()
             {
                 Id = message.MessageId,
                 Type = GetType(message),
