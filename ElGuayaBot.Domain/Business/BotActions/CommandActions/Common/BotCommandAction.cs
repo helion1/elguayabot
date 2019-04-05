@@ -3,7 +3,7 @@ using ElGuayaBot.Common.Request;
 using ElGuayaBot.Common.Result;
 using ElGuayaBot.Domain.Entity;
 
-namespace ElGuayaBot.Domain.Business.BotActions.Common
+namespace ElGuayaBot.Domain.Business.BotActions.CommandActions.Common
 {
     public class BotCommandAction : Request<Result>
     {

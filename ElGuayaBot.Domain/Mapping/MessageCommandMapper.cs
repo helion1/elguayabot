@@ -1,6 +1,6 @@
-using ElGuayaBot.Domain.Business.BotActions.About;
-using ElGuayaBot.Domain.Business.BotActions.Common;
-using ElGuayaBot.Domain.Business.BotActions.Other;
+using ElGuayaBot.Domain.Business.BotActions.CommandActions.About;
+using ElGuayaBot.Domain.Business.BotActions.CommandActions.Common;
+using ElGuayaBot.Domain.Business.BotActions.CommandActions.Other;
 using ElGuayaBot.Domain.Business.Messages;
 
 namespace ElGuayaBot.Domain.Mapping
