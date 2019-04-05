@@ -2,7 +2,7 @@ using ElGuayaBot.Domain.Business.Updates.Common;
 
 namespace ElGuayaBot.Domain.Business.Updates.ChatTitleChanged
 {
-    public class ChatTitleChangedUpdateRequest : IUpdateRequest
+    public class ChatTitleChangedUpdateCommand : UpdateCommand
     {
         public int Id { get; set; }
         public UpdateType Type { get; set; }

@@ -3,7 +3,7 @@ using ElGuayaBot.Domain.Entity;
 
 namespace ElGuayaBot.Domain.Business.Updates.ChatMemberLeft
 {
-    public class ChatMemberLeftUpdateRequest: IUpdateRequest
+    public class ChatMemberLeftUpdateCommand: UpdateCommand
     {
         public int Id { get; set; }
         public UpdateType Type { get; set; }

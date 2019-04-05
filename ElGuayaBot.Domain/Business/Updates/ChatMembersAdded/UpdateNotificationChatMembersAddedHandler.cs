@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayaBot.Domain.Business.Updates
 {
-    public class UpdateNotificationChatMembersAddedHandler : NotificationHandler<UpdateRequest>
+    public class UpdateNotificationChatMembersAddedHandler : NotificationHandler<UpdateCommand>
     {
         private readonly Logger<UpdateNotificationChatMembersAddedHandler> Logger;
         private readonly IMediator _mediatR;
@@ -19,12 +19,12 @@ namespace ElGuayaBot.Domain.Business.Updates
             _mediatR = mediatR;
         }
 
-        protected override void Handle(UpdateRequest request)
+        protected override void Handle(UpdateCommand command)
         {
-            if (request.Type != UpdateType.ChatMembersAdded) return;
+            if (command.Type != UpdateType.ChatMembersAdded) return;
             Logger.LogTrace($"ChatMembersAdded update handler triggered.");
 
-            var newUsers = request.NewChatMembers.Where(chatMember => !chatMember.IsBot).ToList();
+            var newUsers = command.NewChatMembers.Where(chatMember => !chatMember.IsBot).ToList();
 
             var message = "Bienvenido a la noble causa del bolivarismo.";
             
@@ -41,7 +41,7 @@ namespace ElGuayaBot.Domain.Business.Updates
 
             _mediatR.Publish(new SendMessageRequest()
             {
-                ChatId = request.ChatId,
+                ChatId = command.ChatId,
                 Message = message
             });
 
@@ -50,7 +50,7 @@ namespace ElGuayaBot.Domain.Business.Updates
                 _mediatR.Send(new RegisterChatUserCommand()
                 {
                     User = newUser,
-                    Chat = new Chat(){ Id = request.Id}
+                    Chat = new Chat(){ Id = command.Id}
                 });
             }
         }

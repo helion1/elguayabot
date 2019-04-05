@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayaBot.Domain.Business.Updates
 {
-    public class UpdateNotificationChatTitleChangedHandler : NotificationHandler<UpdateRequest>
+    public class UpdateNotificationChatTitleChangedHandler : NotificationHandler<UpdateCommand>
     {
         private readonly Logger<UpdateNotificationChatTitleChangedHandler> Logger;
         private readonly IUnitOfWork _unitOfWork;
@@ -16,14 +16,14 @@ namespace ElGuayaBot.Domain.Business.Updates
             _unitOfWork = unitOfWork;
         }
 
-        protected override async void Handle(UpdateRequest request)
+        protected override async void Handle(UpdateCommand command)
         {
-            if (request.Type != UpdateType.ChatTitleChanged) return;
+            if (command.Type != UpdateType.ChatTitleChanged) return;
             Logger.LogTrace($"ChatTitleChanged update handler triggered.");
 
-            var chat = await _unitOfWork.ChatRepository.FindById(request.ChatId);
+            var chat = await _unitOfWork.ChatRepository.FindById(command.ChatId);
 
-            chat.Title = request.NewChatTitle;
+            chat.Title = command.NewChatTitle;
 
             _unitOfWork.ChatRepository.Update(chat);
 

@@ -8,9 +8,9 @@ namespace ElGuayaBot.Application.Implementation.Mapping
 {
     public static class UpdateMapper
     {
-        public static UpdateRequest ToNotification(this Update update)
+        public static UpdateCommand ToNotification(this Update update)
         {
-            return new UpdateRequest()
+            return new UpdateCommand()
             {
                 Id = update.Id,
                 Type = GetType(update),

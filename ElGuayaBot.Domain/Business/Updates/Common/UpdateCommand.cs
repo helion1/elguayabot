@@ -1,9 +1,10 @@
+using ElGuayaBot.Common.Request;
 using ElGuayaBot.Common.Result;
 using MediatR;
 
 namespace ElGuayaBot.Domain.Business.Updates.Common
 {
-    public interface IUpdateRequest : IRequest<Result>
+    public abstract class UpdateCommand: Request<Result>
     {
         int Id { get; set; }
         UpdateType Type { get; set; }
