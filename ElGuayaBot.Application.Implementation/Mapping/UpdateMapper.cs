@@ -1,15 +1,16 @@
 using ElGuayaBot.Domain.Business.Updates;
+using ElGuayaBot.Domain.Business.Updates.Common;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
-using UpdateType = ElGuayaBot.Domain.Business.Updates.UpdateType;
+using UpdateType = ElGuayaBot.Domain.Business.Updates.Common.UpdateType;
 
 namespace ElGuayaBot.Application.Implementation.Mapping
 {
     public static class UpdateMapper
     {
-        public static UpdateNotification ToNotification(this Update update)
+        public static UpdateRequest ToNotification(this Update update)
         {
-            return new UpdateNotification()
+            return new UpdateRequest()
             {
                 Id = update.Id,
                 Type = GetType(update),

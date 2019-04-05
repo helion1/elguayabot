@@ -1,13 +1,14 @@
 using System.Linq;
 using ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat;
 using ElGuayaBot.Domain.Business.Requests;
+using ElGuayaBot.Domain.Business.Updates.Common;
 using ElGuayaBot.Domain.Entity;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace ElGuayaBot.Domain.Business.Updates
 {
-    public class UpdateNotificationChatMembersAddedHandler : NotificationHandler<UpdateNotification>
+    public class UpdateNotificationChatMembersAddedHandler : NotificationHandler<UpdateRequest>
     {
         private readonly Logger<UpdateNotificationChatMembersAddedHandler> Logger;
         private readonly IMediator _mediatR;
@@ -18,12 +19,12 @@ namespace ElGuayaBot.Domain.Business.Updates
             _mediatR = mediatR;
         }
 
-        protected override void Handle(UpdateNotification notification)
+        protected override void Handle(UpdateRequest request)
         {
-            if (notification.Type != UpdateType.ChatMembersAdded) return;
+            if (request.Type != UpdateType.ChatMembersAdded) return;
             Logger.LogTrace($"ChatMembersAdded update handler triggered.");
 
-            var newUsers = notification.NewChatMembers.Where(chatMember => !chatMember.IsBot).ToList();
+            var newUsers = request.NewChatMembers.Where(chatMember => !chatMember.IsBot).ToList();
 
             var message = "Bienvenido a la noble causa del bolivarismo.";
             
@@ -40,7 +41,7 @@ namespace ElGuayaBot.Domain.Business.Updates
 
             _mediatR.Publish(new SendMessageRequest()
             {
-                ChatId = notification.ChatId,
+                ChatId = request.ChatId,
                 Message = message
             });
 
@@ -49,7 +50,7 @@ namespace ElGuayaBot.Domain.Business.Updates
                 _mediatR.Send(new RegisterChatUserCommand()
                 {
                     User = newUser,
-                    Chat = new Chat(){ Id = notification.Id}
+                    Chat = new Chat(){ Id = request.Id}
                 });
             }
         }

@@ -1,11 +1,12 @@
 using System.Threading.Tasks;
+using ElGuayaBot.Domain.Business.Updates.Common;
 using ElGuayaBot.Persistence.Contract;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace ElGuayaBot.Domain.Business.Updates
 {
-    public class UpdateNotificationChatTitleChangedHandler : NotificationHandler<UpdateNotification>
+    public class UpdateNotificationChatTitleChangedHandler : NotificationHandler<UpdateRequest>
     {
         private readonly Logger<UpdateNotificationChatTitleChangedHandler> Logger;
         private readonly IUnitOfWork _unitOfWork;
@@ -15,14 +16,14 @@ namespace ElGuayaBot.Domain.Business.Updates
             _unitOfWork = unitOfWork;
         }
 
-        protected override async void Handle(UpdateNotification notification)
+        protected override async void Handle(UpdateRequest request)
         {
-            if (notification.Type != UpdateType.ChatTitleChanged) return;
+            if (request.Type != UpdateType.ChatTitleChanged) return;
             Logger.LogTrace($"ChatTitleChanged update handler triggered.");
 
-            var chat = await _unitOfWork.ChatRepository.FindById(notification.ChatId);
+            var chat = await _unitOfWork.ChatRepository.FindById(request.ChatId);
 
-            chat.Title = notification.NewChatTitle;
+            chat.Title = request.NewChatTitle;
 
             _unitOfWork.ChatRepository.Update(chat);
 

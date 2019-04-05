@@ -1,9 +1,8 @@
 using ElGuayaBot.Domain.Entity;
-using MediatR;
 
-namespace ElGuayaBot.Domain.Business.Updates
+namespace ElGuayaBot.Domain.Business.Updates.Common
 {
-    public class UpdateNotification : INotification
+    public class UpdateRequest : IUpdateRequest
     {
         public int Id { get; set; }
         public UpdateType Type { get; set; }
