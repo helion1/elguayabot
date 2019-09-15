@@ -1,7 +1,7 @@
 namespace ElGuayabot.Application.Contract.Service
 {
-    public interface IBotService
+    public interface ITelegramService
     {
-        void FundarRepublica();
+        void StartBot();
     }
 }
