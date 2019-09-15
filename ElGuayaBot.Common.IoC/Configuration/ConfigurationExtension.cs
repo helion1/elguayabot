@@ -19,30 +19,20 @@ namespace ElGuayaBot.Common.IoC.Configuration
                 .Build();
         }
         
-        public static ILogger LoadLogger(IConfiguration configuration, bool useElasticSearch = false)
+        public static ILogger LoadLogger(IConfiguration configuration)
         {
             var loggerConf = new LoggerConfiguration()
                 .Enrich.FromLogContext()
                 .Enrich.WithExceptionDetails()
                 .WriteTo.Console();
-
-            if (useElasticSearch)
-            {
-                var elasticUri = new Uri(configuration.GetConnectionString("ElasticSearch"));
-                
-                loggerConf.WriteTo.Elasticsearch(new ElasticsearchSinkOptions(elasticUri)
-                {
-                    AutoRegisterTemplate = true
-                });
-            }
-
+            
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
             {
                 loggerConf.MinimumLevel.Information();
             }
             else
             {
-                loggerConf.MinimumLevel.Warning();
+                loggerConf.MinimumLevel.Information();
             }
 
             return loggerConf.CreateLogger();
