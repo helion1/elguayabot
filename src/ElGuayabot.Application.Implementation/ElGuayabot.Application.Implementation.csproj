@@ -6,25 +6,20 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Background" />
-      <Folder Include="Logic\Common" />
+        <PackageReference Include="TelegramBotClients" Version="1.0.7" />
+        <PackageReference Include="MediatR" Version="7.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Scrutor" Version="3.1.0" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentValidation" Version="8.1.2" />
-      <PackageReference Include="MediatR" Version="6.0.0" />
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0" />
-      <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.2.0" />
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-      <PackageReference Include="Scrutor" Version="3.0.2" />
-      <PackageReference Include="Unicode.net" Version="0.1.2" />
+        <Folder Include="BotActions" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\ElGuayabot.Application.Contract\ElGuayabot.Application.Contract.csproj" />
-      <ProjectReference Include="..\ElGuayaBot.Domain\ElGuayaBot.Domain.csproj" />
-      <ProjectReference Include="..\ElGuayaBot.Infrastructure.Contract\ElGuayaBot.Infrastructure.Contract.csproj" />
-      <ProjectReference Include="..\ElGuayabot.Persistence.Contract\ElGuayabot.Persistence.Contract.csproj" />
     </ItemGroup>
 
 </Project>
