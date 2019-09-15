@@ -15,10 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="BotActions" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\ElGuayabot.Application.Contract\ElGuayabot.Application.Contract.csproj" />
     </ItemGroup>
 

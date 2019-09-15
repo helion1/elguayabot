@@ -2,7 +2,7 @@ using MediatR;
 using Telegram.Bot.Types;
 using TheWeatherman.Common.Result;
 
-namespace ElGuayabot.Application.Contract.BotActions.Common
+namespace ElGuayabot.Application.Contract.Model.Action
 {
     public interface IBotAction : IRequest<Result>
     {

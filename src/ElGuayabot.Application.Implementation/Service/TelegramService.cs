@@ -43,24 +43,48 @@ namespace ElGuayaBot.Application.Implementation.Service
                 using (var scope = ServiceScopeFactory.CreateScope())
                 {
                     var botContext = scope.ServiceProvider.GetRequiredService<IBotContext>();
-                    botContext.Populate(e.Message);
+                    await botContext.Populate(e.Message);
 
                     var mediatR = scope.ServiceProvider.GetRequiredService<IMediator>();
                     var actionSelector = scope.ServiceProvider.GetRequiredService<IBotActionSelector>();
 
+                    var actionResult = actionSelector.GetCommandAction();
 
-                    var botActionResult = actionSelector.GetCommandAction();
-
-                    if (!botActionResult.Succeeded) return;
-
-                    await botContext.BotClient.Client.SendChatActionAsync(e.Message.Chat.Id, ChatAction.Typing);
-
-                    var requestResult = await mediatR.Send(botActionResult.Value);
-
-                    if (!requestResult.Succeeded && !requestResult.Errors.ContainsKey("not_found"))
+                    if (actionResult.Succeeded)
                     {
-                        Logger.LogError("{BotAction} was not processed correctly: {@Errors}",
-                            botActionResult.Value.GetType().Name, requestResult.Errors);
+                        await botContext.BotClient.Client.SendChatActionAsync(e.Message.Chat.Id, ChatAction.Typing);
+                        
+                        var requestResult = await mediatR.Send(actionResult.Value);
+
+                        if (!requestResult.Succeeded && !requestResult.Errors.ContainsKey("not_found"))
+                        {
+                            Logger.LogError("{BotAction} was not processed correctly: {@Errors}",
+                                actionResult.Value.GetType().Name, requestResult.Errors);
+                        }
+                    }
+                    else if (actionResult.Errors.ContainsKey("not_found"))
+                    {
+                        await botContext.BotClient.Client.SendChatActionAsync(e.Message.Chat.Id, ChatAction.Typing);
+
+                        var miscellaneousActionResult = actionSelector.GetMiscellaneousAction();
+
+                        if (miscellaneousActionResult.Succeeded)
+                        {
+                            await botContext.BotClient.Client.SendChatActionAsync(e.Message.Chat.Id, ChatAction.Typing);
+                         
+                            var requestResult = await mediatR.Send(miscellaneousActionResult.Value);
+                            
+                            if (!requestResult.Succeeded && !requestResult.Errors.ContainsKey("not_found"))
+                            {
+                                Logger.LogError("{BotAction} was not processed correctly: {@Errors}",
+                                    actionResult.Value.GetType().Name, requestResult.Errors);
+                            }
+                        }
+                        if (!miscellaneousActionResult.Succeeded && !miscellaneousActionResult.Errors.ContainsKey("not_found"))
+                        {
+                            Logger.LogError("{BotAction} was not processed correctly: {@Errors}",
+                                actionResult.Value.GetType().Name, miscellaneousActionResult.Errors);
+                        }
                     }
                 }
             }

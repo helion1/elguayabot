@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Common.Client;
+using ElGuayabot.Application.Contract.Model;
 using Telegram.Bot.Types;
 
 namespace ElGuayabot.Application.Contract.Common.Context
@@ -13,14 +14,8 @@ namespace ElGuayabot.Application.Contract.Common.Context
         User User { get; set; }
         Chat Chat { get; set; }
         
-        void Populate(Message message);
+        Task Populate(Message message);
         void Populate(CallbackQuery callbackQuery);
         void Populate(InlineQuery inlineQuery);
-
-        /// <summary>
-        /// Async method to get the username of the bot.
-        /// </summary>
-        /// <returns>Username of the bot.</returns>
-        Task<string> GetBotName();
     }
 }

@@ -1,8 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using ElGuayabot.Application.Contract.BotActions.Common;
 using ElGuayabot.Application.Contract.Common.Context;
 using ElGuayabot.Application.Contract.Common.Strategy;
+using ElGuayabot.Application.Contract.Model.Action.Callback;
+using ElGuayabot.Application.Contract.Model.Action.Command;
+using ElGuayabot.Application.Contract.Model.Action.Inline;
+using ElGuayabot.Application.Contract.Model.Action.Miscellaneous;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Telegram.Bot.Types;
@@ -25,7 +29,7 @@ namespace ElGuayaBot.Application.Implementation.Common.Strategy
         }
 
         public Result<ICommandAction> GetCommandAction()
-        {
+        {            
             var command = GetCommand(BotContext.Message);
             
             if (command == null) return Result<ICommandAction>.NotFound(new List<string> {"No corresponding action found."});
@@ -35,6 +39,11 @@ namespace ElGuayaBot.Application.Implementation.Common.Strategy
             if (action == null) return Result<ICommandAction>.NotFound(new List<string> {"No corresponding action found."});
 
             return Result<ICommandAction>.Success(action);
+        }
+
+        public Result<IMiscellaneousAction> GetMiscellaneousAction()
+        {
+            throw new NotImplementedException();
         }
 
         public Result<ICallbackAction> GetCallbackAction()
@@ -70,8 +79,8 @@ namespace ElGuayaBot.Application.Implementation.Common.Strategy
             var command = message.EntityValues.First();
 
             if (!command.Contains('@')) return command;
-            
-            if (!command.ToLower().Contains("TODO")) return null;
+                
+            if (!command.ToLower().Contains("@pokegraf_bot")) return null;
 
             command = command.Substring(0, command.IndexOf('@'));
 

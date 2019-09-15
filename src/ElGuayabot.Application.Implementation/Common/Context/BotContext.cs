@@ -8,8 +8,10 @@ namespace ElGuayaBot.Application.Implementation.Common.Context
 {
     public class BotContext : IBotContext
     {
+        
         protected readonly ILogger<BotContext> Logger;
         public IBotClient BotClient { get; set; }
+
         public Message Message { get; set; }
         public CallbackQuery CallbackQuery { get; set; }
         public InlineQuery InlineQuery { get; set; }
@@ -22,12 +24,12 @@ namespace ElGuayaBot.Application.Implementation.Common.Context
             BotClient = botClient;
         }
 
-        public void Populate(Message message)
+        public async Task Populate(Message message)
         {
             Message = message;
             User = message.From;
             Chat = message.Chat;
-
+            
             Logger.LogTrace("Populated HttpContext with Message.", message);
         }
 
@@ -47,13 +49,6 @@ namespace ElGuayaBot.Application.Implementation.Common.Context
             User = inlineQuery.From;
 
             Logger.LogTrace("Populated HttpContext with InlineQuery.", inlineQuery);
-        }
-
-        public async Task<string> GetBotName()
-        {
-            var me = await BotClient.Client.GetMeAsync();
-
-            return me.Username;
         }
     }
 }

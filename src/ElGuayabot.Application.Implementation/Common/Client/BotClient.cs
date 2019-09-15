@@ -10,7 +10,7 @@ namespace ElGuayaBot.Application.Implementation.Common.Client
     public class BotClient : IBotClient
     {
         protected readonly ILogger<BotClient> Logger;
-        public RateLimitedTelegramBotClient Client { get; }
+        public BlockingTelegramBotClient Client { get; }
         
         public bool Started { get; set; }
         
@@ -22,12 +22,11 @@ namespace ElGuayaBot.Application.Implementation.Common.Client
             try
             {
                 Client = string.IsNullOrWhiteSpace(configuration["TELEGRAM_TOKEN"]) 
-                    ? new RateLimitedTelegramBotClient(configuration["Telegram:Token"]) 
-                    : new RateLimitedTelegramBotClient(configuration["TELEGRAM_TOKEN"]);
+                    ? new BlockingTelegramBotClient(configuration["Telegram:Token"]) 
+                    : new BlockingTelegramBotClient(configuration["TELEGRAM_TOKEN"]);
             }
             catch (Exception e)
             {
-                ;
                 Logger.LogError(e, "Error setting TelegramBotClient.");
                 
                 throw;

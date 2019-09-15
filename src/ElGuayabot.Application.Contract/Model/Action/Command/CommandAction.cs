@@ -1,7 +1,6 @@
-using ElGuayabot.Application.Contract.BotActions.Common;
 using ElGuayabot.Application.Contract.Common.Context;
 
-namespace ElGuayaBot.Application.Implementation.BotActions.Common
+namespace ElGuayabot.Application.Contract.Model.Action.Command
 {
     public abstract class CommandAction : BotAction, ICommandAction
     {

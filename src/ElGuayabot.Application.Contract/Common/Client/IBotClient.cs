@@ -4,7 +4,7 @@ namespace ElGuayabot.Application.Contract.Common.Client
 {
     public interface IBotClient
     {
-        RateLimitedTelegramBotClient Client { get; }
+        BlockingTelegramBotClient Client { get; }
         void Start();
     }
 }

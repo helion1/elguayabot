@@ -1,10 +1,9 @@
-using ElGuayabot.Application.Contract.BotActions.Common;
 using ElGuayabot.Application.Contract.Common.Context;
 using Telegram.Bot.Types;
 using TheWeatherman.Common.Request;
 using TheWeatherman.Common.Result;
 
-namespace ElGuayaBot.Application.Implementation.BotActions.Common
+namespace ElGuayabot.Application.Contract.Model.Action
 {
     public abstract class BotAction : Request<Result>, IBotAction
     {

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ElGuayabot.Application.Contract.BotActions.Common
+namespace ElGuayabot.Application.Contract.Model.Action.Callback
 {
     public interface ICallbackAction : IBotAction
     {

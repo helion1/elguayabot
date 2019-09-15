@@ -1,4 +1,4 @@
-namespace ElGuayabot.Application.Contract.BotActions.Common
+namespace ElGuayabot.Application.Contract.Model.Action.Command
 {
     public interface ICommandAction : IBotAction
     {

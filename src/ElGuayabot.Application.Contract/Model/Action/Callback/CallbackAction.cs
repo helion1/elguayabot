@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using ElGuayabot.Application.Contract.BotActions.Common;
 using ElGuayabot.Application.Contract.Common.Context;
 using Newtonsoft.Json;
 
-namespace ElGuayaBot.Application.Implementation.BotActions.Common
+namespace ElGuayabot.Application.Contract.Model.Action.Callback
 {
     public abstract class CallbackAction : BotAction, ICallbackAction
     {
