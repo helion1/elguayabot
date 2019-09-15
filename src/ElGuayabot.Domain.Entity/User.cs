@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TheWeatherman.Application.Entity
+namespace ElGuayabot.Domain.Entity
 {
     public class User
     {

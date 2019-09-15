@@ -10,12 +10,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\ElGuayabot.Common\ElGuayabot.Common.csproj" />
-      <ProjectReference Include="..\ElGuayaBot.Domain.Entity\ElGuayaBot.Domain.Entity.csproj" />
-      <ProjectReference Include="..\ElGuayabot.Persistence.Contract\ElGuayabot.Persistence.Contract.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Folder Include="Business\BotActions\CommandActions" />
     </ItemGroup>
 
