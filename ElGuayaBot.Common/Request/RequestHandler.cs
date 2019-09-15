@@ -1,10 +1,9 @@
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Common.Request;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Common.Request
+namespace TheWeatherman.Common.Request
 {
     public abstract class RequestHandler<TRequest, TResponse> : IRequestHandler<TRequest, TResponse> where TRequest : Request<TResponse>
     {

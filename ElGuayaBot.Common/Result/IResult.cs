@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ElGuayaBot.Common.Result
+namespace TheWeatherman.Common.Result
 {
     public interface IResult
     {

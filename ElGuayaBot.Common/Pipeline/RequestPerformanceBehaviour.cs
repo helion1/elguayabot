@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Common.Pipeline
+namespace TheWeatherman.Common.Pipeline
 {
     public class RequestPerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
@@ -26,15 +26,14 @@ namespace ElGuayaBot.Common.Pipeline
 
             _timer.Stop();
 
-            if (_timer.ElapsedMilliseconds <= 3000)
+            if (_timer.ElapsedMilliseconds <= 5000)
             {
                 return response;
             }
 
             var name = typeof(TRequest).Name;
 
-
-            _logger.LogWarning("ElGuayaBot Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
+            _logger.LogWarning("Long running request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
 
             return response;
         }

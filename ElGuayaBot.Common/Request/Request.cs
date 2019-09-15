@@ -1,7 +1,7 @@
 using System;
 using MediatR;
 
-namespace ElGuayaBot.Common.Request
+namespace TheWeatherman.Common.Request
 {
     public abstract class Request<T> : IRequest<T>
     {

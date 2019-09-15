@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace ElGuayaBot.Common.Result
+namespace TheWeatherman.Common.Result
 {
     public class Result : IResult
     {
@@ -35,6 +35,21 @@ namespace ElGuayaBot.Common.Result
 
             return result;
         }
+        
+        public static Result NotFound(List<string> errorDescription)
+        {
+            return Fail("not_found", errorDescription);
+        }
+        
+        public static Result UnknownError(List<string> errorDescription)
+        {
+            return Fail("unknown_error", errorDescription);
+        }
+        
+        public static Result ValidationFailure(List<string> errorDescription)
+        {
+            return Fail("validation_failures", errorDescription);
+        }
 
         public static Result Success()
         {
@@ -53,7 +68,7 @@ namespace ElGuayaBot.Common.Result
 
         public new static Result<T> Fail(string errorKey, List<string> errorDescription)
         {
-            return (Result<T>) Result.Fail(errorKey, errorDescription);
+            return FromResult(Result.Fail(errorKey, errorDescription));
         }
 
         public static Result<T> Success(T value)
@@ -65,6 +80,21 @@ namespace ElGuayaBot.Common.Result
             };
 
             return result;
+        }
+        
+        public new static Result<T> NotFound(List<string> errorDescription)
+        {
+            return FromResult(Result.NotFound(errorDescription));
+        }
+        
+        public new static Result<T> UnknownError(List<string> errorDescription)
+        {
+            return FromResult(Result.UnknownError(errorDescription));
+        }
+        
+        public new static Result<T> ValidationFailure(List<string> errorDescription)
+        {
+            return FromResult(Result.ValidationFailure(errorDescription));
         }
 
         public static Result<T> FromResult(IResult result)
