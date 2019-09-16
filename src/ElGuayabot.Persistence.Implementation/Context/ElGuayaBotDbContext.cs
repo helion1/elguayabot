@@ -3,19 +3,19 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ElGuayabot.Persistence.Implementation.Context
 {
-    public partial class ElGuayaBotDbContext : DbContext
+    public partial class ElGuayabotDbContext : DbContext
     {
-        protected ElGuayaBotDbContext()
+        protected ElGuayabotDbContext()
         {
         }
 
-        public ElGuayaBotDbContext(DbContextOptions options) : base(options)
+        public ElGuayabotDbContext(DbContextOptions options) : base(options)
         {
         }
 
         public virtual DbSet<Chat> Chats { get; set; }
         
-        public virtual DbSet<ChatUser> ChatUsers { get; set; }
+        public virtual DbSet<Conversation> ChatUsers { get; set; }
         
         public virtual DbSet<User> Users { get; set; }
 
@@ -31,44 +31,26 @@ namespace ElGuayabot.Persistence.Implementation.Context
             modelBuilder.Entity<Chat>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.FirstSeen).HasColumnType("datetime");
-
-                entity.Property(e => e.Title).HasMaxLength(250);
-
-                entity.Property(e => e.Type)
-                    .IsRequired()
-                    .HasMaxLength(15)
-                    .IsUnicode(false);
             });
 
-            modelBuilder.Entity<ChatUser>(entity =>
+            modelBuilder.Entity<Conversation>(entity =>
             {
-                entity.HasKey(e => new { GroupId = e.ChatId, e.UserId });
+                entity.HasKey(e => new { e.ChatId, e.UserId });
 
                 entity.HasOne(d => d.Chat)
-                    .WithMany(p => p.Users)
+                    .WithMany(p => p.Conversations)
                     .HasForeignKey(d => d.ChatId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Chats)
+                    .WithMany(p => p.Conversations)
                     .HasForeignKey(d => d.UserId)
-                    .OnDelete(DeleteBehavior.ClientSetNull);
+                    .OnDelete(DeleteBehavior.Cascade);
             });
 
             modelBuilder.Entity<User>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.FirstSeen).HasColumnType("datetime");
-
-                entity.Property(e => e.LanguageCode)
-                    .HasMaxLength(5)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Username)
-                    .HasMaxLength(100);
             });
 
             OnModelCreatingPartial(modelBuilder);
