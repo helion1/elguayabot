@@ -1,3 +1,4 @@
+using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Persistence.Contract.Repository;
 
@@ -7,7 +8,7 @@ namespace ElGuayabot.Persistence.Contract
     {
         IChatRepository ChatRepository { get; set; }
         IUserRepository UserRepository { get; set; }
-        
-        Task SaveAsync();
+
+        Task SaveAsync(CancellationToken cancellationToken = default);
     }
 }

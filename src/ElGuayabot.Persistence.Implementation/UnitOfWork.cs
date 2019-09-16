@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Persistence.Contract;
 using ElGuayabot.Persistence.Contract.Repository;
@@ -10,15 +11,14 @@ namespace ElGuayabot.Persistence.Implementation
 {
     public class UnitOfWork : IUnitOfWork
     {
-        protected readonly ElGuayaBotDbContext Context;
+        protected readonly ElGuayabotDbContext Context;
         protected readonly ILogger<UnitOfWork> Logger;
-        
         private bool _disposed;
 
         public IChatRepository ChatRepository { get; set; }
         public IUserRepository UserRepository { get; set; }
 
-        public UnitOfWork(ElGuayaBotDbContext context, ILogger<UnitOfWork> logger, IChatRepository chatRepository, IUserRepository userRepository)
+        public UnitOfWork(ElGuayabotDbContext context, ILogger<UnitOfWork> logger, IChatRepository chatRepository, IUserRepository userRepository)
         {
             Context = context;
             Logger = logger;
@@ -26,28 +26,28 @@ namespace ElGuayabot.Persistence.Implementation
             UserRepository = userRepository;
         }
 
-        public async Task SaveAsync()
+        public async Task SaveAsync(CancellationToken cancellationToken = default)
         {
             try
             {
-                await Context.SaveChangesAsync();
-
-                Logger.LogInformation("database save operation finished correctly");
+                await Context.SaveChangesAsync(cancellationToken);
+                
+                Logger.LogInformation("Database save operation finished correctly.");
             }
-            catch (DbUpdateConcurrencyException exception)
+            catch (DbUpdateConcurrencyException e)
             {
-                Logger.LogError(exception, "database save operation failed ");
+                Logger.LogError(e, "Database save operation failed, concurrency related.");
 
                 throw;
             }
-            catch (DbUpdateException exception)
+            catch (DbUpdateException e)
             {
-                Logger.LogError(exception, "database save operation failed ");
+                Logger.LogError(e, "Database save operation failed.");
 
                 throw;
             }
         }
-
+        
         protected virtual void Dispose(bool disposing)
         {
             if (!_disposed)
@@ -57,7 +57,7 @@ namespace ElGuayabot.Persistence.Implementation
                     Context.Dispose();
                 }
             }
-
+            
             _disposed = true;
         }
 
