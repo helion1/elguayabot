@@ -1,4 +1,4 @@
-using ElGuayaBot.Domain.Entity;
+using ElGuayabot.Domain.Entity;
 
 namespace ElGuayaBot.Persistence.Contract.Repository
 {
