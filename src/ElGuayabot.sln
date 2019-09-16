@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayabot.Api.WebApi", "El
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayabot.Common.IoC", "ElGuayabot.Common.IoC\ElGuayabot.Common.IoC.csproj", "{92319BF3-9A6D-4C36-9FEC-96D55DC37F52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayaBot.Domain", "ElGuayaBot.Domain\ElGuayaBot.Domain.csproj", "{9BE13E42-001E-462F-B7CB-FF6A8D52FAA1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayabot.Domain", "ElGuayabot.Domain\ElGuayabot.Domain.csproj", "{9BE13E42-001E-462F-B7CB-FF6A8D52FAA1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElGuayabot.Common", "ElGuayabot.Common\ElGuayabot.Common.csproj", "{8498F0FE-DB89-455B-A4A5-E49F86DA99A6}"
 EndProject

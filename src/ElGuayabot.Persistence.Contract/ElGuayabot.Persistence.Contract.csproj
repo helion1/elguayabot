@@ -2,7 +2,6 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
-        <RootNamespace>ElGuayaBot.Persistence.Contract</RootNamespace>
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
 
