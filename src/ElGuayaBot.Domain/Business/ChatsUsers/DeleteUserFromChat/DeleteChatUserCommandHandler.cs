@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Common.Result;
-using ElGuayaBot.Persistence.Contract;
+using ElGuayabot.Common.Result;
+using ElGuayabot.Persistence.Contract;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Domain.Business.ChatsUsers.DeleteUserFromChat
+namespace ElGuayabot.Domain.Business.ChatsUsers.DeleteUserFromChat
 {
     public class DeleteChatUserCommandHandler : Common.Request.RequestHandler<DeleteChatUserCommand, Result>
     {

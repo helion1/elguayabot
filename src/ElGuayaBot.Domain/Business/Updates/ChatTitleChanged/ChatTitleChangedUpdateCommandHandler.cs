@@ -1,17 +1,17 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Common.Result;
-using ElGuayaBot.Domain.Business.Chats.ChangeChatTitle;
-using ElGuayaBot.Domain.Business.Notifications;
+using ElGuayabot.Common.Result;
+using ElGuayabot.Domain.Business.Chats.ChangeChatTitle;
+using ElGuayabot.Domain.Business.Notifications;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Domain.Business.Updates.ChatTitleChanged
+namespace ElGuayabot.Domain.Business.Updates.ChatTitleChanged
 {
-    public class ChatTitleChangedUpdateCommandHandler : ElGuayaBot.Common.Request.RequestHandler<ChatTitleChangedUpdateCommand, Result>
+    public class ChatTitleChangedUpdateCommandHandler : ElGuayabot.Common.Request.RequestHandler<ChatTitleChangedUpdateCommand, Result>
     {
-        public ChatTitleChangedUpdateCommandHandler(ILogger<ElGuayaBot.Common.Request.RequestHandler<ChatTitleChangedUpdateCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
+        public ChatTitleChangedUpdateCommandHandler(ILogger<ElGuayabot.Common.Request.RequestHandler<ChatTitleChangedUpdateCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
         {
         }
 

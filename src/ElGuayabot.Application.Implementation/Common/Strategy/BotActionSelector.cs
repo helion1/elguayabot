@@ -13,7 +13,7 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using TheWeatherman.Common.Result;
 
-namespace ElGuayaBot.Application.Implementation.Common.Strategy
+namespace ElGuayabot.Application.Implementation.Common.Strategy
 {
     public class BotActionSelector : IBotActionSelector
     {

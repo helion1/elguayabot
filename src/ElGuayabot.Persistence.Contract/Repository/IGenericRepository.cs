@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace ElGuayaBot.Persistence.Contract.Repository
+namespace ElGuayabot.Persistence.Contract.Repository
 {
     public interface IGenericRepository<T> where T : class
     {

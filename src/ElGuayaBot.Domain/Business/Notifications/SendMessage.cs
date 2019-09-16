@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace ElGuayaBot.Domain.Business.Notifications
+namespace ElGuayabot.Domain.Business.Notifications
 {
     public class SendMessage : INotification
     {

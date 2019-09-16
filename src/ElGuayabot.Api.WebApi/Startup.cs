@@ -1,11 +1,11 @@
-﻿using ElGuayaBot.Common.IoC.Configuration;
+﻿using ElGuayabot.Common.IoC.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ElGuayaBot.Api.WebApi
+namespace ElGuayabot.Api.WebApi
 {
     public class Startup
     {

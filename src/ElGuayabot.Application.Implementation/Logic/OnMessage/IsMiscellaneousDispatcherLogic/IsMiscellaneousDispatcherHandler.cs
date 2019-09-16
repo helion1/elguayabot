@@ -2,21 +2,21 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Client;
-using ElGuayaBot.Application.Implementation.Logic.Command.SavageLogic;
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
-using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.AlFinalMeMosqueoLogic;
-using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.ButGoldLogic;
-using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.CallateLaJetaLogic;
-using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.ColdMeatLogic;
-using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.FiambreLogic;
-using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.MalditoGuayabaLogic;
-using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.NacionalidadLogic;
-using ElGuayaBot.Application.Implementation.Logic.Miscellaneous.NoEstesTristeLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.SavageLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Miscellaneous.AlFinalMeMosqueoLogic;
+using ElGuayabot.Application.Implementation.Logic.Miscellaneous.ButGoldLogic;
+using ElGuayabot.Application.Implementation.Logic.Miscellaneous.CallateLaJetaLogic;
+using ElGuayabot.Application.Implementation.Logic.Miscellaneous.ColdMeatLogic;
+using ElGuayabot.Application.Implementation.Logic.Miscellaneous.FiambreLogic;
+using ElGuayabot.Application.Implementation.Logic.Miscellaneous.MalditoGuayabaLogic;
+using ElGuayabot.Application.Implementation.Logic.Miscellaneous.NacionalidadLogic;
+using ElGuayabot.Application.Implementation.Logic.Miscellaneous.NoEstesTristeLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using NeoSmart.Unicode;
 
-namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsMiscellaneousDispatcherLogic
+namespace ElGuayabot.Application.Implementation.Logic.OnMessage.IsMiscellaneousDispatcherLogic
 {
     public class IsMiscellaneousDispatcherHandler : AbstractHandler<IsMiscellaneousDispatcherRequest>
     {

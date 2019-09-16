@@ -1,10 +1,10 @@
 using System.Reflection;
-using ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat;
+using ElGuayabot.Domain.Business.ChatsUsers.RegisterUserChat;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ElGuayaBot.Domain.Configuration
+namespace ElGuayabot.Domain.Configuration
 {
     public static class DependencyInjectionExtension
     {

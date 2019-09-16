@@ -1,6 +1,6 @@
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.NacionalidadLogic
+namespace ElGuayabot.Application.Implementation.Logic.Miscellaneous.NacionalidadLogic
 {
     public class NacionalidadRequest : AbstractMessageRequest
     {

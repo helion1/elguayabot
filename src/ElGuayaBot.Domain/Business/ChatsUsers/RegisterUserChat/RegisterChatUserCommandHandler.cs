@@ -1,13 +1,13 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Common.Result;
-using ElGuayaBot.Domain.Entity;
-using ElGuayaBot.Persistence.Contract;
+using ElGuayabot.Common.Result;
+using ElGuayabot.Domain.Entity;
+using ElGuayabot.Persistence.Contract;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat
+namespace ElGuayabot.Domain.Business.ChatsUsers.RegisterUserChat
 {
     public class RegisterChatUserCommandHandler : Common.Request.RequestHandler<RegisterChatUserCommand, Result>
     {

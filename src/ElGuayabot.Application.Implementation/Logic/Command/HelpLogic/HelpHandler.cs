@@ -1,12 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Client;
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Command.HelpLogic
+namespace ElGuayabot.Application.Implementation.Logic.Command.HelpLogic
 {
     public class HelpHandler : AbstractHandler<HelpRequest>
     {

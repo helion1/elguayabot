@@ -1,6 +1,6 @@
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Command.DabLogic
+namespace ElGuayabot.Application.Implementation.Logic.Command.DabLogic
 {
     public class DabRequest : AbstractMessageRequest
     {

@@ -1,11 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Client;
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.ColdMeatLogic
+namespace ElGuayabot.Application.Implementation.Logic.Miscellaneous.ColdMeatLogic
 {
     public class ColdMeatHandler : AbstractHandler<ColdMeatRequest>
     {

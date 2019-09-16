@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Client;
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
-using ElGuayaBot.Infrastructure.Contract.Dto.Spotify;
-using ElGuayaBot.Infrastructure.Contract.Service;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Infrastructure.Contract.Dto.Spotify;
+using ElGuayabot.Infrastructure.Contract.Service;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Url.SpotifyAlbumLogic
+namespace ElGuayabot.Application.Implementation.Logic.Url.SpotifyAlbumLogic
 {
     public class SpotifyAlbumHandler : AbstractHandler<SpotifyAlbumRequest>
     {

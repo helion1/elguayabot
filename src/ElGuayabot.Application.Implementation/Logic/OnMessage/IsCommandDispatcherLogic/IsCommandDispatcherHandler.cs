@@ -2,25 +2,25 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Client;
-using ElGuayaBot.Application.Implementation.Logic.Command.AboutLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.ComandanteLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.ComepingasLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.ComunicaLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.DabLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.EchoLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.FlipLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.GuayabaLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.HelpLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.OtherLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.PingPongLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.SavageLogic;
-using ElGuayaBot.Application.Implementation.Logic.Command.StatsLogic;
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.AboutLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.ComandanteLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.ComepingasLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.ComunicaLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.DabLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.EchoLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.FlipLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.GuayabaLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.HelpLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.OtherLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.PingPongLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.SavageLogic;
+using ElGuayabot.Application.Implementation.Logic.Command.StatsLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatcherLogic
+namespace ElGuayabot.Application.Implementation.Logic.OnMessage.IsCommandDispatcherLogic
 {
     public class IsCommandDispatcherHandler: AbstractHandler<IsCommandDispatcherRequest>
     {

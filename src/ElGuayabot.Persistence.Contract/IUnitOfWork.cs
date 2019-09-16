@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using ElGuayaBot.Persistence.Contract.Repository;
+using ElGuayabot.Persistence.Contract.Repository;
 
-namespace ElGuayaBot.Persistence.Contract
+namespace ElGuayabot.Persistence.Contract
 {
     public interface IUnitOfWork
     {

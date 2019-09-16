@@ -5,7 +5,7 @@ using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Common.EntityPersistenceLogic
+namespace ElGuayabot.Application.Implementation.Logic.Common.EntityPersistenceLogic
 {
     public class EntityPersistenceHandler : IRequestHandler<EntityPersistenceRequest>
     {

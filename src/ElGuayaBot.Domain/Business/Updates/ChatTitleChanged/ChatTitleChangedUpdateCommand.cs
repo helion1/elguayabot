@@ -1,6 +1,6 @@
-using ElGuayaBot.Domain.Business.Updates.Common;
+using ElGuayabot.Domain.Business.Updates.Common;
 
-namespace ElGuayaBot.Domain.Business.Updates.ChatTitleChanged
+namespace ElGuayabot.Domain.Business.Updates.ChatTitleChanged
 {
     public class ChatTitleChangedUpdateCommand : UpdateCommand
     {

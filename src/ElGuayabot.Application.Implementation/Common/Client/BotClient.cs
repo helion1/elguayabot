@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 using MihaZupan.TelegramBotClients;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Implementation.Common.Client
+namespace ElGuayabot.Application.Implementation.Common.Client
 {
     public class BotClient : IBotClient
     {

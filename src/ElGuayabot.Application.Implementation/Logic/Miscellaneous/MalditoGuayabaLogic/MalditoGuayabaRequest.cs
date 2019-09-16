@@ -1,6 +1,6 @@
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.MalditoGuayabaLogic
+namespace ElGuayabot.Application.Implementation.Logic.Miscellaneous.MalditoGuayabaLogic
 {
     public class MalditoGuayabaRequest : AbstractMessageRequest
     {

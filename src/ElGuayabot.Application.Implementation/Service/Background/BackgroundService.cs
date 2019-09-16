@@ -2,7 +2,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Service.Background;
 
-namespace ElGuayaBot.Application.Implementation.Service.Background
+namespace ElGuayabot.Application.Implementation.Service.Background
 {
     public abstract class BackgroundService : IBackgroundService
     {

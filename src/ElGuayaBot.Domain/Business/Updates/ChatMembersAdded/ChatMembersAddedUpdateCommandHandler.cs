@@ -2,18 +2,18 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Common.Result;
-using ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat;
-using ElGuayaBot.Domain.Business.Notifications;
-using ElGuayaBot.Domain.Entity;
+using ElGuayabot.Common.Result;
+using ElGuayabot.Domain.Business.ChatsUsers.RegisterUserChat;
+using ElGuayabot.Domain.Business.Notifications;
+using ElGuayabot.Domain.Entity;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Domain.Business.Updates.ChatMembersAdded
+namespace ElGuayabot.Domain.Business.Updates.ChatMembersAdded
 {
-    public class ChatMembersAddedUpdateCommandHandler : ElGuayaBot.Common.Request.RequestHandler<ChatMembersAddedUpdateCommand, Result>
+    public class ChatMembersAddedUpdateCommandHandler : ElGuayabot.Common.Request.RequestHandler<ChatMembersAddedUpdateCommand, Result>
     {
-        public ChatMembersAddedUpdateCommandHandler(ILogger<ElGuayaBot.Common.Request.RequestHandler<ChatMembersAddedUpdateCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
+        public ChatMembersAddedUpdateCommandHandler(ILogger<ElGuayabot.Common.Request.RequestHandler<ChatMembersAddedUpdateCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
         {
         }
 

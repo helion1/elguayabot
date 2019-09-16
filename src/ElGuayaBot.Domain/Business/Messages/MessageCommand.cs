@@ -1,10 +1,10 @@
 using System;
-using ElGuayaBot.Common.Request;
-using ElGuayaBot.Common.Result;
-using ElGuayaBot.Domain.Entity;
+using ElGuayabot.Common.Request;
+using ElGuayabot.Common.Result;
+using ElGuayabot.Domain.Entity;
 using MediatR;
 
-namespace ElGuayaBot.Domain.Business.Messages
+namespace ElGuayabot.Domain.Business.Messages
 {
     public class MessageCommand : Request<Result>
     {

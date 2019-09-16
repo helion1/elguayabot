@@ -1,7 +1,7 @@
-using ElGuayaBot.Domain.Entity;
+using ElGuayabot.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace ElGuayaBot.Persistence.Implementation.Context
+namespace ElGuayabot.Persistence.Implementation.Context
 {
     public partial class ElGuayaBotDbContext : DbContext
     {

@@ -1,12 +1,12 @@
 using System;
 using System.Threading.Tasks;
-using ElGuayaBot.Persistence.Contract;
-using ElGuayaBot.Persistence.Contract.Repository;
-using ElGuayaBot.Persistence.Implementation.Context;
+using ElGuayabot.Persistence.Contract;
+using ElGuayabot.Persistence.Contract.Repository;
+using ElGuayabot.Persistence.Implementation.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Persistence.Implementation
+namespace ElGuayabot.Persistence.Implementation
 {
     public class UnitOfWork : IUnitOfWork
     {

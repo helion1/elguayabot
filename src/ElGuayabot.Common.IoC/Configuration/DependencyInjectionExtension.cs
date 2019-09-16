@@ -1,7 +1,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ElGuayaBot.Common.IoC.Configuration
+namespace ElGuayabot.Common.IoC.Configuration
 {
     public static class DependencyInjectionExtension
     {

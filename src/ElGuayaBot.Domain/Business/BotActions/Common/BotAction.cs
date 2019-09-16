@@ -1,9 +1,9 @@
 using System;
-using ElGuayaBot.Common.Request;
-using ElGuayaBot.Common.Result;
-using ElGuayaBot.Domain.Entity;
+using ElGuayabot.Common.Request;
+using ElGuayabot.Common.Result;
+using ElGuayabot.Domain.Entity;
 
-namespace ElGuayaBot.Domain.Business.BotActions.Common
+namespace ElGuayabot.Domain.Business.BotActions.Common
 {
     public class BotAction : Request<Result>
     {

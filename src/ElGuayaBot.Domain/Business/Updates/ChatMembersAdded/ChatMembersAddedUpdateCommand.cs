@@ -1,7 +1,7 @@
-using ElGuayaBot.Domain.Business.Updates.Common;
-using ElGuayaBot.Domain.Entity;
+using ElGuayabot.Domain.Business.Updates.Common;
+using ElGuayabot.Domain.Entity;
 
-namespace ElGuayaBot.Domain.Business.Updates.ChatMembersAdded
+namespace ElGuayabot.Domain.Business.Updates.ChatMembersAdded
 {
     public class ChatMembersAddedUpdateCommand : UpdateCommand
     {

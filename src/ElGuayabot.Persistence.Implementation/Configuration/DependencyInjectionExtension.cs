@@ -1,11 +1,11 @@
-using ElGuayaBot.Persistence.Contract;
-using ElGuayaBot.Persistence.Implementation.Context;
+using ElGuayabot.Persistence.Contract;
+using ElGuayabot.Persistence.Implementation.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Scrutor;
 
-namespace ElGuayaBot.Persistence.Implementation.Configuration
+namespace ElGuayabot.Persistence.Implementation.Configuration
 {
     public static class DependencyInjectionConfiguration
     {

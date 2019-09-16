@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using ElGuayaBot.Persistence.Contract.Repository;
+using ElGuayabot.Persistence.Contract.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace ElGuayaBot.Persistence.Implementation.Repository
+namespace ElGuayabot.Persistence.Implementation.Repository
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {

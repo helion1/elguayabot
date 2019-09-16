@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Telegram.Bot.Args;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Implementation.Service
+namespace ElGuayabot.Application.Implementation.Service
 {
     public class TelegramService : ITelegramService
     {

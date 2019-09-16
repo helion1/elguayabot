@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic
+namespace ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic
 {
     public abstract class AbstractRequest: IRequest<Unit>
     {

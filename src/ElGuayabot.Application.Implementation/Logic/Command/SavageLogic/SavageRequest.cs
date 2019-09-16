@@ -1,6 +1,6 @@
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Command.SavageLogic
+namespace ElGuayabot.Application.Implementation.Logic.Command.SavageLogic
 {
     public class SavageRequest : AbstractMessageRequest
     {

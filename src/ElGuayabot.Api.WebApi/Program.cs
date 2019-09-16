@@ -1,11 +1,11 @@
 ﻿using System;
-using ElGuayaBot.Common.IoC.Configuration;
+using ElGuayabot.Common.IoC.Configuration;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Serilog;
 
-namespace ElGuayaBot.Api.WebApi
+namespace ElGuayabot.Api.WebApi
 {
     public class Program
     {

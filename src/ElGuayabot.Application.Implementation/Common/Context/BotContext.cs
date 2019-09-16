@@ -4,7 +4,7 @@ using ElGuayabot.Application.Contract.Common.Context;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types;
 
-namespace ElGuayaBot.Application.Implementation.Common.Context
+namespace ElGuayabot.Application.Implementation.Common.Context
 {
     public class BotContext : IBotContext
     {

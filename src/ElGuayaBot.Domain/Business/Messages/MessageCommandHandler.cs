@@ -1,11 +1,11 @@
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Common.Result;
-using ElGuayaBot.Domain.Mapping;
+using ElGuayabot.Common.Result;
+using ElGuayabot.Domain.Mapping;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Domain.Business.Messages
+namespace ElGuayabot.Domain.Business.Messages
 {
     public class MessageCommandHandler : Common.Request.RequestHandler<MessageCommand, Result>
     {

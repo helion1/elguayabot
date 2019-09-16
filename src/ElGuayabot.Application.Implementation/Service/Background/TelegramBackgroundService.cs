@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Service;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace ElGuayaBot.Application.Implementation.Service.Background
+namespace ElGuayabot.Application.Implementation.Service.Background
 {
     public class TelegramBackgroundService : BackgroundService
     {

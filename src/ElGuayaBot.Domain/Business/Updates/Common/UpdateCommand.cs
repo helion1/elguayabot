@@ -1,8 +1,8 @@
-using ElGuayaBot.Common.Request;
-using ElGuayaBot.Common.Result;
+using ElGuayabot.Common.Request;
+using ElGuayabot.Common.Result;
 using MediatR;
 
-namespace ElGuayaBot.Domain.Business.Updates.Common
+namespace ElGuayabot.Domain.Business.Updates.Common
 {
     public abstract class UpdateCommand: Request<Result>
     {

@@ -2,16 +2,16 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Client;
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
-using ElGuayaBot.Application.Implementation.Logic.OnMessage.IsCommandDispatcherLogic;
-using ElGuayaBot.Application.Implementation.Logic.OnMessage.IsMiscellaneousDispatcherLogic;
-using ElGuayaBot.Application.Implementation.Logic.OnMessage.IsUrlDispatcherLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.OnMessage.IsCommandDispatcherLogic;
+using ElGuayabot.Application.Implementation.Logic.OnMessage.IsMiscellaneousDispatcherLogic;
+using ElGuayabot.Application.Implementation.Logic.OnMessage.IsUrlDispatcherLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.OnMessageDispatcherLogic
+namespace ElGuayabot.Application.Implementation.Logic.OnMessage.OnMessageDispatcherLogic
 {
     public class OnMessageDispatcherHandler : AbstractHandler<OnMessageDispatcherRequest>
     {

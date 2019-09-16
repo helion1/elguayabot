@@ -1,6 +1,6 @@
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Command.GuayabaLogic
+namespace ElGuayabot.Application.Implementation.Logic.Command.GuayabaLogic
 {
     public class GuayabaRequest : AbstractMessageRequest
     {

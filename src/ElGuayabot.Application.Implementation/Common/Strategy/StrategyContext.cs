@@ -5,7 +5,7 @@ using ElGuayabot.Application.Contract.Model.Action.Command;
 using ElGuayabot.Application.Contract.Model.Action.Inline;
 using ElGuayabot.Application.Contract.Model.Action.Miscellaneous;
 
-namespace ElGuayaBot.Application.Implementation.Common.Strategy
+namespace ElGuayabot.Application.Implementation.Common.Strategy
 {
     public class StrategyContext : IStrategyContext
     {

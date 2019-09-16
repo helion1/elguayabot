@@ -1,8 +1,8 @@
-using ElGuayaBot.Common.Request;
-using ElGuayaBot.Common.Result;
-using ElGuayaBot.Domain.Entity;
+using ElGuayabot.Common.Request;
+using ElGuayabot.Common.Result;
+using ElGuayabot.Domain.Entity;
 
-namespace ElGuayaBot.Domain.Business.ChatsUsers.RegisterUserChat
+namespace ElGuayabot.Domain.Business.ChatsUsers.RegisterUserChat
 {
     public class RegisterChatUserCommand : Request<Result>
     {

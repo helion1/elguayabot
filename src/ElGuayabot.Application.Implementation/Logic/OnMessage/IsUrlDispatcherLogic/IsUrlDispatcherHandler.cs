@@ -2,14 +2,14 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Client;
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
-using ElGuayaBot.Application.Implementation.Logic.Url.GifUrlLogic;
-using ElGuayaBot.Application.Implementation.Logic.Url.SpotifyAlbumLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Url.GifUrlLogic;
+using ElGuayabot.Application.Implementation.Logic.Url.SpotifyAlbumLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Implementation.Logic.OnMessage.IsUrlDispatcherLogic
+namespace ElGuayabot.Application.Implementation.Logic.OnMessage.IsUrlDispatcherLogic
 {
     public class IsUrlDispatcherHandler : AbstractHandler<IsUrlDispatcherRequest>
     {

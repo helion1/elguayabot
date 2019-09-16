@@ -1,12 +1,12 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Common.Result;
-using ElGuayaBot.Persistence.Contract;
+using ElGuayabot.Common.Result;
+using ElGuayabot.Persistence.Contract;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Domain.Business.Chats.ChangeChatTitle
+namespace ElGuayabot.Domain.Business.Chats.ChangeChatTitle
 {
     public class ChangeChatTitleCommandHandler : Common.Request.RequestHandler<ChangeChatTitleCommand, Result>
     {

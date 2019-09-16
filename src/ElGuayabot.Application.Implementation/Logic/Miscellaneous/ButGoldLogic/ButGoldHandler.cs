@@ -1,12 +1,12 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Client;
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
 using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types.Enums;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.ButGoldLogic
+namespace ElGuayabot.Application.Implementation.Logic.Miscellaneous.ButGoldLogic
 {
     public class ButGoldHandler : AbstractHandler<ButGoldRequest>
     {

@@ -1,17 +1,17 @@
 using ElGuayabot.Application.Contract.Common.Client;
 using ElGuayabot.Application.Contract.Common.Context;
 using ElGuayabot.Application.Contract.Common.Strategy;
-using ElGuayaBot.Application.Implementation.Common.Client;
-using ElGuayaBot.Application.Implementation.Common.Context;
-using ElGuayaBot.Application.Implementation.Common.Strategy;
-using ElGuayaBot.Application.Implementation.Service;
-using ElGuayaBot.Application.Implementation.Service.Background;
+using ElGuayabot.Application.Implementation.Common.Client;
+using ElGuayabot.Application.Implementation.Common.Context;
+using ElGuayabot.Application.Implementation.Common.Strategy;
+using ElGuayabot.Application.Implementation.Service;
+using ElGuayabot.Application.Implementation.Service.Background;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Scrutor;
 
-namespace ElGuayaBot.Application.Implementation.Configuration
+namespace ElGuayabot.Application.Implementation.Configuration
 {
     public static class DependencyInjectionExtension
     {

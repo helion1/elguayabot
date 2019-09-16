@@ -1,6 +1,6 @@
-using ElGuayaBot.Application.Implementation.Logic.Common.AbstractLogic;
+using ElGuayabot.Application.Implementation.Logic.Common.AbstractLogic;
 
-namespace ElGuayaBot.Application.Implementation.Logic.Miscellaneous.CallateLaJetaLogic
+namespace ElGuayabot.Application.Implementation.Logic.Miscellaneous.CallateLaJetaLogic
 {
     public class CallateLaJetaRequest : AbstractMessageRequest
     {

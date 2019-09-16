@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Serilog;
 using Serilog.Exceptions;
 
-namespace ElGuayaBot.Common.IoC.Configuration
+namespace ElGuayabot.Common.IoC.Configuration
 {
     public static class ConfigurationExtension
     {

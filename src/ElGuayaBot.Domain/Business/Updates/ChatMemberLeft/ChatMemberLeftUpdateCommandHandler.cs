@@ -1,17 +1,17 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using ElGuayaBot.Common.Result;
-using ElGuayaBot.Domain.Business.ChatsUsers.DeleteUserFromChat;
-using ElGuayaBot.Domain.Business.Notifications;
+using ElGuayabot.Common.Result;
+using ElGuayabot.Domain.Business.ChatsUsers.DeleteUserFromChat;
+using ElGuayabot.Domain.Business.Notifications;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayaBot.Domain.Business.Updates.ChatMemberLeft
+namespace ElGuayabot.Domain.Business.Updates.ChatMemberLeft
 {
-    public class ChatMemberLeftUpdateCommandHandler : ElGuayaBot.Common.Request.RequestHandler<ChatMemberLeftUpdateCommand, Result>
+    public class ChatMemberLeftUpdateCommandHandler : ElGuayabot.Common.Request.RequestHandler<ChatMemberLeftUpdateCommand, Result>
     {
-        public ChatMemberLeftUpdateCommandHandler(ILogger<ElGuayaBot.Common.Request.RequestHandler<ChatMemberLeftUpdateCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
+        public ChatMemberLeftUpdateCommandHandler(ILogger<ElGuayabot.Common.Request.RequestHandler<ChatMemberLeftUpdateCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
         {
         }
 
