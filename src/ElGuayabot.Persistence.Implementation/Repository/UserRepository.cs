@@ -6,7 +6,7 @@ namespace ElGuayabot.Persistence.Implementation.Repository
 {
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        public UserRepository(ElGuayaBotDbContext dbContext) : base(dbContext)
+        public UserRepository(ElGuayabotDbContext dbContext) : base(dbContext)
         {
         }
     }

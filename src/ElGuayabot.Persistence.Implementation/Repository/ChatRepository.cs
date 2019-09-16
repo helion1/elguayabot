@@ -6,7 +6,7 @@ namespace ElGuayabot.Persistence.Implementation.Repository
 {
     public class ChatRepository : GenericRepository<Chat>, IChatRepository
     {
-        public ChatRepository(ElGuayaBotDbContext dbContext) : base(dbContext)
+        public ChatRepository(ElGuayabotDbContext dbContext) : base(dbContext)
         {
         }
     }

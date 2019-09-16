@@ -21,6 +21,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ElGuayabot.Domain.Entity\ElGuayabot.Domain.Entity.csproj" />
+      <ProjectReference Include="..\ElGuayabot.Persistence.Contract\ElGuayabot.Persistence.Contract.csproj" />
     </ItemGroup>
 
 </Project>
