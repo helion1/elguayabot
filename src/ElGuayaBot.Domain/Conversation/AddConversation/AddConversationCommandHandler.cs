@@ -22,7 +22,6 @@ namespace ElGuayabot.Domain.Conversation.AddConversation
         public override async Task<Result> Handle(AddConversationCommand request, CancellationToken cancellationToken)
         {
             var chat = await UnitOfWork.ChatRepository.Insert(request.ExtractChatModel());
-
             var user = await UnitOfWork.UserRepository.Insert(request.ExtractUserModel());
 
             var conversation = new Entity.Conversation
@@ -34,7 +33,6 @@ namespace ElGuayabot.Domain.Conversation.AddConversation
             };
             
             chat.Conversations.Add(conversation);
-            user.Conversations.Add(conversation);
 
             try
             {
