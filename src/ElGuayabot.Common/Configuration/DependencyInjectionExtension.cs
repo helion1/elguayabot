@@ -1,9 +1,9 @@
+using ElGuayabot.Common.Pipeline;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using TheWeatherman.Common.Pipeline;
 
-namespace TheWeatherman.Common.Configuration
+namespace ElGuayabot.Common.Configuration
 {
     public static class DependencyInjectionExtension
     {

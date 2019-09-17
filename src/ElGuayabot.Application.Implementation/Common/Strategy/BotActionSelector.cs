@@ -7,11 +7,11 @@ using ElGuayabot.Application.Contract.Model.Action.Callback;
 using ElGuayabot.Application.Contract.Model.Action.Command;
 using ElGuayabot.Application.Contract.Model.Action.Inline;
 using ElGuayabot.Application.Contract.Model.Action.Miscellaneous;
+using ElGuayabot.Common.Result;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
-using TheWeatherman.Common.Result;
 
 namespace ElGuayabot.Application.Implementation.Common.Strategy
 {

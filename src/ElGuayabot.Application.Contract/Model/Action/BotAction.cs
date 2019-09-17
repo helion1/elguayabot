@@ -1,7 +1,7 @@
 using ElGuayabot.Application.Contract.Common.Context;
+using ElGuayabot.Common.Request;
+using ElGuayabot.Common.Result;
 using Telegram.Bot.Types;
-using TheWeatherman.Common.Request;
-using TheWeatherman.Common.Result;
 
 namespace ElGuayabot.Application.Contract.Model.Action
 {

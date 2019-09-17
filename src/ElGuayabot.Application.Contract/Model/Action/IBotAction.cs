@@ -1,6 +1,6 @@
+using ElGuayabot.Common.Result;
 using MediatR;
 using Telegram.Bot.Types;
-using TheWeatherman.Common.Result;
 
 namespace ElGuayabot.Application.Contract.Model.Action
 {

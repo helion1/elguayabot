@@ -1,5 +1,5 @@
+using ElGuayabot.Common.Result;
 using MediatR;
-using TheWeatherman.Common.Result;
 
 namespace ElGuayabot.Application.Contract.Common.Responses
 {

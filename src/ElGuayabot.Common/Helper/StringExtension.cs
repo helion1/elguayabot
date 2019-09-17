@@ -1,6 +1,6 @@
 using System;
 
-namespace TheWeatherman.Common.Helper
+namespace ElGuayabot.Common.Helper
 {
     public static class StringExtension
     {

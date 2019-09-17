@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
 
-namespace TheWeatherman.Common.Pipeline
+namespace ElGuayabot.Common.Pipeline
 {
     public class RequestLogger<TRequest> : IRequestPreProcessor<TRequest>
     {
