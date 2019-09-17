@@ -16,6 +16,7 @@ namespace ElGuayabot.Persistence.Implementation
         private bool _disposed;
 
         public IChatRepository ChatRepository { get; set; }
+        public IConversationRepository ConversationRepository { get; set; }
         public IUserRepository UserRepository { get; set; }
 
         public UnitOfWork(ElGuayabotDbContext context, ILogger<UnitOfWork> logger, IChatRepository chatRepository, IUserRepository userRepository)
