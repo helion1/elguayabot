@@ -7,9 +7,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayabot.Domain.Business.Messages
 {
-    public class MessageCommandHandler : Common.Request.RequestHandler<MessageCommand, Result>
+    public class MessageCommandHandler : Common.Request.CommonHandler<MessageCommand, Result>
     {
-        public MessageCommandHandler(ILogger<Common.Request.RequestHandler<MessageCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
+        public MessageCommandHandler(ILogger<Common.Request.CommonHandler<MessageCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
         {
         }
         

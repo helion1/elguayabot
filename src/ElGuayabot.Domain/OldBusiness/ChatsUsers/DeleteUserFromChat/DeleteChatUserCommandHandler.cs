@@ -9,11 +9,11 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayabot.Domain.Business.ChatsUsers.DeleteUserFromChat
 {
-    public class DeleteChatUserCommandHandler : Common.Request.RequestHandler<DeleteChatUserCommand, Result>
+    public class DeleteChatUserCommandHandler : Common.Request.CommonHandler<DeleteChatUserCommand, Result>
     {
         private readonly IUnitOfWork _unitOfWork;
 
-        public DeleteChatUserCommandHandler(ILogger<Common.Request.RequestHandler<DeleteChatUserCommand, Result>> logger, IMediator mediatR,
+        public DeleteChatUserCommandHandler(ILogger<Common.Request.CommonHandler<DeleteChatUserCommand, Result>> logger, IMediator mediatR,
             IUnitOfWork unitOfWork) : base(logger, mediatR)
         {
             _unitOfWork = unitOfWork;

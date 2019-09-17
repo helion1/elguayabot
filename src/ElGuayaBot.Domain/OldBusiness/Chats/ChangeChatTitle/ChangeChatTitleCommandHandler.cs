@@ -8,11 +8,11 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayabot.Domain.Business.Chats.ChangeChatTitle
 {
-    public class ChangeChatTitleCommandHandler : Common.Request.RequestHandler<ChangeChatTitleCommand, Result>
+    public class ChangeChatTitleCommandHandler : Common.Request.CommonHandler<ChangeChatTitleCommand, Result>
     {
         private readonly IUnitOfWork _unitOfWork;
         
-        public ChangeChatTitleCommandHandler(ILogger<Common.Request.RequestHandler<ChangeChatTitleCommand, Result>> logger, IMediator mediatR, IUnitOfWork unitOfWork) : base(logger, mediatR)
+        public ChangeChatTitleCommandHandler(ILogger<Common.Request.CommonHandler<ChangeChatTitleCommand, Result>> logger, IMediator mediatR, IUnitOfWork unitOfWork) : base(logger, mediatR)
         {
             _unitOfWork = unitOfWork;
         }

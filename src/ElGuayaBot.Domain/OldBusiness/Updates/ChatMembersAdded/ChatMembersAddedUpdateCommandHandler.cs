@@ -11,9 +11,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayabot.Domain.Business.Updates.ChatMembersAdded
 {
-    public class ChatMembersAddedUpdateCommandHandler : ElGuayabot.Common.Request.RequestHandler<ChatMembersAddedUpdateCommand, Result>
+    public class ChatMembersAddedUpdateCommandHandler : ElGuayabot.Common.Request.CommonHandler<ChatMembersAddedUpdateCommand, Result>
     {
-        public ChatMembersAddedUpdateCommandHandler(ILogger<ElGuayabot.Common.Request.RequestHandler<ChatMembersAddedUpdateCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
+        public ChatMembersAddedUpdateCommandHandler(ILogger<ElGuayabot.Common.Request.CommonHandler<ChatMembersAddedUpdateCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
         {
         }
 

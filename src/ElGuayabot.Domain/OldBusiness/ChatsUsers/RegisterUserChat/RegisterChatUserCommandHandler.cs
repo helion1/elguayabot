@@ -9,11 +9,11 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayabot.Domain.Business.ChatsUsers.RegisterUserChat
 {
-    public class RegisterChatUserCommandHandler : Common.Request.RequestHandler<RegisterChatUserCommand, Result>
+    public class RegisterChatUserCommandHandler : Common.Request.CommonHandler<RegisterChatUserCommand, Result>
     {
         private readonly IUnitOfWork _unitOfWork;
         
-        public RegisterChatUserCommandHandler(ILogger<Common.Request.RequestHandler<RegisterChatUserCommand, Result>> logger, IMediator mediatR, 
+        public RegisterChatUserCommandHandler(ILogger<Common.Request.CommonHandler<RegisterChatUserCommand, Result>> logger, IMediator mediatR, 
             IUnitOfWork unitOfWork) : base(logger, mediatR)
         {
             _unitOfWork = unitOfWork;

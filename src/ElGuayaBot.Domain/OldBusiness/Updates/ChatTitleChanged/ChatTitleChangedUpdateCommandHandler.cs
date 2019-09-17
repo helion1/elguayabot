@@ -9,9 +9,9 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayabot.Domain.Business.Updates.ChatTitleChanged
 {
-    public class ChatTitleChangedUpdateCommandHandler : ElGuayabot.Common.Request.RequestHandler<ChatTitleChangedUpdateCommand, Result>
+    public class ChatTitleChangedUpdateCommandHandler : ElGuayabot.Common.Request.CommonHandler<ChatTitleChangedUpdateCommand, Result>
     {
-        public ChatTitleChangedUpdateCommandHandler(ILogger<ElGuayabot.Common.Request.RequestHandler<ChatTitleChangedUpdateCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
+        public ChatTitleChangedUpdateCommandHandler(ILogger<ElGuayabot.Common.Request.CommonHandler<ChatTitleChangedUpdateCommand, Result>> logger, IMediator mediatR) : base(logger, mediatR)
         {
         }
 
