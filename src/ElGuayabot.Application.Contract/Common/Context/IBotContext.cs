@@ -1,7 +1,8 @@
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Common.Client;
-using ElGuayabot.Application.Contract.Model;
 using Telegram.Bot.Types;
+using Chat = ElGuayabot.Domain.Entity.Chat;
+using User = ElGuayabot.Domain.Entity.User;
 
 namespace ElGuayabot.Application.Contract.Common.Context
 {

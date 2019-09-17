@@ -11,6 +11,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\ElGuayabot.Common\ElGuayabot.Common.csproj" />
+      <ProjectReference Include="..\ElGuayabot.Domain.Entity\ElGuayabot.Domain.Entity.csproj" />
     </ItemGroup>
 
 </Project>
