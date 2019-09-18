@@ -12,6 +12,7 @@ using ElGuayabot.Domain.Entity;
 using ElGuayabot.Domain.User.FindAllUsers;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Telegram.Bot.Types.Enums;
 
 namespace ElGuayabot.Application.Implementation.Action.Command.Stats
 {
@@ -46,8 +47,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Stats
             sb.AppendLine($"👨‍👨‍👦 {groupChatsResult.Value.Count()} <i>group</i> chats");
             sb.AppendLine($"👨‍👨‍👦‍👦️ {superGroupChatsResult.Value.Count()} <i>supergroups</i> chats");
             
-            return await MediatR.Send(new TextResponse(sb.ToString()));
-
+            return await MediatR.Send(new TextResponse(sb.ToString(), ParseMode.Html));
         }
     }
 }

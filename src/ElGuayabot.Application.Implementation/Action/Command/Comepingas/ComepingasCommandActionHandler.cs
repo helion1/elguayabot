@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using ElGuayabot.Application.Implementation.Common.Response.Text;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
@@ -18,7 +19,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Comepingas
         {
         }
 
-        public override Task<Result> Handle(ComepingasCommandAction request, CancellationToken cancellationToken)
+        public override async Task<Result> Handle(ComepingasCommandAction request, CancellationToken cancellationToken)
         {
             var responses = new List<string>
             {
@@ -38,7 +39,8 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Comepingas
 
             var response = $"{recipient} <b>{selectedResponse}</b>";
 
-            return Task.FromResult(Result.Success());
+            return await MediatR.Send(new TextResponse(response));
+
         }
         
         private string SelectRecipient(Message message)

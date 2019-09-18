@@ -14,8 +14,9 @@ namespace ElGuayabot.Domain.User.FindAllUsers
     {
         protected readonly IUnitOfWork UnitOfWork;
 
-        public FindAllUsersQueryHandler(ILogger<CommonHandler<FindAllUsersQuery, Result<IEnumerable<Entity.User>>>> logger, IMediator mediatR) : base(logger, mediatR)
+        public FindAllUsersQueryHandler(ILogger<CommonHandler<FindAllUsersQuery, Result<IEnumerable<Entity.User>>>> logger, IMediator mediatR, IUnitOfWork unitOfWork) : base(logger, mediatR)
         {
+            UnitOfWork = unitOfWork;
         }
 
         public override async Task<Result<IEnumerable<Entity.User>>> Handle(FindAllUsersQuery request, CancellationToken cancellationToken)

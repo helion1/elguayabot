@@ -29,7 +29,6 @@ namespace ElGuayabot.Domain.Conversation.FindConversation
             }
 
             return Result<Entity.Conversation>.Success(conversation);
-
         }
     }
 }
