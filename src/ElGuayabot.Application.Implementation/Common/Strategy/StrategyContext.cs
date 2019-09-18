@@ -4,6 +4,7 @@ using ElGuayabot.Application.Contract.Model.Action.Callback;
 using ElGuayabot.Application.Contract.Model.Action.Command;
 using ElGuayabot.Application.Contract.Model.Action.Inline;
 using ElGuayabot.Application.Contract.Model.Action.Miscellaneous;
+using ElGuayabot.Application.Contract.Model.Action.Update;
 
 namespace ElGuayabot.Application.Implementation.Common.Strategy
 {
@@ -13,13 +14,15 @@ namespace ElGuayabot.Application.Implementation.Common.Strategy
         protected IEnumerable<ICallbackAction> CallbackActions;
         protected IEnumerable<ICommandAction> CommandActions;
         protected IEnumerable<IInlineAction> InlineActions;
+        protected IEnumerable<IUpdateAction> UpdateActions;
 
-        public StrategyContext(IEnumerable<IMiscellaneousAction> miscellaneousActions, IEnumerable<ICallbackAction> callbackActions, IEnumerable<ICommandAction> commandActions, IEnumerable<IInlineAction> inlineActions)
+        public StrategyContext(IEnumerable<IMiscellaneousAction> miscellaneousActions, IEnumerable<ICallbackAction> callbackActions, IEnumerable<ICommandAction> commandActions, IEnumerable<IInlineAction> inlineActions, IEnumerable<IUpdateAction> updateActions)
         {
             MiscellaneousActions = miscellaneousActions;
             CallbackActions = callbackActions;
             CommandActions = commandActions;
             InlineActions = inlineActions;
+            UpdateActions = updateActions;
         }
 
         public IEnumerable<IMiscellaneousAction> GetMiscellaneousStrategyContext()
@@ -40,6 +43,11 @@ namespace ElGuayabot.Application.Implementation.Common.Strategy
         public IEnumerable<IInlineAction> GetInlineStrategyContext()
         {
             return InlineActions;
+        }
+
+        public IEnumerable<IUpdateAction> GetUpdateStrategyContext()
+        {
+            return UpdateActions;
         }
     }
 }
