@@ -10,7 +10,5 @@ namespace ElGuayabot.Application.Contract.Common.Strategy
     {
         Result<ICommandAction> GetCommandAction();
         Result<IMiscellaneousAction> GetMiscellaneousAction();
-        Result<ICallbackAction> GetCallbackAction();
-        Result<IInlineAction> GetInlineAction();
     }
 }
