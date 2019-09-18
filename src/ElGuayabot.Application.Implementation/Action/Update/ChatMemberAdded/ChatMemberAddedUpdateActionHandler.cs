@@ -13,9 +13,11 @@ namespace ElGuayabot.Application.Implementation.Action.Update.ChatMemberAdded
         {
         }
 
-        public override Task<Result> Handle(ChatMemberAddedUpdateAction request, CancellationToken cancellationToken)
+        public async override Task<Result> Handle(ChatMemberAddedUpdateAction request, CancellationToken cancellationToken)
         {
-            var result = MediatR.Publish(request.MapToAddConversationCommand());
+//            var result = MediatR.Publish(request.MapToAddConversationCommand());
+
+            return Result.Success();
         }
     }
 }
