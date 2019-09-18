@@ -46,32 +46,6 @@ namespace ElGuayabot.Application.Implementation.Common.Strategy
             throw new NotImplementedException();
         }
 
-        public Result<ICallbackAction> GetCallbackAction()
-        {
-            var callback = GetCallback(BotContext.CallbackQuery);
-            
-            if (callback == null) return Result<ICallbackAction>.NotFound(new List<string> {"No corresponding action found."});
-
-            var action = StrategyContext.GetCallbackStrategyContext().FirstOrDefault(botAction => botAction.CanHandle(callback));
-            
-            if (action == null) return Result<ICallbackAction>.NotFound(new List<string> {"No corresponding action found."});
-
-            return Result<ICallbackAction>.Success(action);
-        }
-
-        public Result<IInlineAction> GetInlineAction()
-        {
-            var inline = BotContext.InlineQuery.Query;
-            
-            if (inline == null) return Result<IInlineAction>.NotFound(new List<string> {"No corresponding action found."});
-
-            var action = StrategyContext.GetInlineStrategyContext().FirstOrDefault(botAction => botAction.CanHandle(inline));
-            
-            if (action == null) return Result<IInlineAction>.NotFound(new List<string> {"No corresponding action found."});
-
-            return Result<IInlineAction>.Success(action);
-        }
-
         private string GetCommand(Message message)
         {
             if (message.Entities?.First()?.Type != MessageEntityType.BotCommand) return null;
@@ -85,20 +59,6 @@ namespace ElGuayabot.Application.Implementation.Common.Strategy
             command = command.Substring(0, command.IndexOf('@'));
 
             return command;
-        }
-
-        private string GetCallback(CallbackQuery callbackQuery)
-        {
-            try
-            {
-                var callbackData = JsonConvert.DeserializeObject<Dictionary<string, string>>(callbackQuery.Data);
-
-                return callbackData["action"];
-            }
-            catch
-            {
-                return null;
-            }
         }
     }
 }
