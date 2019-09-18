@@ -9,7 +9,7 @@ namespace ElGuayabot.Common.Request
         
         protected Request()
         {
-            Timestamp = DateTime.Now;
+            Timestamp = DateTime.UtcNow;
         }
     }
 }

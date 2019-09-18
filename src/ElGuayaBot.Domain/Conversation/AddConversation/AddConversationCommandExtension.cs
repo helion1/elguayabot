@@ -13,7 +13,7 @@ namespace ElGuayabot.Domain.Conversation.AddConversation
                 Username = addConversationCommand.ChatUsername,
                 Title = addConversationCommand.ChatTitle,
                 Type = Enum.Parse<Chat.ChatType>(addConversationCommand.ChatType),
-                FirstSeen = DateTime.Today.ToUniversalTime()
+                FirstSeen = addConversationCommand.Timestamp
             };
         }
 
@@ -25,7 +25,7 @@ namespace ElGuayabot.Domain.Conversation.AddConversation
                 IsBot = addConversationCommand.UserIsBot,
                 LanguageCode = addConversationCommand.UserLanguageCode,
                 Username = addConversationCommand.UserUsername,
-                FirstSeen = DateTime.Today.ToUniversalTime()
+                FirstSeen = addConversationCommand.Timestamp
             };
         }
     }
