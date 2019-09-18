@@ -34,8 +34,8 @@ namespace ElGuayabot.Domain.Conversation.AddConversation
                 UserId = user.Id,
                 User = user
             };
-            
-            chat.Conversations.Add(conversation);
+
+            await UnitOfWork.ConversationRepository.Insert(conversation);
 
             try
             {

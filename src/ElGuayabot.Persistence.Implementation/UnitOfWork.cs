@@ -19,11 +19,12 @@ namespace ElGuayabot.Persistence.Implementation
         public IConversationRepository ConversationRepository { get; set; }
         public IUserRepository UserRepository { get; set; }
 
-        public UnitOfWork(ElGuayabotDbContext context, ILogger<UnitOfWork> logger, IChatRepository chatRepository, IUserRepository userRepository)
+        public UnitOfWork(ElGuayabotDbContext context, ILogger<UnitOfWork> logger, IChatRepository chatRepository, IConversationRepository conversationRepository, IUserRepository userRepository)
         {
             Context = context;
             Logger = logger;
             ChatRepository = chatRepository;
+            ConversationRepository = conversationRepository;
             UserRepository = userRepository;
         }
 

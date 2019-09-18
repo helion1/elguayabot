@@ -108,5 +108,10 @@ namespace ElGuayabot.Common.Result
 
             return newResult;
         }
+
+        public static Result<T> NotFound(string error = "")
+        {
+            return FromResult(Result.NotFound(new List<string> {error}));
+        }
     }
 }

@@ -23,9 +23,13 @@ namespace ElGuayabot.Domain.Conversation.FindConversation
             var conversation = await UnitOfWork.ConversationRepository.FindBy(conv => conv.ChatId == request.ChatId && conv.UserId == request.UserId,
                 conv => conv.Chat, conv => conv.User);
 
-            return conversation == null 
-                ? Result<Entity.Conversation>.NotFound() 
-                : Result<Entity.Conversation>.Success(conversation);
+            if (conversation == null)
+            {
+                return Result<Entity.Conversation>.NotFound("conversation not found");
+            }
+
+            return Result<Entity.Conversation>.Success(conversation);
+
         }
     }
 }

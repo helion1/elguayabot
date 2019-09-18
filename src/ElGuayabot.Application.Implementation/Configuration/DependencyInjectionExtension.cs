@@ -1,3 +1,4 @@
+using System.Reflection;
 using ElGuayabot.Application.Contract.Common.Client;
 using ElGuayabot.Application.Contract.Common.Context;
 using ElGuayabot.Application.Contract.Common.Strategy;
@@ -6,6 +7,7 @@ using ElGuayabot.Application.Implementation.Common.Context;
 using ElGuayabot.Application.Implementation.Common.Strategy;
 using ElGuayabot.Application.Implementation.Service;
 using ElGuayabot.Application.Implementation.Service.Background;
+using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -20,6 +22,7 @@ namespace ElGuayabot.Application.Implementation.Configuration
             services.AddServices(configuration);
             services.AddBackgroundServices(configuration);
             services.AddRequests(configuration);
+            services.AddMediatRHandlers(configuration);
             services.AddBotContext(configuration);
             
             return services;
@@ -40,8 +43,7 @@ namespace ElGuayabot.Application.Implementation.Configuration
             services.Scan(scan => scan
                 .FromAssemblyOf<TelegramService>()
                 .AddClasses(classes =>
-                    classes.Where(c => c.Name.EndsWith("Service") 
-                                       && c.Name != "TelegramBackgroundService"))
+                    classes.Where(c => c.Name.EndsWith("Service") && c.Name != "TelegramBackgroundService"))
                 .UsingRegistrationStrategy(RegistrationStrategy.Skip)
                 .AsImplementedInterfaces()
                 .WithScopedLifetime());
@@ -70,6 +72,13 @@ namespace ElGuayabot.Application.Implementation.Configuration
             return services;
         }
 
+        private static IServiceCollection AddMediatRHandlers(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddMediatR(typeof(DependencyInjectionExtension).GetTypeInfo().Assembly);
+
+            return services;
+        }
+        
         private static IServiceCollection AddBotContext(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IBotContext, BotContext>();

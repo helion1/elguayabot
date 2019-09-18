@@ -1,3 +1,5 @@
+using ElGuayabot.Application.Implementation.Configuration;
+using ElGuayabot.Domain.Configuration;
 using ElGuayabot.Persistence.Implementation.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +11,8 @@ namespace ElGuayabot.Common.IoC.Configuration
     {
         public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
         {
+            services.AddApplicationDependencies(configuration);
+            services.AddDomainDependencies(configuration);
             services.AddPersistenceDependencies(configuration);
             
             return services;
