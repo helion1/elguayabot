@@ -3,7 +3,7 @@ using ElGuayabot.Common.Result;
 
 namespace ElGuayabot.Domain.Conversation.DeleteConversation
 {
-    public class DeleteConversationCommnad : Request<Result>
+    public class DeleteConversationCommand : Request<Result>
     {
         /// <summary>
         /// Id of the chat.
