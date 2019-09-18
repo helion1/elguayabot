@@ -19,6 +19,7 @@ namespace ElGuayabot.Application.Implementation.Common.Context
         public IBotClient BotClient { get; set; }
 
         public Message Message { get; set; }
+        public Update Update { get; set; }
         public CallbackQuery CallbackQuery { get; set; }
         public InlineQuery InlineQuery { get; set; }
         public User User { get; set; }
@@ -53,6 +54,15 @@ namespace ElGuayabot.Application.Implementation.Common.Context
             Chat = conversationResult.Value.Chat;
             
             Logger.LogTrace("Populated BotContext with Message.", message);
+        }
+
+        public async Task Populate(Update update)
+        {
+            Update = update;
+            await Populate(update.Message);
+            
+            Logger.LogTrace("Populated BotContext with Update.", update);
+
         }
     }
 }
