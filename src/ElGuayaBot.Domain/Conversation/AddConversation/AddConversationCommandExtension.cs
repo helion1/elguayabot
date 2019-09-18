@@ -5,14 +5,14 @@ namespace ElGuayabot.Domain.Conversation.AddConversation
 {
     public static class AddConversationCommandExtension
     {
-        public static Chat ExtractChatModel(this AddConversationCommand addConversationCommand)
+        public static Entity.Chat ExtractChatModel(this AddConversationCommand addConversationCommand)
         {
-            return new Chat
+            return new Entity.Chat
             {
                 Id = addConversationCommand.ChatId,
                 Username = addConversationCommand.ChatUsername,
                 Title = addConversationCommand.ChatTitle,
-                Type = Enum.Parse<Chat.ChatType>(addConversationCommand.ChatType),
+                Type = Enum.Parse<Entity.Chat.ChatType>(addConversationCommand.ChatType),
                 FirstSeen = addConversationCommand.Timestamp
             };
         }
