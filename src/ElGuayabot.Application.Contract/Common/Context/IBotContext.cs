@@ -16,7 +16,5 @@ namespace ElGuayabot.Application.Contract.Common.Context
         Chat Chat { get; set; }
         
         Task Populate(Message message);
-        void Populate(CallbackQuery callbackQuery);
-        void Populate(InlineQuery inlineQuery);
     }
 }

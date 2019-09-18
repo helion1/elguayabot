@@ -1,15 +1,21 @@
+using System;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Contract.Common.Client;
 using ElGuayabot.Application.Contract.Common.Context;
+using ElGuayabot.Application.Implementation.Mapping;
+using ElGuayabot.Domain.Conversation.FindConversation;
+using MediatR;
 using Microsoft.Extensions.Logging;
 using Telegram.Bot.Types;
+using Chat = ElGuayabot.Domain.Entity.Chat;
+using User = ElGuayabot.Domain.Entity.User;
 
 namespace ElGuayabot.Application.Implementation.Common.Context
 {
     public class BotContext : IBotContext
     {
-        
         protected readonly ILogger<BotContext> Logger;
+        protected readonly IMediator Mediator;
         public IBotClient BotClient { get; set; }
 
         public Message Message { get; set; }
@@ -18,37 +24,35 @@ namespace ElGuayabot.Application.Implementation.Common.Context
         public User User { get; set; }
         public Chat Chat { get; set; }
 
-        public BotContext(ILogger<BotContext> logger, IBotClient botClient)
+        public BotContext(ILogger<BotContext> logger, IBotClient botClient, IMediator mediator)
         {
             Logger = logger;
             BotClient = botClient;
+            Mediator = mediator;
         }
 
         public async Task Populate(Message message)
         {
             Message = message;
-            User = message.From;
-            Chat = message.Chat;
             
-            Logger.LogTrace("Populated HttpContext with Message.", message);
-        }
+            var conversationResult = await Mediator.Send(message.MapToFindConversationQuery());
 
-        public void Populate(CallbackQuery callbackQuery)
-        {
-            CallbackQuery = callbackQuery;
-            Message = callbackQuery.Message;
-            User = callbackQuery.From;
-            Chat = callbackQuery.Message.Chat;
+            if (!conversationResult.Succeeded)
+            {
+                if (!conversationResult.Errors.ContainsKey("not_found"))
+                {
+                    Logger.LogError("Could not populate context with message. @Errors", conversationResult.Errors);
+                    throw new Exception("Error populating context");
+                }
 
-            Logger.LogTrace("Populated HttpContext with CallbackQuery.", callbackQuery);
-        }
-
-        public void Populate(InlineQuery inlineQuery)
-        {
-            InlineQuery = inlineQuery;
-            User = inlineQuery.From;
-
-            Logger.LogTrace("Populated HttpContext with InlineQuery.", inlineQuery);
+                await Mediator.Send(message.MapToAddConversationCommand());
+                conversationResult = await Mediator.Send(message.MapToFindConversationQuery());
+            }
+            
+            User = conversationResult.Value.User;
+            Chat = conversationResult.Value.Chat;
+            
+            Logger.LogTrace("Populated BotContext with Message.", message);
         }
     }
 }

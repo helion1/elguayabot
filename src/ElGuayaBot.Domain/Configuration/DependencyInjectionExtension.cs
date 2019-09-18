@@ -1,5 +1,4 @@
 using System.Reflection;
-using ElGuayabot.Domain.Business.ChatsUsers.RegisterUserChat;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +16,7 @@ namespace ElGuayabot.Domain.Configuration
         
         private static IServiceCollection AddMediatRHandlers(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddMediatR(typeof(RegisterChatUserCommandHandler).GetTypeInfo().Assembly);
+            services.AddMediatR(typeof(DependencyInjectionExtension).GetTypeInfo().Assembly);
 
             return services;
         }
