@@ -25,7 +25,10 @@ namespace ElGuayabot.Domain.Entity
         /// Date of first interaction with the user.
         /// </summary>
         public DateTime FirstSeen { get; set; }
-        
+        /// <summary>
+        /// True when the user is a 'ElGuayaBot' administrator.
+        /// </summary>
+        public bool IsAdmin { get; set; }
         public List<Conversation> Conversations { get; set; }
     }
 }
