@@ -24,7 +24,7 @@ namespace ElGuayabot.Domain.Conversation.FindConversation
                 conv => conv.Chat, conv => conv.User);
 
             return conversation == null 
-                ? Result<Entity.Conversation>.NotFound(new List<string> {"conversation not found"}) 
+                ? Result<Entity.Conversation>.NotFound() 
                 : Result<Entity.Conversation>.Success(conversation);
         }
     }
