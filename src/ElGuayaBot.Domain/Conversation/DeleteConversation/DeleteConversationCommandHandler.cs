@@ -10,16 +10,16 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayabot.Domain.Conversation.DeleteConversation
 {
-    public class DeleteConversationCommandHandler : CommonHandler<DeleteConversationCommnad, Result>
+    internal class DeleteConversationCommandHandler : CommonHandler<DeleteConversationCommand, Result>
     {
         protected readonly IUnitOfWork UnitOfWork;
 
-        public DeleteConversationCommandHandler(ILogger<CommonHandler<DeleteConversationCommnad, Result>> logger, IMediator mediatR, IUnitOfWork unitOfWork) : base(logger, mediatR)
+        public DeleteConversationCommandHandler(ILogger<CommonHandler<DeleteConversationCommand, Result>> logger, IMediator mediatR, IUnitOfWork unitOfWork) : base(logger, mediatR)
         {
             UnitOfWork = unitOfWork;
         }
 
-        public override async Task<Result> Handle(DeleteConversationCommnad request, CancellationToken cancellationToken)
+        public override async Task<Result> Handle(DeleteConversationCommand request, CancellationToken cancellationToken)
         {
             var conversation = await UnitOfWork.ConversationRepository.FindBy(conv => conv.ChatId == request.ChatId && conv.UserId == request.UserId);
 

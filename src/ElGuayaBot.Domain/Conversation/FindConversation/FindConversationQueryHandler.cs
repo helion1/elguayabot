@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayabot.Domain.Conversation.FindConversation
 {
-    public class FindConversationQueryHandler : CommonHandler<FindConversationQuery, Result<Entity.Conversation>>
+    internal class FindConversationQueryHandler : CommonHandler<FindConversationQuery, Result<Entity.Conversation>>
     {
         protected readonly IUnitOfWork UnitOfWork;
 

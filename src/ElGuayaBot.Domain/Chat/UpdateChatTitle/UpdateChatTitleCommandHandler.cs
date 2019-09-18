@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayabot.Domain.Chat.UpdateChatTitle
 {
-    public class UpdateChatTitleCommandHandler : CommonHandler<UpdateChatTitleCommand, Result>
+    internal class UpdateChatTitleCommandHandler : CommonHandler<UpdateChatTitleCommand, Result>
     {
         protected readonly IUnitOfWork UnitOfWork;
 

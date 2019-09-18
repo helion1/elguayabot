@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 
 namespace ElGuayabot.Domain.Chat.FindAllPrivateChats
 {
-    public class FindAllPrivateChatsQueryHandler : CommonHandler<FindAllPrivateChatsQuery, Result<IEnumerable<Entity.Chat>>>
+    internal class FindAllPrivateChatsQueryHandler : CommonHandler<FindAllPrivateChatsQuery, Result<IEnumerable<Entity.Chat>>>
     {
         protected readonly IUnitOfWork UnitOfWork;
 
