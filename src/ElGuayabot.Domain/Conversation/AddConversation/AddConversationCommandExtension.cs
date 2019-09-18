@@ -17,9 +17,9 @@ namespace ElGuayabot.Domain.Conversation.AddConversation
             };
         }
 
-        public static User ExtractUserModel(this AddConversationCommand addConversationCommand)
+        public static Entity.User ExtractUserModel(this AddConversationCommand addConversationCommand)
         {
-            return new User
+            return new Entity.User
             {
                 Id = addConversationCommand.UserId,
                 IsBot = addConversationCommand.UserIsBot,
