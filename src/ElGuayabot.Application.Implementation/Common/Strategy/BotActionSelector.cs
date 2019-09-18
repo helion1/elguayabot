@@ -7,6 +7,7 @@ using ElGuayabot.Application.Contract.Model.Action.Callback;
 using ElGuayabot.Application.Contract.Model.Action.Command;
 using ElGuayabot.Application.Contract.Model.Action.Inline;
 using ElGuayabot.Application.Contract.Model.Action.Miscellaneous;
+using ElGuayabot.Application.Contract.Model.Action.Update;
 using ElGuayabot.Common.Result;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -46,6 +47,27 @@ namespace ElGuayabot.Application.Implementation.Common.Strategy
             throw new NotImplementedException();
         }
 
+
+        public Result<IUpdateAction> GetUpdateAction()
+        {
+            var updateType = GetUpdateType(BotContext.Update);
+            
+            if (updateType == null) return Result<IUpdateAction>.NotFound(new List<string> {"No corresponding action found."});
+
+            var action = StrategyContext.GetUpdateStrategyContext().FirstOrDefault(botAction => botAction.CanHandle(updateType));
+            
+            if (action == null) return Result<IUpdateAction>.NotFound(new List<string> {"No corresponding action found."});
+
+            return Result<IUpdateAction>.Success(action);
+        }
+
+        private string GetUpdateType(Update update)
+        {
+            return update.Type == UpdateType.Message
+                ? update.Message.Type.ToString() 
+                : update.Type.ToString();
+        }
+        
         private string GetCommand(Message message)
         {
             if (message.Entities?.First()?.Type != MessageEntityType.BotCommand) return null;
