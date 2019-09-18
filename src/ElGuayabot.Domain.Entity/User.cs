@@ -29,6 +29,7 @@ namespace ElGuayabot.Domain.Entity
         /// True when the user is a 'ElGuayaBot' administrator.
         /// </summary>
         public bool IsAdmin { get; set; }
+        
         public List<Conversation> Conversations { get; set; }
     }
 }

@@ -15,4 +15,8 @@
       <ProjectReference Include="..\ElGuayabot.Persistence.Contract\ElGuayabot.Persistence.Contract.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Business\Converastion\AddConversation" />
+    </ItemGroup>
+
 </Project>
