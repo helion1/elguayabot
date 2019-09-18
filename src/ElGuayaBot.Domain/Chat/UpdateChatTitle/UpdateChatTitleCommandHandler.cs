@@ -8,7 +8,7 @@ using ElGuayabot.Persistence.Contract;
 using MediatR;
 using Microsoft.Extensions.Logging;
 
-namespace ElGuayabot.Domain.Chat
+namespace ElGuayabot.Domain.Chat.UpdateChatTitle
 {
     public class UpdateChatTitleCommandHandler : CommonHandler<UpdateChatTitleCommand, Result>
     {

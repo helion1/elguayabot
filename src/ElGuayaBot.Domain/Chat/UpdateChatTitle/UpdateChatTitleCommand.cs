@@ -1,7 +1,7 @@
 ﻿using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 
-namespace ElGuayabot.Domain.Chat
+namespace ElGuayabot.Domain.Chat.UpdateChatTitle
 {
     public class UpdateChatTitleCommand : Request<Result>
     {
