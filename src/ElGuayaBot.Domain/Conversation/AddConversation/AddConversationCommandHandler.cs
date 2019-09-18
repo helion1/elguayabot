@@ -21,8 +21,11 @@ namespace ElGuayabot.Domain.Conversation.AddConversation
 
         public override async Task<Result> Handle(AddConversationCommand request, CancellationToken cancellationToken)
         {
-            var chat = await UnitOfWork.ChatRepository.Insert(request.ExtractChatModel());
-            var user = await UnitOfWork.UserRepository.Insert(request.ExtractUserModel());
+            var chat = await UnitOfWork.ChatRepository.FindBy(c => c.Id == request.ChatId, c => c.Conversations) ??
+                await UnitOfWork.ChatRepository.Insert(request.ExtractChatModel());
+            
+            var user = await UnitOfWork.UserRepository.FindBy(u => u.Id == request.UserId, u => u.Conversations) ??
+                       await UnitOfWork.UserRepository.Insert(request.ExtractUserModel());
 
             var conversation = new Entity.Conversation
             {
