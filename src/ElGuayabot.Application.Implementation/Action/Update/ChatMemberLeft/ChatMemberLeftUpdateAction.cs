@@ -1,7 +1,17 @@
-﻿namespace ElGuayabot.Application.Implementation.Action.Update.ChatMemberLeft
+﻿using ElGuayabot.Application.Contract.Common.Context;
+using ElGuayabot.Application.Contract.Model.Action.Update;
+
+namespace ElGuayabot.Application.Implementation.Action.Update.ChatMemberLeft
 {
-    public class ChatMemberLeftUpdateAction
+    public class ChatMemberLeftUpdateAction : UpdateAction
     {
-        //$"@{leftUser.Username} murió combatiendo el imperialismo.",
+        public ChatMemberLeftUpdateAction(IBotContext botContext) : base(botContext)
+        {
+        }
+
+        public override bool CanHandle(string condition)
+        {
+            return condition == "ChatMemberLeft";
+        }
     }
 }
