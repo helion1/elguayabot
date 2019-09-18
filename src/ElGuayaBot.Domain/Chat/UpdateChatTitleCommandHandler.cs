@@ -1,4 +1,6 @@
-﻿using System.Threading;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
@@ -25,7 +27,18 @@ namespace ElGuayabot.Domain.Chat
 
             chat.Title = request.Title;
 
-            return Result.Success();;
+            try
+            {
+                await UnitOfWork.SaveAsync(cancellationToken);
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e, "Unhandled error updating chat title. ChatId: {ChatId}", chat.Id);
+                
+                return Result.UnknownError(new List<string> {e.Message});
+            }
+            
+            return Result.Success();
         }
     }
 }
