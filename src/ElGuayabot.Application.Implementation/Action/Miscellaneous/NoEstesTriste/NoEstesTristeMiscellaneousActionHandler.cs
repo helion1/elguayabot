@@ -32,7 +32,7 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.NoEstesTris
             
             var rnd = new Random();
             
-            var r = rnd.Next(responses.Length + 1);
+            var r = rnd.Next(responses.Length);
             
             var response = $"{responses[r]}";
             

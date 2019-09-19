@@ -31,7 +31,7 @@ namespace ElGuayabot.Infrastructure.Implementation.Service
 
             var giphySearchResponse = await requestResponse.Content.ReadAsAsync<GiphySearchResponse>();
 
-            var r = new Random().Next(giphySearchResponse.Data.Length + 1);
+            var r = new Random().Next(giphySearchResponse.Data.Length);
 
             var luckyGif = giphySearchResponse.Data[r].Images.Original.Mp4;
             
