@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
+using ElGuayabot.Application.Implementation.Common.Response.Document;
 using ElGuayabot.Application.Implementation.Common.Response.Photo;
 using ElGuayabot.Application.Implementation.Common.Response.Text;
 using ElGuayabot.Common.Request;
@@ -27,12 +28,11 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Dab
             if (!gifResult.Succeeded)
             {
                 return await MediatR.Send(new TextResponse(
-                    "El régimen me ha cortado el acceso a internet y no puedo encontrar ningún <i>dab</i> ¡Reinténtelo camarada!",
+                    "No he podido encontrar un <i>dab</i> adecuado. USA debe haberlo embargado ¡Vuelve a intentarlo!",
                     ParseMode.Html));
             }
 
-            return await MediatR.Send(new PhotoResponse(gifResult.Value, "**Dabbing for VNZL** powered By GIPHY & CAPITALISM."), cancellationToken);
-            // caption: "Dabbing for VNZL",
+            return await MediatR.Send(new DocumentResponse(gifResult.Value, "🙅‍♂️Dabbing for VNZL🙅‍♂️ powered By GIPHY & CAPITALISM."), cancellationToken);
         }
     }
 }

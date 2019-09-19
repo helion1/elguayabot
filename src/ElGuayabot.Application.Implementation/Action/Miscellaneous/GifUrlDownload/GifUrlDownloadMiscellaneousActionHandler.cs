@@ -25,7 +25,7 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.GifUrlDownl
                 WebClient wc = new WebClient();
                 wc.DownloadString(request.Text);
 
-                return await MediatR.Send(new DocumentResponse(request.Text, request.MessageId), cancellationToken);
+                return await MediatR.Send(new DocumentResponse(request.Text, "¡Aquí tienes camarada!'", request.MessageId), cancellationToken);
             }
             catch (Exception)
             {
