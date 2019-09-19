@@ -32,6 +32,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Dab
             }
 
             return await MediatR.Send(new PhotoResponse(gifResult.Value), cancellationToken);
+            // caption: "Dabbing for VNZL",
         }
     }
 }
