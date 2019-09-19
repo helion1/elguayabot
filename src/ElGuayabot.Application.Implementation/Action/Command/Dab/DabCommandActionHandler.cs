@@ -31,7 +31,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Dab
                     ParseMode.Html));
             }
 
-            return await MediatR.Send(new PhotoResponse(gifResult.Value), cancellationToken);
+            return await MediatR.Send(new PhotoResponse(gifResult.Value, "**Dabbing for VNZL** powered By GIPHY & CAPITALISM."), cancellationToken);
             // caption: "Dabbing for VNZL",
         }
     }
