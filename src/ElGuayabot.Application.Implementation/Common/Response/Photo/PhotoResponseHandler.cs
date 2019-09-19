@@ -23,7 +23,15 @@ namespace ElGuayabot.Application.Implementation.Common.Response.Photo
         {
             try
             {
-                await BotContext.BotClient.Client.SendPhotoAsync(BotContext.Chat.Id, request.Photo, cancellationToken: cancellationToken);
+                if (string.IsNullOrWhiteSpace(request.Caption))
+                {
+                    await BotContext.BotClient.Client.SendPhotoAsync(BotContext.Chat.Id, request.Photo, cancellationToken: cancellationToken);
+                }
+                else
+                {
+                    await BotContext.BotClient.Client.SendPhotoAsync(BotContext.Chat.Id, request.Photo, request.Caption, cancellationToken: cancellationToken);
+
+                }
 
                 return Result.Success();
             }
