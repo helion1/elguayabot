@@ -40,7 +40,7 @@ namespace ElGuayabot.Application.Implementation.Common.Response.Document
             }
             catch (Exception e)
             {
-                Logger.LogError(e, "Unhandled error sending text response ({@Request}).", request);
+                Logger.LogError(e, "Unhandled error sending document response ({@Request}).", request);
                 
                 return Result.UnknownError(new List<string> {e.Message});
             }
