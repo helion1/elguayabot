@@ -6,12 +6,14 @@ namespace ElGuayabot.Application.Implementation.Common.Response.Document
 {
     public class DocumentResponse : Request<Result>, IResponse
     {
-        public object Document { get; set; }
+        public string Document { get; set; }
+        public string Caption { get; set; }
         public int MessageId { get; set; }
 
-        public DocumentResponse(object document, int messageId = 0)
+        public DocumentResponse(string document, string caption = "", int messageId = 0)
         {
             Document = document;
+            Caption = caption;
             MessageId = messageId;
         }
     }

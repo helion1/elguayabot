@@ -26,13 +26,15 @@ namespace ElGuayabot.Application.Implementation.Common.Response.Document
             {
                 if (request.MessageId != 0)
                 {
-                    await BotContext.BotClient.Client.SendDocumentAsync(BotContext.Chat.Id, request.Document as InputOnlineFile, 
+                    await BotContext.BotClient.Client.SendDocumentAsync(BotContext.Chat.Id, request.Document, 
+                        caption: request.Caption,
                         replyToMessageId: request.MessageId, 
                         cancellationToken: cancellationToken);
                 }
                 else
                 {
-                    await BotContext.BotClient.Client.SendDocumentAsync(BotContext.Chat.Id, request.Document as InputOnlineFile, 
+                    await BotContext.BotClient.Client.SendDocumentAsync(BotContext.Chat.Id, request.Document, 
+                        caption: request.Caption,
                         cancellationToken: cancellationToken);
                 }
 
