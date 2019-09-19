@@ -17,6 +17,7 @@
       <ProjectReference Include="..\ElGuayabot.Application.Contract\ElGuayabot.Application.Contract.csproj" />
       <ProjectReference Include="..\ElGuayabot.Domain.Entity\ElGuayabot.Domain.Entity.csproj" />
       <ProjectReference Include="..\ElGuayabot.Domain\ElGuayabot.Domain.csproj" />
+      <ProjectReference Include="..\ElGuayabot.Infrastructure.Contract\ElGuayabot.Infrastructure.Contract.csproj" />
     </ItemGroup>
 
 </Project>
