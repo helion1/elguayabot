@@ -39,7 +39,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Comepingas
 
             var response = $"{recipient} <b>{selectedResponse}</b>";
 
-            return await MediatR.Send(new TextResponse(response));
+            return await MediatR.Send(new TextResponse(response, ParseMode.Html));
 
         }
         

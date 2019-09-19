@@ -5,6 +5,7 @@ using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Telegram.Bot.Types.Enums;
 
 namespace ElGuayabot.Application.Implementation.Action.Command.About
 {
@@ -19,7 +20,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.About
             //TODO move this to Resource file.
             const string aboutText = "<b>ElGuayaBot</b>, made with humor and code by [Lucas](https://github.com/elementh) and [Daniel](https://github.com/Zabrios) for our friend [Jose](https://github.com/ElGuayaba)";
 
-            return await MediatR.Send(new TextResponse(aboutText));
+            return await MediatR.Send(new TextResponse(aboutText, ParseMode.Html));
         }
 
     }
