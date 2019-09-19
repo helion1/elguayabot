@@ -1,12 +1,11 @@
-using System;
 using Newtonsoft.Json;
 
-namespace ElGuayabot.Infrastructure.Contract.Model
+namespace ElGuayabot.Infrastructure.Implementation.Model
 {
     public class GiphySearchResponse
     {
         [JsonProperty("data")]
-        public SearchData Data { get; set; }
+        public SearchData[] Data { get; set; }
         [JsonProperty("pagination")]
         public SearchPagination Pagination { get; set; }
         [JsonProperty("meta")]
@@ -30,6 +29,20 @@ namespace ElGuayabot.Infrastructure.Contract.Model
             public string Rating { get; set; }
             [JsonProperty("title")]
             public string Title { get; set; }
+            [JsonProperty("images")]
+            public SearchImages Images { get; set; }
+
+            public class SearchImages
+            {
+                [JsonProperty("original")]
+                public SearchOriginalImage Original { get; set; }
+
+                public class SearchOriginalImage
+                {
+                    [JsonProperty("mp4")]
+                    public string Mp4 { get; set; }
+                }
+            }
         }
         
         public class SearchPagination
