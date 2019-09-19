@@ -1,5 +1,6 @@
 using ElGuayabot.Application.Implementation.Configuration;
 using ElGuayabot.Domain.Configuration;
+using ElGuayabot.Infrastructure.Implementation.Configuration;
 using ElGuayabot.Persistence.Implementation.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -14,6 +15,7 @@ namespace ElGuayabot.Common.IoC.Configuration
             services.AddApplicationDependencies(configuration);
             services.AddDomainDependencies(configuration);
             services.AddPersistenceDependencies(configuration);
+            services.AddInfrastructureServices(configuration);
             
             return services;
         }
