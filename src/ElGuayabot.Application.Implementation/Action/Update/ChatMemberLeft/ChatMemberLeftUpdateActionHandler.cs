@@ -20,19 +20,11 @@ namespace ElGuayabot.Application.Implementation.Action.Update.ChatMemberLeft
 
         public override async Task<Result> Handle(ChatMemberLeftUpdateAction request, CancellationToken cancellationToken)
         {
-            var deleteConversationResult = await MediatR.Send(request.MapToDeleteConversationCommand(), cancellationToken);
-
-            if (!deleteConversationResult.Succeeded)
-            {
-                //TODO log error
-            }
+            await MediatR.Send(request.MapToDeleteConversationCommand(), cancellationToken);
 
             var message = $"@{request.Update.Message.LeftChatMember.Username} murió combatiendo el imperialismo.";
             
             return await MediatR.Send(new TextResponse(message), cancellationToken);
-
-            
-            //
         }
     }
 }

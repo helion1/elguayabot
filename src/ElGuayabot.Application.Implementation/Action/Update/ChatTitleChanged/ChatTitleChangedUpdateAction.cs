@@ -1,7 +1,19 @@
-﻿namespace ElGuayabot.Application.Implementation.Action.Update.ChatTitleChanged
+﻿using ElGuayabot.Application.Contract.Common.Context;
+using ElGuayabot.Application.Contract.Model.Action.Update;
+using ElGuayabot.Common.Request;
+using ElGuayabot.Common.Result;
+
+namespace ElGuayabot.Application.Implementation.Action.Update.ChatTitleChanged
 {
-    public class ChatTitleChangedUpdateAction
+    public class ChatTitleChangedUpdateAction : UpdateAction
     {
-        //"¡Vergación! 😱 El nuevo título del chat esta bien ahuevonado"
+        public ChatTitleChangedUpdateAction(IBotContext botContext) : base(botContext)
+        {
+        }
+
+        public override bool CanHandle(string condition)
+        {
+            return condition == "ChatTitleChanged";
+        }
     }
 }
