@@ -44,10 +44,17 @@ namespace ElGuayabot.Application.Implementation.Common.Strategy
 
         public Result<IMiscellaneousAction> GetMiscellaneousAction()
         {
-            throw new NotImplementedException();
+            var text = BotContext.Message.Text;
+            
+            if (text == null) return Result<IMiscellaneousAction>.NotFound(new List<string> {"No corresponding action found."});
+
+            var action = StrategyContext.GetMiscellaneousStrategyContext().FirstOrDefault(botAction => botAction.CanHandle(text));
+
+            if (action == null) return Result<IMiscellaneousAction>.NotFound(new List<string> {"No corresponding action found."});
+
+            return Result<IMiscellaneousAction>.Success(action);
         }
-
-
+        
         public Result<IUpdateAction> GetUpdateAction()
         {
             var updateType = GetUpdateType(BotContext.Update);
