@@ -5,6 +5,6 @@ namespace ElGuayabot.Infrastructure.Contract.Service
 {
     public interface IGifSearchService
     {
-        Task<Result<string>> GetRandomGif(string[] searchParams);
+        Task<Result<string>> GetRandomGif(params string[] searchParams);
     }
 }
