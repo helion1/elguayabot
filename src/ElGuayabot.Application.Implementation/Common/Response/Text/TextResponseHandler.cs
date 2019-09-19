@@ -23,7 +23,16 @@ namespace ElGuayabot.Application.Implementation.Common.Response.Text
         {
             try
             {
-                await BotContext.BotClient.Client.SendTextMessageAsync(BotContext.Chat.Id, request.Text, request.ParseMode, cancellationToken: cancellationToken);
+                if (request.MessageId != 0)
+                {
+                    await BotContext.BotClient.Client.SendTextMessageAsync(BotContext.Chat.Id, request.Text, request.ParseMode,
+                        replyToMessageId: request.MessageId,
+                        cancellationToken: cancellationToken);
+                }
+                else
+                {
+                    await BotContext.BotClient.Client.SendTextMessageAsync(BotContext.Chat.Id, request.Text, request.ParseMode, cancellationToken: cancellationToken);
+                }
 
                 return Result.Success();
             }

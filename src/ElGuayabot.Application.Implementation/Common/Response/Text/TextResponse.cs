@@ -9,11 +9,14 @@ namespace ElGuayabot.Application.Implementation.Common.Response.Text
     {
         public string Text { get; set; }
         public ParseMode ParseMode { get; set; }
+        public int MessageId { get; set; }
 
-        public TextResponse(string text, ParseMode parseMode = ParseMode.Markdown)
+
+        public TextResponse(string text, ParseMode parseMode = ParseMode.Markdown, int messageId = 0)
         {
             Text = text;
             ParseMode = parseMode;
+            MessageId = messageId;
         }
     }
 }
