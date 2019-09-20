@@ -12,7 +12,7 @@ namespace ElGuayabot.Infrastructure.Implementation.Service
     public class ImageSearchService : IImageSearchService
     {
         protected ILogger<ImageSearchService> Logger;
-        protected IGoogleSearchClient Client;
+        protected readonly IGoogleSearchClient Client;
 
         public ImageSearchService(ILogger<ImageSearchService> logger, IGoogleSearchClient client)
         {

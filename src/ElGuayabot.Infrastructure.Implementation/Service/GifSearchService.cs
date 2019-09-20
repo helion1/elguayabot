@@ -15,7 +15,7 @@ namespace ElGuayabot.Infrastructure.Implementation.Service
     public class GifSearchService : IGifSearchService
     {
         protected ILogger<GifSearchService> Logger;
-        protected IGiphyClient Client;
+        protected readonly IGiphyClient Client;
 
         public GifSearchService(ILogger<GifSearchService> logger, IGiphyClient client)
         {
