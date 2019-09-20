@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 using ElGuayabot.Common.Result;
@@ -25,18 +26,25 @@ namespace ElGuayabot.Infrastructure.Implementation.Client
         
         public async Task<Result<GiphySearchResponse>> Search(params string[] searchParams)
         {
-            var searchQuery = string.Join('+', searchParams);
-            var requestResponse = await Client.GetAsync($"search?q={searchQuery}&rating=R&api_key={API_KEY}&limit={25}");
-
-            if (!requestResponse.IsSuccessStatusCode)
+            try
             {
-                return Result<GiphySearchResponse>.Fail(requestResponse.StatusCode.ToString(), new List<string> {requestResponse.ReasonPhrase});
-            }
+                var searchQuery = string.Join('+', searchParams);
+                var requestResponse = await Client.GetAsync($"search?q={searchQuery}&rating=R&api_key={API_KEY}&limit={25}");
 
-            var giphySearchResponse = await requestResponse.Content.ReadAsAsync<GiphySearchResponse>();
+                if (!requestResponse.IsSuccessStatusCode)
+                {
+                    return Result<GiphySearchResponse>.Fail(requestResponse.StatusCode.ToString(), new List<string> {requestResponse.ReasonPhrase});
+                }
+
+                var giphySearchResponse = await requestResponse.Content.ReadAsAsync<GiphySearchResponse>();
                 
-            return Result<GiphySearchResponse>.Success(giphySearchResponse);
-
+                return Result<GiphySearchResponse>.Success(giphySearchResponse);
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e, "Unhandled error executing a giphy search.");
+                return Result<GiphySearchResponse>.UnknownError(new List<string> {e.Message});
+            }
         }
     }
 }

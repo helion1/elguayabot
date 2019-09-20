@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -31,18 +32,26 @@ namespace ElGuayabot.Infrastructure.Implementation.Client
         
         public async Task<Result<string>> Search(params string[] searchParams)
         {
-            var searchQuery = string.Join('+', searchParams);
-
-            var searchResponse = await Client.GetAsync($"search?q={searchQuery}&tbm=isch");
-
-            if (!searchResponse.IsSuccessStatusCode)
+            try
             {
-                return Result<string>.Fail(searchResponse.StatusCode.ToString(), new List<string> {searchResponse.ReasonPhrase});
-            }
+                var searchQuery = string.Join('+', searchParams);
 
-            var content = await searchResponse.Content.ReadAsStringAsync();
+                var searchResponse = await Client.GetAsync($"search?q={searchQuery}&tbm=isch");
+
+                if (!searchResponse.IsSuccessStatusCode)
+                {
+                    return Result<string>.Fail(searchResponse.StatusCode.ToString(), new List<string> {searchResponse.ReasonPhrase});
+                }
+
+                var content = await searchResponse.Content.ReadAsStringAsync();
             
-            return Result<string>.Success(content);
+                return Result<string>.Success(content);
+            }
+            catch (Exception e)
+            {
+                Logger.LogError(e, "Unhandled error executing a google search.");
+                return Result<string>.UnknownError(new List<string> {e.Message});
+            }
         }
     }
 }
