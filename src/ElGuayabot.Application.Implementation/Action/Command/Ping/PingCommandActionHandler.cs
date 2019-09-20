@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Implementation.Common.Response.Text;
+using ElGuayabot.Common.Helper;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
@@ -29,9 +30,8 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Ping
                 "becerro"
             };
             
-            var rnd = new Random();
 
-            var n = rnd.Next(insults.Length);
+            var n = RandomProvider.GetThreadRandom().Next(insults.Length);
 
             var luckyInsult = insults[n];
             

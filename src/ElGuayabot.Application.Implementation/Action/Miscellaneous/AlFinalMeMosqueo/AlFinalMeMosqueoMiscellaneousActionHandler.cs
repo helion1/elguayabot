@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Implementation.Common.Response.Text;
+using ElGuayabot.Common.Helper;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
@@ -19,7 +20,7 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.AlFinalMeMo
 
         public override async Task<Result> Handle(AlFinalMeMosqueoMiscellaneousAction request, CancellationToken cancellationToken)
         {
-            var responses = new List<string>
+            var responses = new[]
             {
                 "At the end I will fly",
                 "Get the fuck out, bitch",
@@ -50,9 +51,7 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.AlFinalMeMo
                 "In di end aim flaiin"
             };
             
-            var rnd = new Random();
-            
-            var r = rnd.Next(responses.Count);
+            var r = RandomProvider.GetThreadRandom().Next(responses.Length);
             
             var response = $"<i>{responses[r]}</i>";
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Implementation.Common.Response.Sticker;
+using ElGuayabot.Common.Helper;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
@@ -45,9 +46,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Savage
                 "CAADAgADEwAD0lqIASWkmUvWWXbPAg"
             };
             
-            var rnd = new Random();
-
-            var n = rnd.Next(stickers.Length);
+            var n = RandomProvider.GetThreadRandom().Next(stickers.Length);
 
             var luckySticker = stickers[n];
 

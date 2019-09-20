@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Implementation.Common.Response.Text;
+using ElGuayabot.Common.Helper;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
@@ -21,17 +22,15 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Comepingas
 
         public override async Task<Result> Handle(ComepingasCommandAction request, CancellationToken cancellationToken)
         {
-            var responses = new List<string>
+            var responses = new[]
             {
                 "zampavergas", "ingierepitos", "mascacipotes", "devorafalos", "meriendachorras", "almuerzapollas", "consumerabos", "cenapuntas", 
                 "degustavaras", "roemingas", "embocachurras", "yantapenes", "picatrancas", "desgastapichas", "saboreacucas", "catamangos", 
                 "succionaporras", "relamepijas", "bebelefas", "absorbeleches", "chupapepinos", "extraejugos", "cagapalos", "mamagüevo", "mochador", 
                 "tragabolas", "limpiasables", "comepingas", "engullenabos"
             };
-            
-            var rnd = new Random();
 
-            var r = rnd.Next(responses.Count);
+            var r = RandomProvider.GetThreadRandom().Next(responses.Length);
 
             var selectedResponse = responses[r];
 

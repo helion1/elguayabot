@@ -2,6 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Implementation.Common.Response.Text;
+using ElGuayabot.Common.Helper;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
@@ -27,10 +28,8 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.Nacionalida
                 "Tan solo he necesitado 5 meses y 3 días para obtener la nacionalidad",
                 "en teoría si es por primera vez y tienes todos los recaudos tardas un solo día"
             };
-            
-            var rnd = new Random();
-            
-            var r = rnd.Next(responses.Length);
+
+            var r = RandomProvider.GetThreadRandom().Next(responses.Length);
             
             var response = $"{responses[r]}";
 

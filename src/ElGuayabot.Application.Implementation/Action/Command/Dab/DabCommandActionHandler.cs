@@ -32,7 +32,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Dab
                     ParseMode.Html));
             }
 
-            return await MediatR.Send(new DocumentResponse(gifResult.Value, "🙅‍♂️Dabbing for VNZL🙅‍♂️ powered By GIPHY & CAPITALISM."), cancellationToken);
+            return await MediatR.Send(new DocumentResponse(gifResult.Value, "🙅‍♂️Dabbing for VNZL🙅‍♂️ powered By GIPHY."), cancellationToken);
         }
     }
 }

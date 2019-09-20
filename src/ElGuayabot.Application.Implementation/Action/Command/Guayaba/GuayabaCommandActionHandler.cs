@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Implementation.Common.Response.Text;
+using ElGuayabot.Common.Helper;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
@@ -37,9 +38,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Guayaba
                 
             };
             
-            var rnd = new Random();
-
-            var n = rnd.Next(responses.Length);
+            var n = RandomProvider.GetThreadRandom().Next(responses.Length);
 
             var luckyResponse = responses[n];
 

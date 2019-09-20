@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Implementation.Common.Response.Text;
+using ElGuayabot.Common.Helper;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
@@ -18,9 +19,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Flip
 
         public override async Task<Result> Handle(FlipCommandAction request, CancellationToken cancellationToken)
         {
-            var rnd = new Random();
-
-            var coin = rnd.Next(2);
+            var coin = RandomProvider.GetThreadRandom().Next(2);
 
             var toss = coin == 1 ? "cara" : "cruz";
 

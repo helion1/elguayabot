@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Implementation.Common.Response.Text;
+using ElGuayabot.Common.Helper;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
@@ -30,9 +31,7 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.NoEstesTris
                 "Levanta el animo, <i>El Guayaba</i> te quiere",
             };
             
-            var rnd = new Random();
-            
-            var r = rnd.Next(responses.Length);
+            var r = RandomProvider.GetThreadRandom().Next(responses.Length);
             
             var response = $"{responses[r]}";
             

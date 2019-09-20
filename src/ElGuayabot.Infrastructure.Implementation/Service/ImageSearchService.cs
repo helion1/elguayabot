@@ -31,7 +31,7 @@ namespace ElGuayabot.Infrastructure.Implementation.Service
 
             var urlsResult = GetUrls(searchResult.Value);
 
-            if (urlsResult.Succeeded)
+            if (!urlsResult.Succeeded)
             {
                 return Result<string>.FromResult(urlsResult);
             }

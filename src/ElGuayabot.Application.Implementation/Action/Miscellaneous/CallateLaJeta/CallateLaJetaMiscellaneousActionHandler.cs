@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using ElGuayabot.Application.Implementation.Common.Response.Text;
+using ElGuayabot.Common.Helper;
 using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
@@ -25,9 +26,7 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.CallateLaJe
                 "VERGA CALLATE YA"
             };
 
-            var rnd = new Random();
-            
-            var r = rnd.Next(responses.Length);
+            var r = RandomProvider.GetThreadRandom().Next(responses.Length);
             
             var response = $"<b>{responses[r]}</b>";
 
