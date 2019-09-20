@@ -26,7 +26,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Stats
         {
             if (!request.From.IsAdmin || request.Chat.Type != Chat.ChatType.Private)
             {
-                //TODO: send message mocking the user.
+                return await MediatR.Send(new TextResponse("Eres un agüevonado, toma stats para tí JAJAJAJAJA", ParseMode.Markdown, request.MessageId));
             }
 
             var groupChatsResult = await MediatR.Send(new FindAllGroupChatsQuery());
@@ -36,7 +36,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Stats
 
             if (!groupChatsResult.Succeeded || !superGroupChatsResult.Succeeded || !privateChatsResult.Succeeded || !usersResult.Succeeded)
             {
-                //TODO error!
+                return await MediatR.Send(new TextResponse("Camarada, algo ha fallado ¡Vuelve a intentarlo!", ParseMode.Markdown, request.MessageId));
             }
             
             var sb = new StringBuilder();

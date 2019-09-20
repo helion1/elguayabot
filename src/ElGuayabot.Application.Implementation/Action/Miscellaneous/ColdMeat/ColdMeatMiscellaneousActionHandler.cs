@@ -5,6 +5,7 @@ using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Telegram.Bot.Types.Enums;
 
 namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.ColdMeat
 {
@@ -16,7 +17,7 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.ColdMeat
 
         public override async Task<Result> Handle(ColdMeatMiscellaneousAction request, CancellationToken cancellationToken)
         {
-            return await MediatR.Send(new TextResponse("well here is cold meat.")); //TODO: reply
+            return await MediatR.Send(new TextResponse("well here is cold meat.", ParseMode.Markdown, request.MessageId));
         }
     }
 }

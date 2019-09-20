@@ -17,7 +17,6 @@ namespace ElGuayabot.Application.Implementation.Action.Command.About
         
         public override async Task<Result> Handle(AboutCommandAction request, CancellationToken cancellationToken)
         {
-            //TODO move this to Resource file.
             const string aboutText = "<b>ElGuayaBot</b>, made with humor and code by [Lucas](https://github.com/elementh) and [Daniel](https://github.com/Zabrios) for our friend [Jose](https://github.com/ElGuayaba)";
 
             return await MediatR.Send(new TextResponse(aboutText, ParseMode.Html));

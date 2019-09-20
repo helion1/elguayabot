@@ -5,6 +5,7 @@ using ElGuayabot.Common.Request;
 using ElGuayabot.Common.Result;
 using MediatR;
 using Microsoft.Extensions.Logging;
+using Telegram.Bot.Types.Enums;
 
 namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.Fiambre
 {
@@ -16,7 +17,7 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.Fiambre
 
         public override async Task<Result> Handle(FiambreMiscellaneousAction request, CancellationToken cancellationToken)
         {
-            return await MediatR.Send(new TextResponse("pues aquí hay fiambre JAJAJAJAJAJA")); //TODO: reply
+            return await MediatR.Send(new TextResponse("Pues aquí hay fiambre JAJAJAJAJAJA", ParseMode.Markdown, request.MessageId));
         }
     }
 }

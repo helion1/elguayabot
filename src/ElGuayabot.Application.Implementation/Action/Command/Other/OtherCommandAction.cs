@@ -2,6 +2,7 @@
 {
     public class OtherCommandAction
     {
+        //TODO: Implement unknown command action
         //            var responses = new List<string>
         //            {
         //                "No te entiendo maldito lázaro",
