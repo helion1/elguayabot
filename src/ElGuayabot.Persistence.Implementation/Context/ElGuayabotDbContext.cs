@@ -15,7 +15,7 @@ namespace ElGuayabot.Persistence.Implementation.Context
 
         public virtual DbSet<Chat> Chats { get; set; }
         
-        public virtual DbSet<Conversation> ChatUsers { get; set; }
+        public virtual DbSet<Conversation> Conversations { get; set; }
         
         public virtual DbSet<User> Users { get; set; }
 
