@@ -4,10 +4,8 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # Configuration
-
-appsettings.Development.json
-appsettings.Release.json
-appsettings.json
+*appsettings.Development.json
+*appsettings.Release.json
 
 # User-specific files
 *.suo
