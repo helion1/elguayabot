@@ -83,7 +83,7 @@ namespace ElGuayabot.Application.Implementation.Common.Strategy
 
             if (!command.Contains('@')) return command;
                 
-            if (!command.ToLower().Contains("@pokegraf_bot")) return null;
+            if (!command.Contains(BotContext.BotName)) return null;
 
             command = command.Substring(0, command.IndexOf('@'));
 
