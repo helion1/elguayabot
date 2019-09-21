@@ -15,7 +15,8 @@ namespace ElGuayabot.Application.Contract.Common.Context
         InlineQuery InlineQuery { get; set; }
         User User { get; set; }
         Chat Chat { get; set; }
-
+        string BotName { get; set; }
+        
         Task Populate(Message message);
         Task Populate(Update update);
     }

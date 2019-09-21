@@ -24,6 +24,7 @@ namespace ElGuayabot.Application.Implementation.Common.Context
         public InlineQuery InlineQuery { get; set; }
         public User User { get; set; }
         public Chat Chat { get; set; }
+        public string BotName { get; set; }
 
         public BotContext(ILogger<BotContext> logger, IBotClient botClient, IMediator mediator)
         {
@@ -52,6 +53,10 @@ namespace ElGuayabot.Application.Implementation.Common.Context
             
             User = conversationResult.Value.User;
             Chat = conversationResult.Value.Chat;
+
+            var bot  = await BotClient.Client.GetMeAsync();
+
+            BotName = bot.Username;
             
             Logger.LogTrace("Populated BotContext with Message.", message);
         }
@@ -62,7 +67,6 @@ namespace ElGuayabot.Application.Implementation.Common.Context
             await Populate(update.Message);
             
             Logger.LogTrace("Populated BotContext with Update.", update);
-
         }
     }
 }
