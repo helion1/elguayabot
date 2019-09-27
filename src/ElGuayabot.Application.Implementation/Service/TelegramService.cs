@@ -50,9 +50,7 @@ namespace ElGuayabot.Application.Implementation.Service
 
                     var actionResult = actionSelector.GetUpdateAction();
 
-                    if (!actionResult.Succeeded) return;
-                    
-                    await botContext.BotClient.Client.SendChatActionAsync(e.Update.Message.Chat.Id, ChatAction.Typing);
+                    if (!actionResult.Succeeded) return;                    
                         
                     var requestResult = await mediatR.Send(actionResult.Value);
 
@@ -97,7 +95,6 @@ namespace ElGuayabot.Application.Implementation.Service
                     }
                     else if (actionResult.Errors.ContainsKey("not_found"))
                     {
-                        await botContext.BotClient.Client.SendChatActionAsync(e.Message.Chat.Id, ChatAction.Typing);
 
                         var miscellaneousActionResult = actionSelector.GetMiscellaneousAction();
 
