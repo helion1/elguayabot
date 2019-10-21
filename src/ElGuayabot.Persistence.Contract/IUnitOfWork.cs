@@ -9,7 +9,8 @@ namespace ElGuayabot.Persistence.Contract
         IChatRepository ChatRepository { get; set; }
         IConversationRepository ConversationRepository { get; set; }
         IUserRepository UserRepository { get; set; }
-
+        ISalutationRepository SalutationRepository { get; set; }
+        
         Task SaveAsync(CancellationToken cancellationToken = default);
     }
 }

@@ -18,14 +18,16 @@ namespace ElGuayabot.Persistence.Implementation
         public IChatRepository ChatRepository { get; set; }
         public IConversationRepository ConversationRepository { get; set; }
         public IUserRepository UserRepository { get; set; }
-
-        public UnitOfWork(ElGuayabotDbContext context, ILogger<UnitOfWork> logger, IChatRepository chatRepository, IConversationRepository conversationRepository, IUserRepository userRepository)
+        public ISalutationRepository SalutationRepository { get; set; }
+        
+        public UnitOfWork(ElGuayabotDbContext context, ILogger<UnitOfWork> logger, IChatRepository chatRepository, IConversationRepository conversationRepository, IUserRepository userRepository, ISalutationRepository salutationRepository)
         {
             Context = context;
             Logger = logger;
             ChatRepository = chatRepository;
             ConversationRepository = conversationRepository;
             UserRepository = userRepository;
+            SalutationRepository = salutationRepository;
         }
 
         public async Task SaveAsync(CancellationToken cancellationToken = default)
