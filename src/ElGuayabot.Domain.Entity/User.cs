@@ -31,5 +31,6 @@ namespace ElGuayabot.Domain.Entity
         public bool IsAdmin { get; set; }
         
         public List<Conversation> Conversations { get; set; }
+        public List<Salutation> Salutations { get; set; }
     }
 }
