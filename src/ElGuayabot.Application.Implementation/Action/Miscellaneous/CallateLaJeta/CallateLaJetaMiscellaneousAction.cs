@@ -21,11 +21,11 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.CallateLaJe
             return IsAllUpper(condition) 
                     && condition != "OMG" 
                     && condition != "OMFG" 
-                    && condition != "LMAO" 
-                    && condition != "F" 
+                    && condition != "LMAO"
                     && condition != "LMAOO" 
                     && condition != "WTF" 
                     && condition != "LOL"
+                    && condition.Length > 2
                     && TimeStamp.Millisecond % 2 == 0;
         }
         
