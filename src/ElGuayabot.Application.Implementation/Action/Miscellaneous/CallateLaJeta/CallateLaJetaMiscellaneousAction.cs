@@ -25,7 +25,7 @@ namespace ElGuayabot.Application.Implementation.Action.Miscellaneous.CallateLaJe
                     && condition != "LMAOO" 
                     && condition != "WTF" 
                     && condition != "LOL"
-					&& condition.Length > 2
+                    && condition.Length > 2
                     && TimeStamp.Millisecond % 2 == 0;
         }
         
