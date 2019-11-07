@@ -22,17 +22,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Comepingas
 
         public override async Task<Result> Handle(ComepingasCommandAction request, CancellationToken cancellationToken)
         {
-            var responses = new[]
-            {
-                "zampavergas", "ingierepitos", "mascacipotes", "devorafalos", "meriendachorras", "almuerzapollas", "consumerabos", "cenapuntas", 
-                "degustavaras", "roemingas", "embocachurras", "yantapenes", "picatrancas", "desgastapichas", "saboreacucas", "catamangos", 
-                "succionaporras", "relamepijas", "bebelefas", "absorbeleches", "chupapepinos", "extraejugos", "cagapalos", "mamagüevo", "mochador", 
-                "tragabolas", "limpiasables", "comepingas", "engullenabos"
-            };
-
-            var r = RandomProvider.GetThreadRandom().Next(responses.Length);
-
-            var selectedResponse = responses[r];
+            var selectedResponse = InsultMaker();
 
             var recipient = SelectRecipient(request.Message);
 
@@ -40,13 +30,13 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Comepingas
 
             return await MediatR.Send(new TextResponse(response, ParseMode.Html));
         }
-        
+
         private string SelectRecipient(Message message)
         {
             if (message.Entities.Any(m => m.Type == MessageEntityType.Mention))
             {
                 var user = message.EntityValues.First(m => m.StartsWith("@"));
-                
+
                 return $"{user} eres un";
             }
 
@@ -56,8 +46,42 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Comepingas
                 return $"<i>{user}</i> eres un";
 
             }
-            
+
             return "Todos <i>ustedes</i> son unos";
+        }
+
+        private string InsultMaker()
+        {
+            var dickSynonyms = new[]
+            {
+                "vergas", "pitos", "cipotes", "falos", "chorras", "pollas", "rabos", "puntas",
+                "varas", "mingas", "churras", "penes", "trancas", "pichas", "cucas", "mangos",
+                "porras", "pijas", "lefas", "leches", "pepinos", "jugos", "palos", "güevos",
+                "bolas", "sables", "pingas", "nabos", "testiculos", "cojones", "escrotos", "pelotas",
+                "-partes íntimas masculinas", "genitales", "-órganos sexuales", "morcillas", "ciruelos",
+                "semen", "miembros", "colas", "pililas", "porongas", "gansos", "garchas", "palancas",
+                "calipos", "pirulos", "paquetes", "salchichas", "bratwursts", "pajaritos", "mastiles de carne",
+                "trípodes", "rabos", "troncos", "flautas", "chorgas", "salami", "capullos", "glandes", "cimbreles",
+                "trabucos", "plátanos", "colitas", "ñongas", "nepes"
+            };
+
+            var suckingSynonyms = new[]
+            {
+                "zampa", "ingiere", "masca", "devora", "merienda", "almuerza", "consume", "cena",
+                "degusta", "roe", "emboca", "yanta", "pica", "desgasta", "saborea", "cata",
+                "succiona", "relame", "bebe", "absorbe", "chupa", "extrae", "caga", "mama",
+                "traga", "limpia", "come", "engulle", "desayuna", "sopla", "suca", "endurece",
+                "besa", "chucla", "atrae", "empina", "sorbe", "siente", "disfruta", "goza", "empapa",
+                "adora", "venera", "relame", "esnifa", "abraza", "apropia", "embebe", "chupetea",
+                "bombea", "extenua", "aspira", "pimpla", "cautiva", "emplea", "seduce", "encaja",
+                "anexa", "empotra", "afronta", "engrasa", "aborda", "afila", "corroe", "momifica",
+                "besuquea", "acaricia", "babosea", "achucha", "soba"
+            };
+
+            var r1 = RandomProvider.GetThreadRandom().Next(suckingSynonyms.Length);
+            var r2 = RandomProvider.GetThreadRandom().Next(dickSynonyms.Length);
+
+            return String.Concat(suckingSynonyms[r1], dickSynonyms[r2]);
         }
     }
 }
