@@ -50,7 +50,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Comepingas
             return "Todos <i>ustedes</i> son unos";
         }
 
-        private string InsultMaker()
+        private static string InsultMaker()
         {
             var dickSynonyms = new[]
             {
@@ -81,7 +81,7 @@ namespace ElGuayabot.Application.Implementation.Action.Command.Comepingas
             var r1 = RandomProvider.GetThreadRandom().Next(suckingSynonyms.Length);
             var r2 = RandomProvider.GetThreadRandom().Next(dickSynonyms.Length);
 
-            return String.Concat(suckingSynonyms[r1], dickSynonyms[r2]);
+            return $"{suckingSynonyms[r1]}{dickSynonyms[r2]}";
         }
     }
 }
